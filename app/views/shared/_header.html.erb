@@ -14,7 +14,7 @@
         <ul class="nav navbar-nav">
           <li class="active"><a href="#">Home</a></li>
           <li><a href="#about">Lessons</a></li>
-          <li><a href="#contact">About</a></li>
+          <li><%= link_to "About", pages_about_path %></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <% if (!user_signed_in?) %>
@@ -22,10 +22,14 @@
             <li><%= link_to raw('<span class="glyphicon glyphicon-log-in"></span> Login'), new_user_session_path %></li>
           <% else %>
             <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><%= current_user.email %><span class="caret"></span></a>
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" style="padding-top: 5px; padding-bottom: 5px;">
+                <%= image_tag avatar_url(current_user), class: "img-circle" %>&nbsp;
+                <%= current_user.username %>
+                <span class="caret"></span>
+              </a>
               <ul class="dropdown-menu">
-                <li><a href="#">Profile</a></li>
-                <li><a href="#">Account</a></li>
+                <li><%= link_to "Profile", edit_user_registration_path %></li>
+                <li><%= link_to "Account", edit_user_registration_path %></li>
                 <li><%= link_to "Sign out", destroy_user_session_path, method: :delete %></li>
               </ul>
             </li>

@@ -1,5 +1,6 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import "toastr";
 
 /* Sticky footer styles
 -------------------------------------------------- */
@@ -10,6 +11,7 @@ html {
 body {
   /* Margin bottom by footer height */
   margin-bottom: 60px;
+  padding-top: 65px; 
 }
 .footer {
   position: absolute;
