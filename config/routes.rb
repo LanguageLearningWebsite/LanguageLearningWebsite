@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users
+
+  as :user do
+    get 'users', :to => 'devise/registrations#new'
+  end
+
   get 'pages/about'
 
   root 'pages#about'
