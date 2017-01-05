@@ -1,28 +1,20 @@
-    <%= stylesheet_link_tag    'log-in-page', media: 'all', 'data-turbolinks-track' => true %>
+<%= stylesheet_link_tag 'log-in-page', media: 'all', 'data-turbolinks-track' => true %>
 
-    <div class="container">
-      <div class="card card-container">
-        <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
-        <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
-        <p id="profile-name" class="profile-name-card"></p>
+<div class="container">
+  <div class="card card-container">
+    <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
+    <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
+    <p id="profile-name" class="profile-name-card"></p>
 
-        <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: 'form-signin'}) do |f| %>
-        <span id="reauth-email" class="reauth-email"></span>
-        <%= text_field_tag :email, '', placeholder: "Email Address", class: "form-control" %>
-        <%= text_field_tag :password, '', placeholder: "Password", class: "form-control" %>
-        <% if devise_mapping.rememberable? -%>
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: 'form-signin'}) do |f| %>
+      <span id="reauth-email" class="reauth-email"></span>
+      <%= f.email_field :email, autofocus: true , class: "form-control validate" %>
+      <%= f.password_field :password, autocomplete: "off", class: "form-control validate" %>
+      <% if devise_mapping.rememberable? -%>
         <%= f.check_box :remember_me %> <%= f.label :remember_me %>
-        <% end -%>
-        <%= f.submit "Sign in", class: 'btn btn-lg btn-primary btn-block btn-signin' %>
-
-
-        <%= link_to "Forgot password", new_user_password_path %>
-      </div>
-    </div>
-
-
+      <% end -%>
+      <%= f.submit "Sign in", class: 'btn btn-lg btn-primary btn-block btn-signin' %>
+      <%= link_to "Forgot password", new_user_password_path %>
     <% end %>
-
-
-
-
+  </div>
+</div>

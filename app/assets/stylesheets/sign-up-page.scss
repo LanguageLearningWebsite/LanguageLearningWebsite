@@ -1,13 +1,17 @@
 /*
 change sign up page
 */
+body {
+  background-repeat: no-repeat;
+  background-image: linear-gradient(rgb(104, 145, 162), rgb(12, 97, 33));
+}
+
 form { margin: 0px 10px; }
 
 .panel panel-primary {
 	text-align: center; 
 	margin: auto;
 	padding: 10px;
-
 }
 
 h2 {
@@ -34,5 +38,3 @@ h2 {
 .left { float: left; }
 
 .right { float: right; }
-
-
