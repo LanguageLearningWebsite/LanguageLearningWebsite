@@ -25,7 +25,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'bootstrap', '~> 4.0.0.alpha6'
 gem 'devise'
-gem 'toastr-rails'
+gem 'toastr_rails', :git => 'git@github.com:d4be4st/toastr_rails.git'
 
 gem 'activeadmin', github: 'activeadmin'
 gem 'active_skin'

@@ -1,5 +1,5 @@
 @import "bootstrap";
-@import "toastr";
+@import "toastr_rails";
 
 /* Sticky footer styles
 -------------------------------------------------- */
@@ -38,10 +38,6 @@ body {
 /* Custom page CSS
 -------------------------------------------------- */
 /* Not required for template or sticky footer method. */
-
-.toast-top-right {
-  margin-top: 50px;
-}
 
 body > .container {
   padding: 50px 15px 0;

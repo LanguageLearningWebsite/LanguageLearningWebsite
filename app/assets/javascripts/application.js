@@ -13,6 +13,12 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require toastr
+//= require toastr_rails
 //= require bootstrap-sprockets
 //= require_tree .
+
+toastr.options = {
+                 "closeButton": true,
+                 "progressBar": false,
+                 "tapToDismiss": false
+}

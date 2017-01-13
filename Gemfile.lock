@@ -17,6 +17,12 @@ GIT
       sass-rails
       sprockets (< 4.1)
 
+GIT
+  remote: git@github.com:d4be4st/toastr_rails.git
+  revision: 3068f16cf9c2c03b97c919e2ea9057416f92fa75
+  specs:
+    toastr_rails (2.1.3)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -203,8 +209,6 @@ GEM
     thor (0.19.4)
     thread_safe (0.3.5)
     tilt (2.0.5)
-    toastr-rails (1.0.3)
-      railties (>= 3.1.0)
     turbolinks (5.0.1)
       turbolinks-source (~> 5)
     turbolinks-source (5.0.0)
@@ -238,7 +242,7 @@ DEPENDENCIES
   sdoc (~> 0.4.0)
   spring
   sqlite3
-  toastr-rails
+  toastr_rails!
   turbolinks
   uglifier (>= 1.3.0)
   web-console (~> 2.0)
