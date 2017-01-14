@@ -18,7 +18,7 @@
 //= require_tree .
 
 toastr.options = {
-                 "closeButton": true,
-                 "progressBar": false,
-                 "tapToDismiss": false
+  "closeButton": true,
+  "progressBar": false,
+  "tapToDismiss": false
 }

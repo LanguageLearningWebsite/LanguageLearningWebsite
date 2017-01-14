@@ -1,13 +1,35 @@
-<h1><%= @course.name %></h1>
-<p><%= image_tag @course.image(:medium) %></p>
-<p><%= @course.content %></p>
-
-<ul>
-  <% @lessons.each do |lesson| %>
-    <li>
-      <%= link_to [lesson.course, lesson] do %>
-        <%= lesson.note %>
-      <% end %>
-    </li>
-  <% end %>
-</ul>
+<div class="row">
+  <div class="col-md-5 mt-4 mb-4">
+    <div class="card text-center">
+      <div class="card-header">
+        <h4 class="card-title"><%= @course.name %></h4>
+      </div>
+      <div class="card-block">
+        <button class="btn btn-primary">Take this course</button>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-7 mt-4 mb-4">
+    <div class="card">
+      <%= image_tag @course.image(:medium), :class => "card-img-top img-responsive" %>
+      <div class="card-block">
+        <h4 class="card-title"><%= @course.name %></h4>
+        <hr>
+        <p class="card-text"><%= @course.content %></p>
+        <div class="list-group">
+          <% @lessons.each do |lesson| %>
+            <% if lesson.header %>
+              <div class="list-group-item active">
+                <i class="fa fa-graduation-cap"> <%= lesson.title %></i>
+              </div>
+            <% else %>
+              <%= link_to [lesson.course, lesson], :class => "list-group-item list-group-item-action" do %>
+                <%= lesson.title %>
+              <% end %>
+            <% end %>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

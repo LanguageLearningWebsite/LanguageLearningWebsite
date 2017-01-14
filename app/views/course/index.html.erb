@@ -1,9 +1,14 @@
-<h1>Course List</h1>
-<% @courses.each do |course| %>
-  <li>
-    <%= link_to course do %>
-      <%= image_tag course.image(:thumb) %>
-      <%= course.name %>
-    <% end %>
-  </li>
-<% end %>
+<div class="row">
+  <% @courses.each do |course| %>
+    <div class="col-xs-12 col-sm-6 col-md-4 mt-4">
+      <%= link_to course, :class => "card-link" do %>
+          <div class="card">
+            <%= image_tag course.image(:small), :class => "card-img-top img-responsive" %>
+            <div class="card-block">
+              <h5 class="card-title text-gray-dark"><%= course.name %></h5>
+            </div>
+          </div>
+      <% end %>
+    </div>
+  <% end %>
+</div>
