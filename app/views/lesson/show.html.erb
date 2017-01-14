@@ -1,4 +1,31 @@
-<h1><%= @lesson.title %></h1>
-
-<p><%= @lesson.note %></p>
-<p><%= @lesson.video %></p>
+<div class="row">
+  <div class="col-md-4 mt-4 mb-4">
+    <div class="card">
+      <div class="card-block">
+        <% @lessons.each do |lesson| %>
+          <% if lesson.header %>
+            <div class="list-group-item active">
+              <i class="fa fa-graduation-cap"> <%= lesson.title %></i>
+            </div>
+          <% else %>
+            <%= link_to [lesson.course, lesson], :class => "list-group-item list-group-item-action" do %>
+              <%= lesson.title %>
+            <% end %>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-8 mt-4 mb-4">
+    <div class="card">
+      <div class="card-header">
+        <%= @lesson.video %>
+      </div>
+      <div class="card-block">
+        <h4 class="card-title"><%= @lesson.title %></h4>
+        <hr>
+        <%= @lesson.note %>
+      </div>
+    </div>
+  </div>
+</div>
