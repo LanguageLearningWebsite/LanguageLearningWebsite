@@ -4,8 +4,8 @@
       <%= link_to course, :class => "card-link" do %>
           <div class="card">
             <%= image_tag course.image(:small), :class => "card-img-top img-responsive" %>
-            <div class="card-block">
-              <h5 class="card-title text-gray-dark"><%= course.name %></h5>
+            <div class="card-block" style="height: 6em">
+              <h5 class="card-title text-gray-dark"><%= course.shortname %></h5>
             </div>
           </div>
       <% end %>

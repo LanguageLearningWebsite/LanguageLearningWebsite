@@ -43,16 +43,11 @@ div.card {
 -------------------------------------------------- */
 /* Not required for template or sticky footer method. */
 
-body > .container {
-  padding: 50px 15px 0;
+.container {
+  width: 90%;
 }
 .container .text-muted {
   margin: 20px 0;
-}
-
-.footer > .container {
-  padding-right: 15px;
-  padding-left: 15px;
 }
 
 code {
