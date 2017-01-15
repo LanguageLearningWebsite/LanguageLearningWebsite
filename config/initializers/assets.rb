@@ -12,3 +12,6 @@ Rails.application.config.assets.version = '1.0'
 
 Rails.application.config.assets.precompile += %w( sign-up-page.css )
 Rails.application.config.assets.precompile += %w( log-in-page.css )
+Rails.application.config.assets.precompile += %w( video-js.css )
+Rails.application.config.assets.precompile += %w( videojs-transcript.css )
+Rails.application.config.assets.precompile += %w( custom-videojs-player.css )
