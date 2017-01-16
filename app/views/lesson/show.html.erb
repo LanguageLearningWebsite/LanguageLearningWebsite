@@ -2,6 +2,10 @@
 <%= stylesheet_link_tag "custom-videojs-player" %>
 <%= stylesheet_link_tag "videojs-transcript" %>
 
+<% content_for(:body_attributes) do %>
+  data-turbolinks="false"
+<% end %>
+
 <div class="row">
   <div class="col-md-3 mt-4 mb-4">
     <div class="card">
@@ -12,7 +16,7 @@
               <i class="fa fa-graduation-cap"> <%= lesson.title %></i>
             </div>
           <% else %>
-            <%= link_to [lesson.course, lesson], :class => "list-group-item list-group-item-action" do %>
+            <%= link_to [lesson.course, lesson], :class => "list-group-item list-group-item-action", :"data-turbolinks" => false do %>
               <%= lesson.title %>
             <% end %>
           <% end %>
@@ -51,8 +55,4 @@
   setTimeout(function () {
     updateCaption('video1', 'Chinese', 'subtitle-display');
   }, 0);
-  window.addEventListener('resize', function() {
-    $("#transcript").css({'height':(($("#video-content").height()-160)+'px')});
-    $(".transcript-body").css({'height':(($("#video-content").height()-210)+'px')});
-  }, true);
 </script>

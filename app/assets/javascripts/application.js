@@ -11,14 +11,14 @@
 // about supported directives.
 //
 //= require jquery
-//= require tether
 //= require jquery_ujs
-//= require turbolinks
+//= require tether
 //= require toastr_rails
 //= require bootstrap-sprockets
 //= require video
 //= require subtitles
 //= require videojs-transcript
+//= require turbolinks
 //= require_tree .
 
 toastr.options = {

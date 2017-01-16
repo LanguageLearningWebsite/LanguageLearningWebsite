@@ -37,6 +37,25 @@
   background-color: #e2fbfb;
 }
 
+.video-js .vjs-transcript-toggle-button::before {
+    content: "\f10c";
+}
+
+.video-js .vjs-transcript-toggle-button {
+    cursor: pointer;
+    -webkit-box-flex: none;
+    -moz-box-flex: none;
+    -webkit-flex: none;
+    -ms-flex: none;
+    flex: none;
+}
+
+.video-js .vjs-transcript-toggle-button {
+    font-family: VideoJS;
+    font-weight: normal;
+    font-style: normal;
+}
+
 #subtitle-display {
   width: 100%;
   height: 150px;
