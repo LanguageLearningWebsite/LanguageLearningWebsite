@@ -25,7 +25,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'bootstrap', '~> 4.0.0.alpha6'
 gem 'devise'
-gem 'toastr_rails', :git => 'git@github.com:d4be4st/toastr_rails.git'
+gem 'toastr_rails'
 
 gem 'activeadmin', github: 'activeadmin'
 gem 'active_skin'
@@ -56,4 +56,5 @@ group :development do
 
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+  gem "rails-erd"
 end
