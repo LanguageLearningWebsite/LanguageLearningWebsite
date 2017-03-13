@@ -1204,8 +1204,10 @@ video::-webkit-media-text-track-display {
   display: none; }
 
 .vjs-caption-settings {
-  position: relative;
-  top: 1em;
+  position: absolute;
+  top: 5%;
+  left: 5%;
+  right: 25%;
   background-color: #2B333F;
   background-color: rgba(43, 51, 63, 0.75);
   color: #fff;
@@ -1222,6 +1224,10 @@ video::-webkit-media-text-track-display {
   right: 0;
   position: absolute;
   overflow: auto; }
+
+.vjs-tracksettings select {
+  color: black;
+}
 
 .vjs-caption-settings .vjs-tracksettings-colors,
 .vjs-caption-settings .vjs-tracksettings-font {

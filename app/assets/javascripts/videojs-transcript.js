@@ -231,7 +231,7 @@ var scrollerProto = function(plugin) {
       var time = now - startTime;
       self.isAutoScrolling = true;
       element.scrollTop = easeOut(time, startPos, change, duration);
-      if (element.scrollTop !== newPos) {
+      if (Math.abs(parseInt(element.scrollTop) - newPos) > 1) {
         requestAnimationFrame(updateScroll, element);
       }
     };
@@ -474,6 +474,7 @@ var transcript = function (options) {
   my.settings = videojs.mergeOptions(defaults, options);
   my.widget = widget.create();
   var timeUpdate = function () {
+    // console.log(my.currentTrack);
     my.widget.setCue(my.player.currentTime());
   };
   var updateTrack = function () {

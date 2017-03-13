@@ -1,19 +1,28 @@
 @import "bootstrap";
 @import "toastr_rails";
 
+.row-no-padding {
+  [class*="col-"] {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+  }
+}
+
 /* Sticky footer styles
 -------------------------------------------------- */
 html {
   position: relative;
   min-height: 100%;
 }
+
 body {
   /* Margin bottom by footer height */
-  margin-bottom: 60px;
+  // margin-bottom: 60px;
+  padding-top: 56px;
 }
 
 .navbar {
-  padding: 5px 50px 5px 50px;
+  padding: 3px 50px 3px 50px;
 }
 
 .navbar-nav > li:not(.dropdown) a {
@@ -35,8 +44,12 @@ body {
   background-color: #e7e7e7;
 }
 
-div.card {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+// div.card {
+//   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+// }
+
+.card-block {
+  padding-top: 0.5rem;
 }
 
 /* Custom page CSS
@@ -44,7 +57,7 @@ div.card {
 /* Not required for template or sticky footer method. */
 
 .container {
-  width: 90%;
+  width: 100%;
 }
 
 .container .text-muted {
@@ -58,8 +71,6 @@ code {
 .panel-sign-up {
   border-color: #337ab7;
   padding: 10px;
- background-color: rgba(240, 248, 255, 0.76);
-
 }
 
 h2, .h2 {
@@ -68,4 +79,8 @@ h2, .h2 {
 
 .btn-primary{
   padding: 12px 55px;
+}
+
+.footer{
+  padding: 15px 50px 0px 50px;
 }

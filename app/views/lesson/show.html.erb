@@ -1,12 +1,92 @@
 <%= stylesheet_link_tag "video-js" %>
 <%= stylesheet_link_tag "custom-videojs-player" %>
 <%= stylesheet_link_tag "videojs-transcript" %>
+<%= stylesheet_link_tag "sidebar" %>
 
 <% content_for(:body_attributes) do %>
   data-turbolinks="false"
 <% end %>
+<div id="wrapper">
+  <!-- Sidebar -->
+  <div id="sidebar-wrapper">
+    <ul class="sidebar-nav">
+      <li class="sidebar-brand">
+        <a href="#">
+          Lessons
+        </a>
+      </li>
+      <% @lessons.each_with_index do |lesson, index| %>
+        <% if lesson.header %>
+          <% if index != 0 %></ul></li><% end %>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-graduation-cap"> <%= lesson.title %></i><span class="caret"></span></a>
+            <ul class="dropdown-menu" role="menu">
+              <li class="dropdown-header">Dropdown heading</li>
+        <% else %>
+          <li>
+            <%= link_to [lesson.course, lesson], :"data-turbolinks" => false do %>
+              <%= lesson.title %>
+            <% end %>
+          </li>
+        <% end %>
+      <% end %>
+      <% if !@lessons.empty? %></ul></li><% end %>
+    </ul>
+  </div>
+  <!-- /#sidebar-wrapper -->
 
-<div class="row">
+  <!-- Page Content -->
+  <div id="page-content-wrapper">
+    <div class="row row-no-padding">
+      <div class="col-md-1">
+        <button type="button" class="hamburger is-closed" data-toggle="offcanvas">
+          <span class="hamb-top"></span>
+          <span class="hamb-middle"></span>
+          <span class="hamb-bottom"></span>
+        </button>
+      </div>
+      <div class="col-md-3">
+        <div class="card">
+          <div class="card-header">
+            <h4 class="card-title">Translation</h4>
+          </div>
+          <div class="card-block">
+            <p class="card-text">Hello</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-8">
+        <div class="card">
+          <div class="card-header">
+            <h4 class="card-title"><%= @lesson.title %></h4>
+          </div>
+          <div class="card-block">
+            <div class="row row-no-padding">
+              <div class="col-md-12" id="video-content">
+                <video crossdomain id="video1" class="video-js vjs-default-skin" controls preload="auto" data-setup='{"playbackRates": [0.5, 1, 1.5, 2], "fluid": true}'>
+                  <source src="<%= @lesson.video %>" type="video/mp4" />
+                  <track id="default" label="Chinese" kind="captions" srclang="zh-Hans" src="/assets/subtitles/Chinese.vtt">
+                  <p class="vjs-no-js">
+                    To view this video please enable JavaScript, and consider upgrading to a web browser that
+                    <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+                  </p>
+                </video>
+                <div id="subtitle-display"></div>
+              </div>
+              <div class="col-md-4" id="transcript"></div>
+            </div>
+            <hr>
+            <p class="card-text"><%= @lesson.note %></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- /#page-content-wrapper -->
+</div>
+<!-- /#wrapper -->
+
+<!-- <div class="row row-no-padding">
   <div class="col-md-3 mt-4 mb-4">
     <div class="card">
       <div class="card-block">
@@ -29,11 +109,11 @@
       <div class="card-header">
         <h4 class="card-title"><%= @lesson.title %></h4>
       </div>
-      <div class="card-block">
+      <div class="card-block" style="padding-left: 25px; padding-right: 25px;">
         <div class="row">
-          <div class="col-md-8" id="video-content">
+          <div class="col-md-10" id="video-content">
             <video crossdomain id="video1" class="video-js vjs-default-skin" controls preload="auto" data-setup='{"playbackRates": [0.5, 1, 1.5, 2], "fluid": true}'>
-              <source src="/assets/videos/clip1.mp4" type="video/mp4" />
+              <source src="<%= @lesson.video %>" type="video/mp4" />
               <track id="default" label="Chinese" kind="captions" srclang="zh-Hans" src="/assets/subtitles/Chinese.vtt">
               <p class="vjs-no-js">
                 To view this video please enable JavaScript, and consider upgrading to a web browser that
@@ -49,13 +129,31 @@
       </div>
     </div>
   </div>
-</div>
-
+</div> -->
 
 <script type="text/javascript">
   setTimeout(function () {
     updateCaption('video1', 'Chinese', 'subtitle-display');
   }, 0);
-
-  
+  $("#menu-toggle").click(function(e) {
+    e.preventDefault();
+    $("#wrapper").toggleClass("toggled");
+  });
+  var trigger = $('.hamburger'), isClosed = false;
+      trigger.click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+        hamburger_cross();
+      });
+      function hamburger_cross() {
+        if (isClosed == true) {
+          trigger.removeClass('is-open');
+          trigger.addClass('is-closed');
+          isClosed = false;
+        } else {
+          trigger.removeClass('is-closed');
+          trigger.addClass('is-open');
+          isClosed = true;
+        }
+    }
 </script>

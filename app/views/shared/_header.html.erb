@@ -1,5 +1,5 @@
 <header>
-  <div class="navbar navbar-toggleable-sm navbar-light bg-faded">
+  <nav class="navbar fixed-top navbar-toggleable-sm navbar-light bg-faded">
     <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -17,23 +17,23 @@
         </li>
 
         <% if (!user_signed_in?) %>
-          <li><%= link_to raw('<i class="fa fa-user" aria-hidden="true"></i> Sign up'), new_user_registration_path, class: "nav-link" %></li>
-          <li><%= link_to raw('<i class="fa fa-sign-in" aria-hidden="true"></i> Login'), new_user_session_path, class: "nav-link" %></li>
+        <li><%= link_to raw('<i class="fa fa-user" aria-hidden="true"></i> Sign up'), new_user_registration_path, class: "nav-link" %></li>
+        <li><%= link_to raw('<i class="fa fa-sign-in" aria-hidden="true"></i> Login'), new_user_session_path, class: "nav-link" %></li>
         <% else %>
-          <li class="nav-item dropdown">
-            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <%= image_tag avatar_url(current_user), class: "img-circle" %>&nbsp;
-              <%= current_user.username %>
-              <span class="caret"></span>
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-              <%= link_to "Profile", edit_user_registration_path, class: "dropdown-item" %>
-              <%= link_to "Account", edit_user_registration_path, class: "dropdown-item" %>
-              <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
-            </div>
-          </li>
+        <li class="nav-item dropdown">
+          <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <%= image_tag avatar_url(current_user), class: "img-circle" %>&nbsp;
+            <%= current_user.username %>
+            <span class="caret"></span>
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <%= link_to "Profile", edit_user_registration_path, class: "dropdown-item" %>
+            <%= link_to "Account", edit_user_registration_path, class: "dropdown-item" %>
+            <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
+          </div>
+        </li>
         <% end %>
       </ul>
     </div>
-  </div>
+  </nav>
 </header>
