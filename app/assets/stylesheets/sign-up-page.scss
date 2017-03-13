@@ -9,9 +9,13 @@ body {
 form { margin: 0px 10px; }
 
 .panel panel-primary {
-	text-align: center; 
+	text-align: center;
 	margin: auto;
 	padding: 10px;
+}
+
+.panel-sign-up {
+  background-color: #F7F7F7;
 }
 
 h2 {
@@ -19,8 +23,8 @@ h2 {
   margin-bottom: 2px;
 }
 
-.container-sign-up { 
-	max-width: 360px; 
+.container-sign-up {
+	max-width: 360px;
 	  margin: auto
 }
 
