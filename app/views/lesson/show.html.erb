@@ -57,7 +57,10 @@ data-turbolinks="false"
                   <div class="col-md-12" id="video-content">
                     <video crossdomain id="video1" class="video-js vjs-default-skin" controls preload="auto" data-setup='{"playbackRates": [0.5, 1, 1.5, 2], "fluid": true}'>
                       <source src="<%= @lesson.video %>" type="video/mp4" />
-                        <track id="default" label="Chinese" kind="captions" srclang="zh-Hans" src="/assets/subtitles/Chinese.vtt">
+                        <track id="EN-Chinese" label="EN-Chinese" kind="captions" srclang="zh-Hans" src="/assets/subtitles/EL-Chinese.vtt" default>
+                        <track id="pinyin" label="pinyin" kind="captions" srclang="zh-Hans" src="/assets/subtitles/pinyin.vtt">
+                        <track id="simplified-characters" label="simplified-characters" kind="captions" srclang="zh-Hans" src="/assets/subtitles/simplified-characters.vtt">
+                        <track id="English" label="English" kind="captions" srclang="zh-Hans" src="/assets/subtitles/English.vtt">
                           <p class="vjs-no-js">
                             To view this video please enable JavaScript, and consider upgrading to a web browser that
                             <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
@@ -90,7 +93,7 @@ data-turbolinks="false"
 
         <script type="text/javascript">
         setTimeout(function () {
-          updateCaption('video1', 'Chinese', 'subtitle-display');
+          updateCaption('video1', 'EN-Chinese', 'subtitle-display');
         }, 0);
         $("#menu-toggle").click(function(e) {
           e.preventDefault();
@@ -121,5 +124,5 @@ data-turbolinks="false"
         // Add slideUp animation to Bootstrap dropdown when collapsing.
         $('.dropdown').on('hide.bs.dropdown', function() {
           $(this).find('.dropdown-menu').first().stop(true, true).slideUp();
-        });    
+        });
         </script>
