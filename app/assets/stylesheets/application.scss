@@ -1,11 +1,30 @@
 @import "bootstrap";
 @import "toastr_rails";
 
-.row-no-padding {
+.row-less-padding {
   [class*="col-"] {
     padding-left: 10px !important;
     padding-right: 10px !important;
   }
+}
+
+.flex {
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-direction: row;
+  flex-direction: row;
+}
+
+.width-35 {
+  width: 35%;
+}
+
+.width-65 {
+  width: 65%;
+}
+
+.width-100 {
+  width: 100%;
 }
 
 /* Sticky footer styles
@@ -44,12 +63,8 @@ body {
   background-color: #e7e7e7;
 }
 
-// div.card {
-//   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-// }
-
 .card-block {
-  padding-top: 0.5rem;
+  padding: 1rem;
 }
 
 /* Custom page CSS

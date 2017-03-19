@@ -408,7 +408,6 @@ var widget = function (plugin) {
       my.element.replaceChild(body, my.body);
       my.body = body;
     }
-
   };
   var create = function () {
     var el = document.createElement('div');
@@ -485,8 +484,7 @@ var transcript = function (options) {
     updateTrack();
     my.player.on('timeupdate', timeUpdate);
     if (my.settings.followPlayerTrack) {
-      my.player.on('captionstrackchange', updateTrack);
-      my.player.on('subtitlestrackchange', updateTrack);
+      my.player.textTracks().on('change', updateTrack);
     }
   } else {
     throw new Error('videojs-transcript: No tracks found!');

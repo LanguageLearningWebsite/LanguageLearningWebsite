@@ -5,8 +5,8 @@ $.expr[':'].textEquals = $.expr.createPseudo(function(arg) {
 });
 
 function setHeight() {
-  $("#transcript").css({'height':(($("#video-content").height()-160)+'px')});
-  $(".transcript-body").css({'height':(($("#video-content").height()-185)+'px')});
+  $("#transcript").css({'height':(($("#video-content").height()-135)+'px')});
+  $(".transcript-body").css({'height':(($("#video-content").height()-160)+'px')});
 }
 
 function updateCaption(id, captionLanguage, placeHolder) {
@@ -38,14 +38,10 @@ function updateCaption(id, captionLanguage, placeHolder) {
     }
   };
 
-  window.addEventListener('resize', function() {
-    setHeight();
-  }, true);
-
   // Set up any options.
   let options = {
     showTitle: false,
-    showTrackSelector: true,
+    showTrackSelector: false,
   };
 
   // Initialize the plugin.
@@ -53,7 +49,7 @@ function updateCaption(id, captionLanguage, placeHolder) {
 
   // Then attach the widget to the page.
   let transcriptContainer = document.querySelector('#transcript');
-    transcriptContainer.appendChild(transcript.el());
+  transcriptContainer.appendChild(transcript.el());
 
   $('#transcript').hide();
   var Button = videojs.getComponent('Button');
@@ -64,13 +60,27 @@ function updateCaption(id, captionLanguage, placeHolder) {
     },
     handleClick: function() {
       /* do something on click */
-      setHeight();
       $('#transcript').toggle();
-      $('#video-content').toggleClass('col-md-8');
-      $('#video-content').toggleClass('col-md-12');
-      setHeight()
+      $('.video-container').toggleClass('width-100');
+      $('.video-container').toggleClass('width-65');
+      $('#subtitle-display').toggleClass('width-100');
+      $('#subtitle-display').toggleClass('width-65');
     }
   });
+
+  if (window.innerWidth <= 768) {
+    $('#subtitle-display').insertAfter($('.video-container'))
+  } else {
+    $('#subtitle-display').insertAfter($('.main-player'))
+  }
+
+  window.onresize = function(event) {
+    if (window.innerWidth <= 768) {
+      $('#subtitle-display').insertAfter($('.video-container'))
+    } else {
+      $('#subtitle-display').insertAfter($('.main-player'))
+    }
+  };
 
   videojs.registerComponent('MyButton', MyButton);
   let controlBar = player.getChild('controlBar');
