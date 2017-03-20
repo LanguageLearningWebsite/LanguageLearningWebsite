@@ -1,14 +1,24 @@
-<div class="row" style="padding-left:15px;padding-right:15px;">
+<%= stylesheet_link_tag 'home-page', media: 'all', 'data-turbolinks-track' => true %>
+
+<div class="row" style="padding-top:60px;">
+  <div class="wrapper">
   <% @courses.each do |course| %>
-    <div class="col-xs-12 col-sm-6 col-md-4 mt-4">
-      <%= link_to course, :class => "card-link" do %>
-          <div class="card">
-            <%= image_tag course.image(:small), :class => "card-img-top img-responsive" %>
-            <div class="card-block" style="height: 6em">
-              <h5 class="card-title text-gray-dark"><%= course.shortname %></h5>
-            </div>
-          </div>
-      <% end %>
+    <div class="tile job-bucket">
+      <div class="front">
+        <div class="contents">
+          <%= image_tag course.image(:medium), :class => "card-img-top img-responsive" %>
+          <h5 class="card-title text-gray-dark"><%= course.shortname %></h5>
+          <br>
+          <p><%= course.content %></p>
+        </div>
+      </div>
+      <div class="back">
+        <h5><%= course.shortname %></h5>
+        <%= link_to course, :class => "card-link" do %>
+        <p>Lessons</p>
+        <% end %>
+      </div>
     </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>

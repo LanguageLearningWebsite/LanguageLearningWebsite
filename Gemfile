@@ -36,6 +36,8 @@ gem 'active_admin-sortable_tree', '~> 0.2.1'
 
 gem 'rails-assets-tether', '>= 1.1.0'
 
+gem 'yaml_db'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
