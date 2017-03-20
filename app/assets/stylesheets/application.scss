@@ -1,6 +1,10 @@
 @import "bootstrap";
 @import "toastr_rails";
 
+video::-webkit-media-text-track-container {
+    display: none;
+}
+
 .row-less-padding {
   [class*="col-"] {
     padding-left: 10px !important;

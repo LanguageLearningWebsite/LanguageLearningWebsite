@@ -68,7 +68,8 @@
                 <div class="vjs-transcript" id="transcript"></div>
               </div>
             </div>
-            <div id="subtitle-display" class="width-100"></div>
+            <div id="subtitle-display-1" class="subtitle-display width-100"></div>
+            <div id="subtitle-display-2" class="subtitle-display width-100"></div>
           </div>
         </div>
       </div>
@@ -80,8 +81,25 @@
 
 <script type="text/javascript">
   setTimeout(function () {
-    updateCaption('video1', 'EN-Chinese', 'subtitle-display');
+    updateTranscript('video1');
+    updateCaption('video1', 'simplified-characters', 'subtitle-display-1');
+    updateCaption('video1', 'English', 'subtitle-display-2');
   }, 0);
+
+  if (window.innerWidth <= 768) {
+    $('.subtitle-display').insertAfter($('.video-container'))
+  } else {
+    $('.subtitle-display').insertAfter($('.main-player'))
+  };
+
+  window.onresize = function(event) {
+    if (window.innerWidth <= 768) {
+      $('.subtitle-display').insertAfter($('.video-container'))
+    } else {
+      $('.subtitle-display').insertAfter($('.main-player'))
+    };
+  };
+
   $("#menu-toggle").click(function(e) {
     e.preventDefault();
     $("#wrapper").toggleClass("toggled");

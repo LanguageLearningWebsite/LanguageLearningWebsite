@@ -497,5 +497,6 @@ var transcript = function (options) {
   };
 };
 videojs.plugin('transcript', transcript);
+videojs.plugin('trackList', trackList);
 
 }(window, videojs));
