@@ -1,0 +1,31 @@
+
+---
+admin_users:
+  columns:
+  - id
+  - email
+  - encrypted_password
+  - reset_password_token
+  - reset_password_sent_at
+  - remember_created_at
+  - sign_in_count
+  - current_sign_in_at
+  - last_sign_in_at
+  - current_sign_in_ip
+  - last_sign_in_ip
+  - created_at
+  - updated_at
+  records: 
+  - - 1
+    - admin@example.com
+    - "$2a$10$yO65eY2YRlyyRDzFYEzySOEYzRFtL0RisaoXGH2I9ejinaOxDNgOm"
+    - 
+    - 
+    - '2017-03-07 05:22:19.930757'
+    - 3
+    - '2017-03-13 19:13:28.823901'
+    - '2017-03-12 19:44:11.761210'
+    - "::1"
+    - "::1"
+    - '2017-03-07 05:22:01.063797'
+    - '2017-03-13 19:13:28.825006'

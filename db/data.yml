@@ -1,0 +1,200 @@
+
+---
+admin_users:
+  columns:
+  - id
+  - email
+  - encrypted_password
+  - reset_password_token
+  - reset_password_sent_at
+  - remember_created_at
+  - sign_in_count
+  - current_sign_in_at
+  - last_sign_in_at
+  - current_sign_in_ip
+  - last_sign_in_ip
+  - created_at
+  - updated_at
+  records: 
+  - - 1
+    - admin@example.com
+    - "$2a$10$yO65eY2YRlyyRDzFYEzySOEYzRFtL0RisaoXGH2I9ejinaOxDNgOm"
+    - 
+    - 
+    - '2017-03-07 05:22:19.930757'
+    - 3
+    - '2017-03-13 19:13:28.823901'
+    - '2017-03-12 19:44:11.761210'
+    - "::1"
+    - "::1"
+    - '2017-03-07 05:22:01.063797'
+    - '2017-03-13 19:13:28.825006'
+
+---
+courses:
+  columns:
+  - id
+  - name
+  - content
+  - created_at
+  - updated_at
+  - image_file_name
+  - image_content_type
+  - image_file_size
+  - image_updated_at
+  - slug
+  records: 
+  - - 2
+    - 'CHIN 10153: Beginning Chinese I'
+    - This is an introductory Chinese course for students with no or little prior
+      experience in standard Mandarin
+    - '2017-03-13 19:21:11.050953'
+    - '2017-03-15 17:43:09.602930'
+    - New-Photo2-1024x623.jpg
+    - image/jpeg
+    - 163839
+    - '2017-03-13 19:21:10.688584'
+    - beginning
+  - - 3
+    - 'CHIN 20053: Intermediate Chinese I'
+    - CHIN 20053 will develop listening, speaking, reading, and writing skills at
+      the intermediate level.
+    - '2017-03-13 19:21:53.954211'
+    - '2017-03-15 17:41:15.943063'
+    - BrEd9qYCIAEpwaQ.jpg
+    - image/jpeg
+    - 68622
+    - '2017-03-13 19:21:53.733028'
+    - immediate
+  - - 4
+    - 'CHIN 30063: Intermediate Chinese IV'
+    - " CHIN 30063 continues to develop speaking, listening, reading, and writing
+      skills at the intermediate-high level."
+    - '2017-03-13 19:23:01.342224'
+    - '2017-03-15 17:44:46.214524'
+    - harris.jpg
+    - image/jpeg
+    - 152558
+    - '2017-03-13 19:23:01.095397'
+    - intensive
+
+---
+lessons:
+  columns:
+  - id
+  - title
+  - note
+  - video
+  - header
+  - tag
+  - course_id
+  - created_at
+  - updated_at
+  - slug
+  records: 
+  - - 2
+    - Lesson 1
+    - ''
+    - '1'
+    - true
+    - '0'
+    - 2
+    - '2017-03-13 19:24:22.696730'
+    - '2017-03-15 14:55:44.122600'
+    - lesson-1-1352e247-440a-4c73-a94a-fa0c635ed9b5
+  - - 3
+    - Story Time
+    - ''
+    - https://s3.amazonaws.com/chinese-clips/lessons/lesson1/clip1.mp4
+    - false
+    - '1'
+    - 2
+    - '2017-03-13 19:25:05.623745'
+    - '2017-03-15 14:55:44.124906'
+    - lesson-2
+  - - 4
+    - Tutoring Notes 1
+    - last
+    - https://s3.amazonaws.com/chinese-clips/tutoring-notes/Tutoring+Note+Part+1.mp4
+    - false
+    - '2'
+    - 2
+    - '2017-03-13 19:35:09.514697'
+    - '2017-03-15 14:55:44.126440'
+    - lesson-3
+  - - 5
+    - Tutoring Notes 2
+    - ''
+    - https://s3.amazonaws.com/chinese-clips/tutoring-notes/Tutoring+Note+Part+2.mp4
+    - false
+    - '3'
+    - 2
+    - '2017-03-13 20:13:30.288665'
+    - '2017-03-15 14:55:44.127946'
+    - tutoring-notes-2
+  - - 6
+    - Tutoring Notes 3
+    - hello
+    - https://s3.amazonaws.com/chinese-clips/tutoring-notes/Tutoring+Note+Part+3.mp4
+    - false
+    - '4'
+    - 2
+    - '2017-03-13 20:14:34.006031'
+    - '2017-03-15 14:55:44.129419'
+    - tutoring-notes-3
+  - - 7
+    - Tutoring Notes 4
+    - ''
+    - https://s3.amazonaws.com/chinese-clips/tutoring-notes/Tutoring+Note+Part+4.mp4
+    - false
+    - '5'
+    - 2
+    - '2017-03-13 20:15:28.772744'
+    - '2017-03-15 14:55:44.130633'
+    - tutoring-notes-4
+  - - 8
+    - Scene Related Questions
+    - "1. What does the gentleman say before he asks for directions?  (00:37)\r\n2.
+      Why doesn’t the lady respond to the man’s greeting of Ni hao ma? (01:01)\r\n3.
+      Why does the woman say: “Jiang Shan, ni lai la (Jiang Shan, you are here)?”,
+      which is an obvious fact? (01:20)\r\n4. Why does the man ask “Zuo shenme ne
+      (what are you doing)?”(01:25)\r\n5. Why do the two persons call each other “
+      Lao Wang (Old Wang)” and “Xiao Li (Little Li)?”(1:39)\r\n6. What do the two
+      gentlemen say before their self-introductions? (the end of the video)\r\n"
+    - https://s3.amazonaws.com/chinese-clips/lessons/lesson1/clip1.mp4
+    - false
+    - '7'
+    - 2
+    - '2017-03-13 20:20:38.081051'
+    - '2017-03-15 14:55:44.133330'
+    - scene-related-questions
+  - - 9
+    - Let's Chat
+    - ''
+    - https://s3.amazonaws.com/chinese-clips/letschat/Scene+1.mp4
+    - false
+    - '8'
+    - 2
+    - '2017-03-13 20:33:16.333835'
+    - '2017-03-15 14:55:44.135215'
+    - let-s-chat
+  - - 10
+    - Tutoring Notes 5
+    - ''
+    - https://s3.amazonaws.com/chinese-clips/tutoring-notes/Tutoring+Note+Part+5.mp4
+    - false
+    - '6'
+    - 2
+    - '2017-03-13 20:34:27.722019'
+    - '2017-03-15 14:55:44.131871'
+    - tutoring-notes-5
+  - - 11
+    - Lesson 2
+    - ''
+    - abc
+    - true
+    - '9'
+    - 2
+    - '2017-03-15 14:55:35.859554'
+    - '2017-03-15 15:00:13.737350'
+    - lesson-2-2661640f-1340-43ac-881e-362d19fb365e

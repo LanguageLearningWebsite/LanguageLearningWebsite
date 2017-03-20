@@ -1,0 +1,121 @@
+
+---
+lessons:
+  columns:
+  - id
+  - title
+  - note
+  - video
+  - header
+  - tag
+  - course_id
+  - created_at
+  - updated_at
+  - slug
+  records: 
+  - - 2
+    - Lesson 1
+    - ''
+    - '1'
+    - true
+    - '0'
+    - 2
+    - '2017-03-13 19:24:22.696730'
+    - '2017-03-15 14:55:44.122600'
+    - lesson-1-1352e247-440a-4c73-a94a-fa0c635ed9b5
+  - - 3
+    - Story Time
+    - ''
+    - https://s3.amazonaws.com/chinese-clips/lessons/lesson1/clip1.mp4
+    - false
+    - '1'
+    - 2
+    - '2017-03-13 19:25:05.623745'
+    - '2017-03-15 14:55:44.124906'
+    - lesson-2
+  - - 4
+    - Tutoring Notes 1
+    - last
+    - https://s3.amazonaws.com/chinese-clips/tutoring-notes/Tutoring+Note+Part+1.mp4
+    - false
+    - '2'
+    - 2
+    - '2017-03-13 19:35:09.514697'
+    - '2017-03-15 14:55:44.126440'
+    - lesson-3
+  - - 5
+    - Tutoring Notes 2
+    - ''
+    - https://s3.amazonaws.com/chinese-clips/tutoring-notes/Tutoring+Note+Part+2.mp4
+    - false
+    - '3'
+    - 2
+    - '2017-03-13 20:13:30.288665'
+    - '2017-03-15 14:55:44.127946'
+    - tutoring-notes-2
+  - - 6
+    - Tutoring Notes 3
+    - hello
+    - https://s3.amazonaws.com/chinese-clips/tutoring-notes/Tutoring+Note+Part+3.mp4
+    - false
+    - '4'
+    - 2
+    - '2017-03-13 20:14:34.006031'
+    - '2017-03-15 14:55:44.129419'
+    - tutoring-notes-3
+  - - 7
+    - Tutoring Notes 4
+    - ''
+    - https://s3.amazonaws.com/chinese-clips/tutoring-notes/Tutoring+Note+Part+4.mp4
+    - false
+    - '5'
+    - 2
+    - '2017-03-13 20:15:28.772744'
+    - '2017-03-15 14:55:44.130633'
+    - tutoring-notes-4
+  - - 8
+    - Scene Related Questions
+    - "1. What does the gentleman say before he asks for directions?  (00:37)\r\n2.
+      Why doesn’t the lady respond to the man’s greeting of Ni hao ma? (01:01)\r\n3.
+      Why does the woman say: “Jiang Shan, ni lai la (Jiang Shan, you are here)?”,
+      which is an obvious fact? (01:20)\r\n4. Why does the man ask “Zuo shenme ne
+      (what are you doing)?”(01:25)\r\n5. Why do the two persons call each other “
+      Lao Wang (Old Wang)” and “Xiao Li (Little Li)?”(1:39)\r\n6. What do the two
+      gentlemen say before their self-introductions? (the end of the video)\r\n"
+    - https://s3.amazonaws.com/chinese-clips/lessons/lesson1/clip1.mp4
+    - false
+    - '7'
+    - 2
+    - '2017-03-13 20:20:38.081051'
+    - '2017-03-15 14:55:44.133330'
+    - scene-related-questions
+  - - 9
+    - Let's Chat
+    - ''
+    - https://s3.amazonaws.com/chinese-clips/letschat/Scene+1.mp4
+    - false
+    - '8'
+    - 2
+    - '2017-03-13 20:33:16.333835'
+    - '2017-03-15 14:55:44.135215'
+    - let-s-chat
+  - - 10
+    - Tutoring Notes 5
+    - ''
+    - https://s3.amazonaws.com/chinese-clips/tutoring-notes/Tutoring+Note+Part+5.mp4
+    - false
+    - '6'
+    - 2
+    - '2017-03-13 20:34:27.722019'
+    - '2017-03-15 14:55:44.131871'
+    - tutoring-notes-5
+  - - 11
+    - Lesson 2
+    - ''
+    - abc
+    - true
+    - '9'
+    - 2
+    - '2017-03-15 14:55:35.859554'
+    - '2017-03-15 15:00:13.737350'
+    - lesson-2-2661640f-1340-43ac-881e-362d19fb365e
