@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   end
 
   get 'pages/about'
+  get '/mycourses' => 'course#list'
+  post '/enroll' => 'enroll#enroll'
 
   root 'course#index'
 

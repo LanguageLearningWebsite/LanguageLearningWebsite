@@ -30,8 +30,8 @@
             <span class="caret"></span>
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <%= link_to "Profile", edit_user_registration_path, class: "dropdown-item" %>
-            <%= link_to "Account", edit_user_registration_path, class: "dropdown-item" %>
+            <%= link_to "My Courses", mycourses_path, class: "dropdown-item" %>
+            <%= link_to "My Account", edit_user_registration_path, class: "dropdown-item" %>
             <%= link_to "Sign out", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
           </div>
         </li>

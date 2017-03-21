@@ -1,16 +1,38 @@
 <div class="row" style="padding-left:15px;padding-right:15px;">
-  <div class="col-md-5 mt-4 mb-4">
+  <div class="col-md-4 mt-4 mb-4">
     <div class="card text-center">
-      <div class="card-header">
-        <h4 class="card-title"><%= @course.name %></h4>
-      </div>
-      <div class="card-block">
-        <button class="btn btn-primary">Take this course</button>
-      </div>
+      <% if !@joined %>
+        <div class="card-header">
+          <h4 class="card-title"><%= @course.name %></h4>
+        </div>
+        <div class="card-block">
+          <% if user_signed_in? %>
+            <%= form_tag enroll_path do %>
+              <%= hidden_field_tag 'course_id', @course.id %>
+              <button type="submit" class="btn btn-primary">Take this Course</button>
+            <% end %>
+          <% else %>
+            <%= link_to new_user_session_path do %>
+              <button type="submit" class="btn btn-primary">Take this Course</button>
+            <% end %>
+          <% end %>
+        </div>
+      <% else %>
+        <div class="card-header">
+          <%= image_tag avatar_url(current_user), class: "img-circle", style: "margin-bottom: 5px;" %>
+          <h5><%= current_user.first_name + " " + current_user.last_name %></h5>
+        </div>
+        <div class="card-block" style="text-align:left;">
+          <% @users.each do |u| %>
+            <%= image_tag avatar_url(current_user), class: "img-circle" %>&nbsp;
+            <%= u.first_name + " " + u.last_name %>
+          <% end %>
+        </div>
+      <% end %>
     </div>
   </div>
 
-  <div class="col-md-7 mt-4 mb-4">
+  <div class="col-md-8 mt-4 mb-4">
     <div class="card">
       <%= image_tag @course.image(:medium), :class => "card-img-top img-responsive" %>
       <div class="card-block">
@@ -29,9 +51,8 @@
               <% end %>
             <% end %>
           <% end %>
-        </ul>
+        </div>
       </div>
     </div>
   </div>
-</div>
 </div>

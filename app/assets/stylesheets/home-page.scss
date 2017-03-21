@@ -6,9 +6,7 @@ $cardBackground: darken(#e1bee7  ,5);
 section, footer, nav {
   display: block;
 }
-body {
-  background: #eceff1;
-}
+
 .wrapper{
   -webkit-text-size-adjust: none;
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
@@ -16,7 +14,6 @@ body {
   font-size: 14px;
   line-height: 1.4em;
   margin: auto;
-  padding-top: 30px;
 }
  a {
   text-decoration: none;
@@ -28,8 +25,8 @@ figure {
 // Tile Classes
 .tile {
   width: 350px;
-  height: 400px;
-  margin: 2em;
+  height: 350px;
+  margin: 2em 2em 1em 2em;
   position: relative;
   float: left;
   .front, .back {

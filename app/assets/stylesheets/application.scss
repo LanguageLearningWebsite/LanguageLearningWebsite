@@ -42,6 +42,7 @@ body {
   /* Margin bottom by footer height */
   // margin-bottom: 60px;
   padding-top: 56px;
+  background: #eceff1;
 }
 
 .navbar {
@@ -68,7 +69,11 @@ body {
 }
 
 .card-block {
-  padding: 1rem;
+  padding: 0.5rem;
+}
+
+.card-header {
+  padding: 0.5rem;
 }
 
 /* Custom page CSS
@@ -77,6 +82,7 @@ body {
 
 .container {
   width: 100%;
+  padding: 20px;
 }
 
 .container .text-muted {

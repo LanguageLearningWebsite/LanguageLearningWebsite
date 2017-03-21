@@ -3,6 +3,8 @@ class Course < ActiveRecord::Base
   friendly_id :name, use: [:slugged, :finders]
 
   has_many :lessons
+  has_many :enrollments
+  has_many :users, through: :enrollments
 
   validates :name, presence: true, length: { maximum: 50 }
   validates :content, presence: true, length: { maximum: 500 }

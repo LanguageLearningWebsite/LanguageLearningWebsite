@@ -55,7 +55,8 @@
 #page-content-wrapper {
     width: 100%;
     position: absolute;
-    padding: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 #wrapper.toggled #page-content-wrapper {
@@ -185,8 +186,9 @@
     }
 
     #page-content-wrapper {
-        padding: 10px;
         position: relative;
+        padding-left: 10px;
+        padding-right: 10px;
     }
 
     #wrapper.toggled #page-content-wrapper {

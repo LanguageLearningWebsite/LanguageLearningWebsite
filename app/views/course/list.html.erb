@@ -1,0 +1,31 @@
+<%= stylesheet_link_tag 'home-page', media: 'all', 'data-turbolinks-track' => true %>
+
+<div class="row">
+  <div class="wrapper">
+    <% if @courses.count > 0 %>
+      <% @courses.each do |course| %>
+        <div class="tile job-bucket">
+          <div class="front">
+            <div class="contents">
+              <%= image_tag course.image(:medium), :class => "card-img-top img-responsive" %>
+              <h5 class="card-title text-gray-dark"><%= course.shortname %></h5>
+              <br>
+              <p><%= course.content %></p>
+            </div>
+          </div>
+          <div class="back">
+            <h5><%= course.shortname %></h5>
+            <%= link_to course, :class => "card-link" do %>
+            <p>Lessons</p>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
+    <% else %>
+      <div class="center">
+        <h2> You have not enrolled in any course! </h2>
+        <%= link_to "Show me all Courses", root_path, class: "btn btn-primary" %>
+      </div>
+    <% end %>
+  </div>
+</div>
