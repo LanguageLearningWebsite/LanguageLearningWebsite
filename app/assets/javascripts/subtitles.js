@@ -47,6 +47,10 @@ function updateTranscript(id) {
 
 function updateCaption(id, captionLanguage, placeHolder) {
   let player = videojs(id);
+  let rma_zh = new RakutenMA(model_zh);
+  rma_zh.featset = RakutenMA.default_featset_zh;
+  rma_zh.hash_func = RakutenMA.create_hash_func(15);
+  rma_zh.ctype_func = RakutenMA.create_ctype_chardic_func(chardic);
   player.on('loadedmetadata', function(){
     let tracks = this.textTracks();
     let metadataTrack;
@@ -72,16 +76,59 @@ function updateCaption(id, captionLanguage, placeHolder) {
       });
     };
 
-    metadataTrack.addEventListener('cuechange', function () {
+    metadataTrack.addEventListener('cuechange', function() {
       let myTrack = metadataTrack;             // track element is "this"
       let myCues = myTrack.activeCues;      // activeCues is an array of current cues.
-      if (myCues) {
-        if (myCues[0]) {
-          disp.innerText = myCues[0].text;
-          disp.innerHTML = disp.innerHTML.replace(/\b(\w+?)\b(?![^<]*>)/g, '<span class="word">$1</span>');
+      let text;
+      if (myCues && myCues[0]) {
+        text = myCues[0].text;
+        if (metadataTrack.label === 'simplified-characters') {
+          let tokens = rma_zh.tokenize(HanZenKaku.hs2fs(HanZenKaku.hw2fw(HanZenKaku.h2z(text))));
+          text = tokens.map(function(token) {
+            if (/[\u4E00-\u9FCC]+/.test(token[0])) {
+              return '<span class="word">' + token[0] + '</span>';
+            };
+            return token[0];
+          }).join('');
+          disp.innerHTML = text
         } else {
-          disp.innerHTML = "";
+          disp.innerHTML = text.replace(/\b(\w+?)\b(?![^<]*>)/g, '<span class="word">$1</span>');
         };
+        $('.word').click(function (e) {
+          $('.word.active').removeClass('active');
+          let word = e.target.innerText.toLowerCase();
+          console.log(word);
+          $(`.word:textEquals(${word})`).addClass('active');
+
+          $.ajax({
+            //The URL to process the request
+            url: 'https://glosbe.com/gapi/translate?',
+            type: 'GET',
+            async: true,
+            dataType: 'jsonp',   //you may use jsonp for cross origin request
+            data: {
+              from: 'zho',
+              dest: 'eng',
+              format: 'json',
+              phrase: word,
+              pretty: 'true'
+            },
+            'crossDomain': true,
+            // 'success': function(data) {
+            //     dict.innerHTML = JSON.stringify(data.tuc[0].meanings);
+            // },
+            'success': function (data) {
+              $('#dictionary').empty();
+              $('#dictionary').append("<h2 id='word'>" + word + "</h2>");
+              $('#dictionary').append("<ol id='definitionList'></ol>");
+              let def = data.tuc[0].meanings;
+              let i = 0;
+              for (; i < def.length; i++) {
+                $("#definitionList").append("<li>" + def[i].text + "</li>");
+              };
+            }
+          });
+        });
       } else {
         disp.innerHTML = "";
       };
