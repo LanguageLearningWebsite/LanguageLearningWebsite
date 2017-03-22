@@ -1,5 +1,5 @@
-<div class="row" style="padding-left:15px;padding-right:15px;">
-  <div class="col-md-4 mt-4 mb-4">
+<div class="row justify-content-md-center">
+  <div class="col-md-3 mt-4 mb-4">
     <div class="card text-center">
       <% if !@joined %>
         <div class="card-header">
@@ -22,17 +22,19 @@
           <%= image_tag avatar_url(current_user), class: "img-circle", style: "margin-bottom: 5px;" %>
           <h5><%= current_user.first_name + " " + current_user.last_name %></h5>
         </div>
-        <div class="card-block" style="text-align:left;">
+        <div class="list-group">
           <% @users.each do |u| %>
-            <%= image_tag avatar_url(current_user), class: "img-circle" %>&nbsp;
-            <%= u.first_name + " " + u.last_name %>
+            <div class="list-group-item" style="text-align:left;padding:0.5rem">
+              <%= image_tag avatar_url(current_user), class: "img-circle" %>&nbsp;
+              <%= u.first_name + " " + u.last_name %>
+            </div>
           <% end %>
         </div>
       <% end %>
     </div>
   </div>
 
-  <div class="col-md-8 mt-4 mb-4">
+  <div class="col-md-6 mt-4 mb-4">
     <div class="card">
       <%= image_tag @course.image(:medium), :class => "card-img-top img-responsive" %>
       <div class="card-block">

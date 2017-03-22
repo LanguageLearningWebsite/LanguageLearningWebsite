@@ -19,4 +19,8 @@ ActiveAdmin.register Course do
     end
     f.actions
   end
+
+  action_item :view, only: :show do
+    link_to 'Back', :back
+  end
 end

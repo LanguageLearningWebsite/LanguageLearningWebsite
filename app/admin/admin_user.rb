@@ -25,4 +25,7 @@ ActiveAdmin.register AdminUser do
     f.actions
   end
 
+  action_item :view, only: :show do
+    link_to 'Back', :back
+  end
 end

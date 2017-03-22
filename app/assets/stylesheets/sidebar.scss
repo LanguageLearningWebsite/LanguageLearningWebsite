@@ -55,8 +55,8 @@
 #page-content-wrapper {
     width: 100%;
     position: absolute;
-    padding-left: 10px;
-    padding-right: 10px;
+    padding-left: 5px;
+    padding-right: 5px;
 }
 
 #wrapper.toggled #page-content-wrapper {
@@ -187,8 +187,8 @@
 
     #page-content-wrapper {
         position: relative;
-        padding-left: 10px;
-        padding-right: 10px;
+        padding-left: 5px;
+        padding-right: 5px;
     }
 
     #wrapper.toggled #page-content-wrapper {
@@ -198,8 +198,7 @@
 }
 
 .hamburger {
-  position: fixed;
-  // left: 15px;
+  position: relative;
   z-index: 999;
   display: block;
   width: 32px;
