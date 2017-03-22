@@ -21,14 +21,69 @@ admin_users:
     - "$2a$10$yO65eY2YRlyyRDzFYEzySOEYzRFtL0RisaoXGH2I9ejinaOxDNgOm"
     - 
     - 
-    - '2017-03-07 05:22:19.930757'
-    - 3
-    - '2017-03-13 19:13:28.823901'
-    - '2017-03-12 19:44:11.761210'
-    - "::1"
-    - "::1"
+    - 
+    - 7
+    - '2017-03-22 07:59:43.443941'
+    - '2017-03-21 22:50:10.289959'
+    - 127.0.0.1
+    - 127.0.0.1
     - '2017-03-07 05:22:01.063797'
-    - '2017-03-13 19:13:28.825006'
+    - '2017-03-22 07:59:43.446084'
+
+---
+captions:
+  columns:
+  - id
+  - label
+  - language
+  - lesson_id
+  - created_at
+  - updated_at
+  - file_file_name
+  - file_content_type
+  - file_file_size
+  - file_updated_at
+  records: 
+  - - 2
+    - simplified-characters
+    - zh-Hans
+    - 3
+    - '2017-03-22 08:23:33.477403'
+    - '2017-03-22 08:23:33.477403'
+    - simplified-characters.vtt
+    - application/octet-stream
+    - 1348
+    - '2017-03-22 08:23:33.464807'
+  - - 3
+    - English
+    - en
+    - 3
+    - '2017-03-22 08:24:42.610082'
+    - '2017-03-22 08:24:42.610082'
+    - English.vtt
+    - application/octet-stream
+    - 1425
+    - '2017-03-22 08:24:42.596152'
+  - - 4
+    - pinyin
+    - zh-Hans
+    - 3
+    - '2017-03-22 08:24:42.644294'
+    - '2017-03-22 08:24:42.644294'
+    - pinyin.vtt
+    - application/octet-stream
+    - 1462
+    - '2017-03-22 08:24:42.599934'
+  - - 5
+    - EN-Chinese
+    - zh-Hans
+    - 3
+    - '2017-03-22 08:24:42.669434'
+    - '2017-03-22 08:24:42.669434'
+    - EL-Chinese.vtt
+    - application/octet-stream
+    - 2517
+    - '2017-03-22 08:24:42.607183'
 
 ---
 courses:
@@ -79,6 +134,31 @@ courses:
     - intensive
 
 ---
+enrollments:
+  columns:
+  - id
+  - course_id
+  - user_id
+  - created_at
+  - updated_at
+  records: 
+  - - 1
+    - 2
+    - 2
+    - '2017-03-21 07:12:40.957678'
+    - '2017-03-21 07:12:40.957678'
+  - - 2
+    - 3
+    - 2
+    - '2017-03-21 07:42:40.872595'
+    - '2017-03-21 07:42:40.872595'
+  - - 3
+    - 2
+    - 3
+    - '2017-03-21 23:50:26.558526'
+    - '2017-03-21 23:50:26.558526'
+
+---
 lessons:
   columns:
   - id
@@ -97,60 +177,60 @@ lessons:
     - ''
     - '1'
     - true
-    - '0'
+    - 0
     - 2
     - '2017-03-13 19:24:22.696730'
-    - '2017-03-15 14:55:44.122600'
+    - '2017-03-21 19:21:48.255147'
     - lesson-1-1352e247-440a-4c73-a94a-fa0c635ed9b5
   - - 3
     - Story Time
     - ''
     - https://s3.amazonaws.com/chinese-clips/lessons/lesson1/clip1.mp4
     - false
-    - '1'
+    - 1
     - 2
     - '2017-03-13 19:25:05.623745'
-    - '2017-03-15 14:55:44.124906'
+    - '2017-03-21 23:06:35.266750'
     - lesson-2
   - - 4
     - Tutoring Notes 1
     - last
     - https://s3.amazonaws.com/chinese-clips/tutoring-notes/Tutoring+Note+Part+1.mp4
     - false
-    - '2'
+    - 2
     - 2
     - '2017-03-13 19:35:09.514697'
-    - '2017-03-15 14:55:44.126440'
+    - '2017-03-21 19:21:50.067254'
     - lesson-3
   - - 5
     - Tutoring Notes 2
     - ''
     - https://s3.amazonaws.com/chinese-clips/tutoring-notes/Tutoring+Note+Part+2.mp4
     - false
-    - '3'
+    - 3
     - 2
     - '2017-03-13 20:13:30.288665'
-    - '2017-03-15 14:55:44.127946'
+    - '2017-03-21 19:21:50.072497'
     - tutoring-notes-2
   - - 6
     - Tutoring Notes 3
     - hello
     - https://s3.amazonaws.com/chinese-clips/tutoring-notes/Tutoring+Note+Part+3.mp4
     - false
-    - '4'
+    - 4
     - 2
     - '2017-03-13 20:14:34.006031'
-    - '2017-03-15 14:55:44.129419'
+    - '2017-03-21 19:21:50.076010'
     - tutoring-notes-3
   - - 7
     - Tutoring Notes 4
     - ''
     - https://s3.amazonaws.com/chinese-clips/tutoring-notes/Tutoring+Note+Part+4.mp4
     - false
-    - '5'
+    - 5
     - 2
     - '2017-03-13 20:15:28.772744'
-    - '2017-03-15 14:55:44.130633'
+    - '2017-03-21 19:21:50.078931'
     - tutoring-notes-4
   - - 8
     - Scene Related Questions
@@ -163,38 +243,161 @@ lessons:
       gentlemen say before their self-introductions? (the end of the video)\r\n"
     - https://s3.amazonaws.com/chinese-clips/lessons/lesson1/clip1.mp4
     - false
-    - '7'
+    - 7
     - 2
     - '2017-03-13 20:20:38.081051'
-    - '2017-03-15 14:55:44.133330'
+    - '2017-03-21 19:21:50.085256'
     - scene-related-questions
   - - 9
     - Let's Chat
     - ''
     - https://s3.amazonaws.com/chinese-clips/letschat/Scene+1.mp4
     - false
-    - '8'
+    - 8
     - 2
     - '2017-03-13 20:33:16.333835'
-    - '2017-03-15 14:55:44.135215'
+    - '2017-03-21 19:21:50.089359'
     - let-s-chat
   - - 10
     - Tutoring Notes 5
     - ''
     - https://s3.amazonaws.com/chinese-clips/tutoring-notes/Tutoring+Note+Part+5.mp4
     - false
-    - '6'
+    - 6
     - 2
     - '2017-03-13 20:34:27.722019'
-    - '2017-03-15 14:55:44.131871'
+    - '2017-03-21 19:21:50.081424'
     - tutoring-notes-5
   - - 11
     - Lesson 2
     - ''
     - abc
     - true
-    - '9'
+    - 9
     - 2
     - '2017-03-15 14:55:35.859554'
-    - '2017-03-15 15:00:13.737350'
+    - '2017-03-21 23:19:32.274835'
     - lesson-2-2661640f-1340-43ac-881e-362d19fb365e
+  - - 13
+    - Story Time
+    - ''
+    - video
+    - false
+    - 10
+    - 2
+    - '2017-03-21 23:05:45.108260'
+    - '2017-03-21 23:19:32.279726'
+    - story-time
+  - - 15
+    - Tutoring Notes 1
+    - ''
+    - '1'
+    - false
+    - 11
+    - 2
+    - '2017-03-21 23:18:41.840974'
+    - '2017-03-21 23:21:13.382488'
+    - tutoring-notes-2-f8064a47-70a7-4607-ae8e-1573a296f537
+  - - 16
+    - Lesson 1
+    - ''
+    - '1'
+    - true
+    - 14
+    - 3
+    - '2017-03-21 23:21:53.391698'
+    - '2017-03-21 23:21:53.391698'
+    - lesson-1
+  - - 17
+    - Tutoring Notes 2
+    - ''
+    - '2'
+    - false
+    - 15
+    - 3
+    - '2017-03-21 23:26:36.608975'
+    - '2017-03-21 23:26:36.608975'
+    - tutoring-notes-2-0a55ce59-f256-4e89-96e8-fc8f3793b040
+  - - 18
+    - Tutoring Notes 2
+    - ''
+    - '2'
+    - false
+    - 12
+    - 2
+    - '2017-03-21 23:27:04.724478'
+    - '2017-03-21 23:27:04.724478'
+    - tutoring-notes-2-809f307d-b0d3-449c-a7b1-5c1336471757
+  - - 19
+    - Lesson 3
+    - ''
+    - '1'
+    - true
+    - 13
+    - 2
+    - '2017-03-21 23:29:04.338388'
+    - '2017-03-21 23:29:04.338388'
+    - lesson-3-c15df05c-3960-4400-af07-f7a816ebdd4b
+  - - 23
+    - Story Time
+    - ''
+    - '1'
+    - false
+    - 16
+    - 4
+    - '2017-03-21 23:36:04.749166'
+    - '2017-03-21 23:36:04.749166'
+    - story-time-30eb5fa0-a952-4211-93d6-c2be590de540
+
+---
+users:
+  columns:
+  - id
+  - email
+  - encrypted_password
+  - reset_password_token
+  - reset_password_sent_at
+  - remember_created_at
+  - sign_in_count
+  - current_sign_in_at
+  - last_sign_in_at
+  - current_sign_in_ip
+  - last_sign_in_ip
+  - created_at
+  - updated_at
+  - first_name
+  - last_name
+  - username
+  records: 
+  - - 2
+    - test@gmail.com
+    - "$2a$10$FIYwHok3lIewVSASw3EWr.FnGft27UyYsDdjEo26JrMbmfMfaktAS"
+    - 
+    - 
+    - 
+    - 9
+    - '2017-03-22 08:31:54.653798'
+    - '2017-03-21 20:02:34.608078'
+    - 127.0.0.1
+    - 127.0.0.1
+    - '2017-03-21 07:11:55.125753'
+    - '2017-03-22 08:31:54.655387'
+    - Hung
+    - Nguyen
+    - hungtn95
+  - - 3
+    - test1@gmail.com
+    - "$2a$10$VmPQ1/7cqso.jpZB2eJfo.YV/U0fMnBDkaPBgthpJAF9pkV4eYjym"
+    - 
+    - 
+    - 
+    - 3
+    - '2017-03-21 23:50:22.303629'
+    - '2017-03-21 07:48:20.305362'
+    - 127.0.0.1
+    - 127.0.0.1
+    - '2017-03-21 07:29:26.362377'
+    - '2017-03-21 23:50:22.304981'
+    - Hung
+    - Nguyen
+    - hungtn952

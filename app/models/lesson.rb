@@ -5,6 +5,8 @@ class Lesson < ActiveRecord::Base
   before_create :set_tag
 
   belongs_to :course
+  has_many :captions
+  accepts_nested_attributes_for :captions, :allow_destroy => true
 
   validates :title, presence: true, length: { maximum: 50 }
   validates :video, presence: true

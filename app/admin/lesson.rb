@@ -1,5 +1,6 @@
 ActiveAdmin.register Lesson do
-  permit_params :title, :note, :video, :header, :tag, :course_id, :full_title
+  permit_params :id, :title, :note, :video, :header, :tag, :course_id, :full_title,
+                  captions_attributes: [:id, :label, :language, :file, :_destroy]
 
   sortable tree: false,
             sorting_attribute: :tag
@@ -21,12 +22,17 @@ ActiveAdmin.register Lesson do
   end
 
   form do |f|
-    f.inputs do
+    f.inputs "Lesson" do
       f.input :course, label: "Course"
       f.input :title, label: "Title"
       f.input :note, label: "Note"
       f.input :video, label: "Video"
       f.input :header, label: "Header"
+      f.has_many :captions, allow_destroy: true, new_record: "Add Captions" do |e|
+        e.input :label
+        e.input :language
+        e.input :file, hint: content_tag(:span, "Upload vtt/srt caption")
+      end
     end
 
     actions
