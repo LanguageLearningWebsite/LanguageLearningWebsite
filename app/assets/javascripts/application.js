@@ -18,10 +18,6 @@
 //= require video
 //= require subtitles
 //= require videojs-transcript
-//= require hanzenkaku
-//= require model_zh
-//= require rakutenma
-//= require zh_chardic
 //= require turbolinks
 //= require_tree .
 

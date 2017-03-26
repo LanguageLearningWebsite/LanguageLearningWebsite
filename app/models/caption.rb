@@ -1,4 +1,4 @@
-require 'google/apis/translate_v2'
+require 'aws-sdk'
 
 class Caption < ActiveRecord::Base
   belongs_to :lesson
@@ -7,12 +7,18 @@ class Caption < ActiveRecord::Base
   validates_attachment_file_name :file, matches: [/vtt\z/, /srt\z/]
   # validates_attachment_content_type :file, content_type: "text/plain"
   # do_not_validate_attachment_file_type :file
-  translate = Google::Apis::TranslateV2::TranslateService.new
-  translate.key = 'AIzaSyArfX4fksilhZV8x_P8RrErB0ExR26u11A'
 
-  def self.translate(word, source_language, target_language)
-    result = translate.list_translations(word, target_language, source: source_language)
-    puts result.translations.first.translated_text
+  def self.translate(words)
+    # translate = Google::Apis::TranslateV2::TranslateService.new
+    # translate.key = 'AIzaSyArfX4fksilhZV8x_P8RrErB0ExR26u11A'
+    # result = translate.list_translations(word, target_language, source: source_language)
+    # return result.translations
+    lambda = Aws::Lambda::Client.new(region: 'us-east-1', access_key_id: 'AKIAJE2K3XOR3BPP4CPQ', secret_access_key: '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')
+    resp = lambda.invoke(function_name: 'translate', invocation_type: 'RequestResponse', payload: "{\"words\": \"#{words}\" }")
+    return JSON.parse(resp.payload.string)
   end
 
+  def self.test
+    translate("上好")
+  end
 end
