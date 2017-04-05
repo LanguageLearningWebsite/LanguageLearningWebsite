@@ -40,6 +40,7 @@ gem 'yaml_db'
 
 gem 'google-api-client', '~> 0.10'
 gem 'aws-sdk', '~> 2'
+gem 'dotenv-rails', groups: [:development, :test]
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

@@ -13,7 +13,7 @@ class Caption < ActiveRecord::Base
     # translate.key = 'AIzaSyArfX4fksilhZV8x_P8RrErB0ExR26u11A'
     # result = translate.list_translations(word, target_language, source: source_language)
     # return result.translations
-    lambda = Aws::Lambda::Client.new(region: 'us-east-1', access_key_id: '', secret_access_key: '')
+    lambda = Aws::Lambda::Client.new(region: 'us-east-1', access_key_id: ENV['AWS_LAMBDA_ACCESS_KEY'], secret_access_key: ENV['AWS_LAMBDA_SECRET_KEY'])
     resp = lambda.invoke(function_name: 'translate', invocation_type: 'RequestResponse', payload: "{\"words\": \"#{words}\" }")
     return JSON.parse(resp.payload.string)
   end
