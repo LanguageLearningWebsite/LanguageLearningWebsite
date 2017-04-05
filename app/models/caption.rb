@@ -13,12 +13,12 @@ class Caption < ActiveRecord::Base
     # translate.key = 'AIzaSyArfX4fksilhZV8x_P8RrErB0ExR26u11A'
     # result = translate.list_translations(word, target_language, source: source_language)
     # return result.translations
-    lambda = Aws::Lambda::Client.new(region: 'us-east-1', access_key_id: 'AKIAJE2K3XOR3BPP4CPQ', secret_access_key: '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')
+    lambda = Aws::Lambda::Client.new(region: 'us-east-1', access_key_id: '', secret_access_key: '')
     resp = lambda.invoke(function_name: 'translate', invocation_type: 'RequestResponse', payload: "{\"words\": \"#{words}\" }")
     return JSON.parse(resp.payload.string)
   end
 
   def self.test
-    translate("上好")
+    translate("大家")
   end
 end
