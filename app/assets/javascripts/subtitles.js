@@ -45,9 +45,57 @@ function updateTranscript(id) {
   });
 }
 
+function updateCaptionLine(metadataTrack, disp) {
+  let myCues = metadataTrack.activeCues;      // activeCues is an array of current cues.
+  let text;
+  if (myCues && myCues[0]) {
+    text = myCues[0].text;
+    if (metadataTrack.label === 'simplified-characters') {
+      disp.innerHTML = text.replace(/[\u4e00-\u9fa5]+/g, '<span class="word">$&</span>');
+    } else {
+      disp.innerHTML = text.replace(/\b(\w+?)\b(?![^<]*>)/g, '<span class="word">$1</span>');
+    }
+    $('.word').click(function (e) {
+      $('.word.active').removeClass('active');
+      let word = e.target.innerText.toLowerCase();
+      console.log(word);
+      $(`.word:textEquals(${word})`).addClass('active');
+
+      $.ajax({
+        url: '/api/v1/translate?',
+        type: 'GET',
+        async: true,
+        dataType: 'json',
+        data: {
+          phrase: word,
+        },
+        'crossDomain': true,
+        'success': function (data) {
+          $('#dictionary').empty();
+          if (data.length === 0) {
+            $('#dictionary').append("Unable to look up the word!");
+          } else {
+            $('#dictionary').append("<h5>Simplified: " + data[0].simplified + "</h5>");
+            $('#dictionary').append("<h5>Traditional: " + data[0].traditional + "</h5>");
+            $('#dictionary').append("<ol id='definitionList'></ol>");
+            let i = 0;
+            for (; i < data.length; i++) {
+              pronunciation = "<b>Pronunciation:</b> " + data[i].pronunciation
+              definition = "<br><b>Definition:</b> " + data[i].definitions
+              $("#definitionList").append("<li>" + pronunciation + definition + "</li>");
+            };
+          }
+        }
+      });
+    });
+  } else {
+    disp.innerHTML = "";
+  }
+}
+
 function updateCaption(id, captionLanguage, placeHolder) {
   let player = videojs(id);
-  player.on('loadedmetadata', function(){
+  player.on('loadedmetadata', function() {
     let tracks = this.textTracks();
     let metadataTrack;
     let disp = document.getElementById(placeHolder);
@@ -69,57 +117,12 @@ function updateCaption(id, captionLanguage, placeHolder) {
           }
           track.mode = 'hidden';
         }
+        updateCaptionLine(metadataTrack, disp)
       });
     }
 
     metadataTrack.addEventListener('cuechange', function() {
-      let myTrack = metadataTrack;             // track element is "this"
-      let myCues = myTrack.activeCues;      // activeCues is an array of current cues.
-      let text;
-      if (myCues && myCues[0]) {
-        text = myCues[0].text;
-        if (metadataTrack.label === 'simplified-characters') {
-          disp.innerHTML = text.replace(/[\u4e00-\u9fa5]+/g, '<span class="word">$&</span>');
-        } else {
-          disp.innerHTML = text.replace(/\b(\w+?)\b(?![^<]*>)/g, '<span class="word">$1</span>');
-        };
-        $('.word').click(function (e) {
-          $('.word.active').removeClass('active');
-          let word = e.target.innerText.toLowerCase();
-          console.log(word);
-          $(`.word:textEquals(${word})`).addClass('active');
-
-          $.ajax({
-            //The URL to process the request
-            url: '/api/v1/translate?',
-            type: 'GET',
-            async: true,
-            dataType: 'json',   //you may use jsonp for cross origin request
-            data: {
-              phrase: word,
-            },
-            'crossDomain': true,
-            'success': function (data) {
-              $('#dictionary').empty();
-              if (data.length == 0) {
-                $('#dictionary').append("Unable to look up the word!");
-              } else {
-                $('#dictionary').append("<h5>Simplified: " + data[0].simplified + "</h5>");
-                $('#dictionary').append("<h5>Traditional: " + data[0].traditional + "</h5>");
-                $('#dictionary').append("<ol id='definitionList'></ol>");
-                let i = 0;
-                for (; i < data.length; i++) {
-                  pronunciation = "<b>Pronunciation:</b> " + data[i].pronunciation
-                  definition = "<br><b>Definition:</b> " + data[i].definitions
-                  $("#definitionList").append("<li>" + pronunciation + definition + "</li>");
-                };
-              }
-            }
-          });
-        });
-      } else {
-        disp.innerHTML = "";
-      }
+      updateCaptionLine(metadataTrack, disp)
     });
   });
 }
