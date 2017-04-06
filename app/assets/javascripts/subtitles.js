@@ -32,9 +32,9 @@ function updateTranscript(id) {
         /* do something on click */
         $('#transcript').toggle();
         $('.video-container').toggleClass('width-100');
-        $('.video-container').toggleClass('width-65');
+        $('.video-container').toggleClass('width-70');
         $('.subtitle-display').toggleClass('width-100');
-        $('.subtitle-display').toggleClass('width-65');
+        $('.subtitle-display').toggleClass('width-70');
       }
     });
     videojs.registerComponent('MyButton', MyButton);
@@ -66,11 +66,11 @@ function updateCaption(id, captionLanguage, placeHolder) {
           let track = tracks[i];
           if (track.kind === 'captions' && track.mode === 'showing') {
             metadataTrack = track;
-          };
+          }
           track.mode = 'hidden';
-        };
+        }
       });
-    };
+    }
 
     metadataTrack.addEventListener('cuechange', function() {
       let myTrack = metadataTrack;             // track element is "this"
