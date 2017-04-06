@@ -79,7 +79,7 @@ function updateCaption(id, captionLanguage, placeHolder) {
       if (myCues && myCues[0]) {
         text = myCues[0].text;
         if (metadataTrack.label === 'simplified-characters') {
-          disp.innerHTML = text.replace(/\b(\w+?)\b(?![^<]*>)/g, '<span class="word">$1</span>');
+          disp.innerHTML = text.replace(/[\u4e00-\u9fa5]+/g, '<span class="word">$&</span>');
         } else {
           disp.innerHTML = text.replace(/\b(\w+?)\b(?![^<]*>)/g, '<span class="word">$1</span>');
         };
@@ -91,36 +91,35 @@ function updateCaption(id, captionLanguage, placeHolder) {
 
           $.ajax({
             //The URL to process the request
-            url: 'https://glosbe.com/gapi/translate?',
+            url: '/api/v1/translate?',
             type: 'GET',
             async: true,
-            dataType: 'jsonp',   //you may use jsonp for cross origin request
+            dataType: 'json',   //you may use jsonp for cross origin request
             data: {
-              from: 'zho',
-              dest: 'eng',
-              format: 'json',
               phrase: word,
-              pretty: 'true'
             },
             'crossDomain': true,
-            // 'success': function(data) {
-            //     dict.innerHTML = JSON.stringify(data.tuc[0].meanings);
-            // },
             'success': function (data) {
               $('#dictionary').empty();
-              $('#dictionary').append("<h2 id='word'>" + word + "</h2>");
-              $('#dictionary').append("<ol id='definitionList'></ol>");
-              let def = data.tuc[0].meanings;
-              let i = 0;
-              for (; i < def.length; i++) {
-                $("#definitionList").append("<li>" + def[i].text + "</li>");
-              };
+              if (data.length == 0) {
+                $('#dictionary').append("Unable to look up the word!");
+              } else {
+                $('#dictionary').append("<h5>Simplified: " + data[0].simplified + "</h5>");
+                $('#dictionary').append("<h5>Traditional: " + data[0].traditional + "</h5>");
+                $('#dictionary').append("<ol id='definitionList'></ol>");
+                let i = 0;
+                for (; i < data.length; i++) {
+                  pronunciation = "<b>Pronunciation:</b> " + data[i].pronunciation
+                  definition = "<br><b>Definition:</b> " + data[i].definitions
+                  $("#definitionList").append("<li>" + pronunciation + definition + "</li>");
+                };
+              }
             }
           });
         });
       } else {
         disp.innerHTML = "";
-      };
+      }
     });
   });
-};
+}
