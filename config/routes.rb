@@ -24,6 +24,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :survey_survey
+
   namespace :api, defaults: { format: :json } do
     namespace :v1, constraints: ApiConstraints.new(version: 1, default: true) do
       get '/translate' => 'translate#show'

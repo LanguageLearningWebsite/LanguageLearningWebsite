@@ -26,7 +26,6 @@ gem 'devise'
 gem 'toastr_rails'
 
 gem 'activeadmin', github: 'activeadmin'
-gem 'active_skin'
 
 gem 'paperclip', '~> 4.3', '>= 4.3.6'
 gem 'friendly_id', '~> 5.1'
@@ -40,6 +39,7 @@ gem 'yaml_db'
 gem 'google-api-client', '~> 0.10'
 gem 'aws-sdk', '~> 2'
 gem 'dotenv-rails', groups: [:development, :test]
+gem 'client_side_validations'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

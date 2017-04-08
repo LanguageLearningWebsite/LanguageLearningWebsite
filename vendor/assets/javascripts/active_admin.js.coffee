@@ -1,4 +1,5 @@
 #= require active_admin/base
+#= require bootstrap-sprockets
 #= require activeadmin_reorderable
 
 jQuery ->

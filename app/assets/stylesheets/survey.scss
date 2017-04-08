@@ -1,0 +1,46 @@
+.field {
+  @import "bootstrap";
+}
+
+ol {
+  display: block !important;
+  list-style-type: decimal !important;
+  -webkit-margin-before: 1em !important;
+  -webkit-margin-after: 1em !important;
+  -webkit-margin-start: 0px !important;
+  -webkit-margin-end: 0px !important;
+  -webkit-padding-start: 40px !important;
+}
+
+.cancel a {
+  text-decoration: none !important;
+  color: #5E6469 !important;
+  font-weight: bold !important;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif !important;
+}
+
+.btn {
+  border: 1px solid !important;
+  text-decoration: none !important;
+  line-height: 12px !important;
+}
+
+.btn:hover {
+  background-color: #c9d0d6 !important; /* Green */
+}
+
+.btn-default {
+  color: #333 !important;
+  background-color: #fff !important;
+  border-color: #ccc !important;
+}
+
+.cancel {
+  background: #FFFFFF !important;
+  border-color: #c7c7c7 !important;
+  text-shadow: none !important;
+}
+
+.form-group input {
+  width: calc(80%) !important;
+}
