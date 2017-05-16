@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   end
 
   get 'pages/about'
+  get 'pages/record'
   get '/mycourses' => 'course#list'
   post '/enroll' => 'enroll#enroll'
 

@@ -17,6 +17,7 @@
 //= require bootstrap-sprockets
 //= require video
 //= require subtitles
+//= require recorder
 //= require videojs-transcript
 //= require turbolinks
 //= require_tree .
