@@ -1,22 +1,22 @@
-module SurveysHelper
+module QuizHelper
   def link_to_remove_field(name, f)
     f.hidden_field(:_destroy) +
     __link_to_function(raw(name), "removeField(this)", :id =>"remove-attach", class: 'btn btn-default')
   end
 
-  def new_survey
-    new_admin_survey_survey_path
+  def new_quiz
+    new_admin_quiz_quiz_path
   end
 
-  def edit_survey(resource)
-    edit_admin_survey_survey_path(resource)
+  def edit_quiz(resource)
+    edit_admin_quiz_quiz_path(resource)
   end
 
-  def survey_scope(resource)
+  def quiz_scope(resource)
     if action_name =~ /new|create/
-      admin_survey_surveys_path(resource)
+      admin_quiz_quizzes_path(resource)
     elsif action_name =~ /edit|update/
-      admin_survey_survey_path(resource)
+      admin_quiz_quiz_path(resource)
     end
   end
 
@@ -39,7 +39,7 @@ module SurveysHelper
   end
 
   def get_answer_fields attempt
-    attempt.survey.questions.map { |q| Survey::Answer.new(question_id: q.id) }
+    attempt.quiz.questions.map { |q| Quiz::Answer.new(question_id: q.id) }
   end
 
   def the_chosen_one? answer, option
@@ -52,42 +52,20 @@ module SurveysHelper
   end
 
   def get_color_of_option answer, option
-    if is_quiz?(answer.question.survey.survey_type)
+    # if is_quiz?(answer.question.quiz.quiz_type)
       if option.correct
         'bg-success'
       elsif the_chosen_one?(answer, option)
         'bg-danger'
       end
-    elsif is_score?(answer.question.survey.survey_type)
-      get_weight_html_class option
-    end
-  end
-
-  def get_survey_type survey_type
-    get_survey_types[survey_type] || get_survey_types.invert[survey_type]
-  end
-
-  def get_survey_types
-    { 0 => 'quiz',
-      1 => 'score',
-      2 => 'poll' }
-  end
-
-  def is_quiz? something
-    something == 0 || something == 'quiz'
-  end
-
-  def is_score? something
-    something == 1 || something == 'score'
-  end
-
-  def is_poll? something
-    something == 2 || something == 'poll'
+    # elsif is_score?(answer.question.quiz.quiz_type)
+    #   get_weight_html_class option
+    # end
   end
 
   def get_weight option
-    return unless is_score?(option.question.survey.survey_type)
-    option.weight > 0 ? "(+#{option.weight})" : "(#{option.weight})"
+    # return unless is_score?(option.question.quiz.quiz_type)
+    # option.weight > 0 ? "(+#{option.weight})" : "(#{option.weight})"
   end
 
   def get_weight_html_class option
@@ -95,16 +73,12 @@ module SurveysHelper
     option.weight > 0 ? 'bg-success' : 'bg-danger'
   end
 
-  def surveys_count type = get_survey_types.keys
-    Survey::Survey.where(survey_type: type).count
+  def number_of_questions quiz
+    quiz.questions.count
   end
 
-  def number_of_questions survey
-    survey.questions.count
-  end
-
-  def number_of_attempts survey
-    survey.attempts.count
+  def number_of_attempts quiz
+    quiz.attempts.count
   end
 
   private
@@ -113,7 +87,7 @@ module SurveysHelper
     link_to(name, 'javascript:;', opts.merge(onclick: on_click_event))
   end
 
-  def has_weights? survey
-    survey.questions.map(&:options).flatten.any? { |o| o.weight != 0 }
+  def has_weights? quiz
+    quiz.questions.map(&:options).flatten.any? { |o| o.weight != 0 }
   end
 end

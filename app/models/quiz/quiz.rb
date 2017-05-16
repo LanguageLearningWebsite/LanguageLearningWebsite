@@ -1,12 +1,12 @@
-class Survey::Survey < ActiveRecord::Base
+class Quiz::Quiz < ActiveRecord::Base
 
-  self.table_name = "survey_surveys"
+  self.table_name = "quiz_quizzes"
 
   # acceptable_attributes :name, :description,
   #   :finished,
   #   :active,
   #   :attempts_number,
-  #   :questions_attributes => Survey::Question::AccessibleAttributes
+  #   :questions_attributes => Quiz::Question::AccessibleAttributes
 
   # relations
   has_many :attempts,  :dependent => :destroy
@@ -24,12 +24,12 @@ class Survey::Survey < ActiveRecord::Base
   validates :description, :name, :presence => true, :allow_blank => false
   validate  :check_active_requirements
 
-  # returns all the correct options for current surveys
+  # returns all the correct options for current quiz
   def correct_options
     return self.questions.map(&:correct_options).flatten
   end
 
-  # returns all the incorrect options for current surveys
+  # returns all the incorrect options for current quiz
   def incorrect_options
     return self.questions.map(&:incorrect_options).flatten
   end
@@ -47,8 +47,8 @@ class Survey::Survey < ActiveRecord::Base
 
   private
 
-  # a surveys only can be activated if has one or more questions
+  # a quiz only can be activated if has one or more questions
   def check_active_requirements
-    errors.add(:active, "Survey without questions cannot be activated") if self.active && self.questions.empty?
+    errors.add(:active, "Quiz without questions cannot be activated") if self.active && self.questions.empty?
   end
 end

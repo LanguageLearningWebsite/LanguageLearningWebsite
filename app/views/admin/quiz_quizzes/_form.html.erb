@@ -1,6 +1,6 @@
-<%= stylesheet_link_tag "survey" %>
+<%= stylesheet_link_tag "quiz" %>
 
-<%= form_for(@survey_survey, url: survey_scope(@survey_survey), html: { class: 'survey-form clearfix' }, validate: true) do |f| %>
+<%= form_for(@quiz_quiz, url: quiz_scope(@quiz_quiz), html: { class: 'quiz-form clearfix' }, validate: true) do |f| %>
   <div class='field'>
     <div class='row'>
       <div class='form-group col-sm-4'>
@@ -34,12 +34,12 @@
   </div>
   <br/>
   <% if action_name =~ /edit|update/ %>
-    <%= f.submit 'Update Survey', class: 'pull-right btn btn-primary' %>
+    <%= f.submit 'Update Quiz', class: 'pull-right btn btn-primary' %>
   <% else %>
-    <%= f.submit 'Create Survey', class: 'pull-right btn btn-primary' %>
+    <%= f.submit 'Create Quiz', class: 'pull-right btn btn-primary' %>
   <% end %>
   <%= button_tag(type: 'button', class: 'pull-right cancel') do %>
-    <%= link_to 'Cancel', "/admin/survey_surveys" %>
+    <%= link_to 'Cancel', "/admin/quiz_quizzes" %>
   <% end %>
 <% end -%>
 

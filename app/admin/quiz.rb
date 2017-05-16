@@ -1,10 +1,10 @@
-ActiveAdmin.register Survey::Survey do
-  menu :label => "Surveys"
+ActiveAdmin.register Quiz::Quiz do
+  menu :label => "Quizzes"
 
   filter  :name,
           :as => :select,
           :collection => proc {
-              Survey::Survey.select("distinct(name)").collect { |c|
+              Quiz::Quiz.select("distinct(name)").collect { |c|
                 [c.name, c.name]
               }
           }
@@ -25,7 +25,7 @@ ActiveAdmin.register Survey::Survey do
   end
 
   # form do |f|
-  #   f.inputs "Surveys" do
+  #   f.inputs "Quizzes" do
   #     f.input  :name
   #     f.input  :active, :as => :select, :collection => ["true", "false"]
   #     f.input  :attempts_number
@@ -35,7 +35,7 @@ ActiveAdmin.register Survey::Survey do
   #   f.inputs "Questions" do
   #     f.has_many :questions do |q|
   #       q.input :text
-  #       q.input :questions_type_id, :as => :select, :collection => Survey::QuestionsType.questions_types_title
+  #       q.input :questions_type_id, :as => :select, :collection => Quiz::QuestionsType.questions_types_title
   #       q.has_many :options do |a|
   #         a.input :text
   #         a.input :correct

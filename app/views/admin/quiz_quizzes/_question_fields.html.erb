@@ -10,7 +10,7 @@
   <div class='row'>
     <div class='form-group col-sm-2'>
       <%= f.label :type %>
-      <%= f.select :questions_type_id, Survey::QuestionsType.questions_types_title, {}, class: 'form-control', style: 'height: 1.25rem;' %>
+      <%= f.select :questions_type_id, Quiz::QuestionsType.questions_types_title, {}, class: 'form-control', style: 'height: 1.25rem;' %>
     </div>
   </div>
   <ol class='appendable'>

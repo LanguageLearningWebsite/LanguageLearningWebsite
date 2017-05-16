@@ -1,14 +1,14 @@
-class Survey::Attempt < ActiveRecord::Base
+class Quiz::Attempt < ActiveRecord::Base
 
-  self.table_name = "survey_attempts"
+  self.table_name = "quiz_attempts"
 
-  # acceptable_attributes :winner, :survey, :survey_id,
+  # acceptable_attributes :winner, :quiz, :quiz_id,
   #   :participant,
   #   :participant_id,
-  #   :answers_attributes => ::Survey::Answer::AccessibleAttributes
+  #   :answers_attributes => ::Quiz::Answer::AccessibleAttributes
 
   # relations
-  belongs_to :survey
+  belongs_to :quiz
   belongs_to :participant, :polymorphic => true
   has_many :answers, :dependent => :destroy
   accepts_nested_attributes_for :answers,
@@ -16,14 +16,14 @@ class Survey::Attempt < ActiveRecord::Base
 
   # validations
   validates :participant_id, :participant_type, :presence => true
-  validate :check_number_of_attempts_by_survey
+  validate :check_number_of_attempts_by_quiz
 
   #scopes
   scope :wins,   -> { where(:winner => true) }
   scope :looses, -> { where(:winner => false) }
   scope :scores, -> { order("score DESC") }
-  scope :for_survey, ->(survey) { where(:survey_id => survey.id) }
-  scope :exclude_survey,  ->(survey) { where("NOT survey_id = #{survey.id}") }
+  scope :for_quiz, ->(quiz) { where(:quiz_id => quiz.id) }
+  scope :exclude_quiz,  ->(quiz) { where("NOT quiz_id = #{quiz.id}") }
   scope :for_participant, ->(participant) {
     where(:participant_id => participant.try(:id), :participant_type => participant.class.base_class)
   }
@@ -45,12 +45,12 @@ class Survey::Attempt < ActiveRecord::Base
 
   private
 
-  def check_number_of_attempts_by_survey
-    attempts = self.class.for_survey(survey).for_participant(participant)
-    upper_bound = self.survey.attempts_number
+  def check_number_of_attempts_by_quiz
+    attempts = self.class.for_quiz(quiz).for_participant(participant)
+    upper_bound = self.quiz.attempts_number
 
     if attempts.size >= upper_bound && upper_bound != 0
-      errors.add(:survey_id, "Number of attempts exceeded")
+      errors.add(:quiz_id, "Number of attempts exceeded")
     end
   end
 

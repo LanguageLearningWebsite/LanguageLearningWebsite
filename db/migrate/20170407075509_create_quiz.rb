@@ -1,8 +1,8 @@
-class CreateSurvey < ActiveRecord::Migration
+class CreateQuiz < ActiveRecord::Migration
   def self.up
 
-    # survey surveys logic
-    create_table :survey_surveys do |t|
+    # quiz quizzes logic
+    create_table :quiz_quizzes do |t|
       t.string  :name
       t.text    :description
       t.integer :attempts_number, :default => 0
@@ -12,14 +12,14 @@ class CreateSurvey < ActiveRecord::Migration
       t.timestamps
     end
 
-    create_table :survey_questions do |t|
-      t.integer :survey_id
+    create_table :quiz_questions do |t|
+      t.integer :quiz_id
       t.string  :text
 
       t.timestamps
     end
 
-    create_table :survey_options do |t|
+    create_table :quiz_options do |t|
       t.integer :question_id
       t.integer :weight, :default => 0
       t.string :text
@@ -28,15 +28,15 @@ class CreateSurvey < ActiveRecord::Migration
       t.timestamps
     end
 
-    # survey answer logic
-    create_table :survey_attempts do |t|
+    # quiz answer logic
+    create_table :quiz_attempts do |t|
       t.belongs_to :participant, :polymorphic => true
-      t.integer    :survey_id
+      t.integer    :quiz_id
       t.boolean    :winner
       t.integer    :score
     end
 
-    create_table :survey_answers do |t|
+    create_table :quiz_answers do |t|
       t.integer    :attempt_id
       t.integer    :question_id
       t.integer    :option_id
@@ -46,11 +46,11 @@ class CreateSurvey < ActiveRecord::Migration
   end
 
   def self.down
-    drop_table :survey_surveys
-    drop_table :survey_questions
-    drop_table :survey_options
+    drop_table :quiz_quizzes
+    drop_table :quiz_questions
+    drop_table :quiz_options
 
-    drop_table :survey_attempts
-    drop_table :survey_answers
+    drop_table :quiz_attempts
+    drop_table :quiz_answers
   end
 end

@@ -1,6 +1,6 @@
-class Survey::Option < ActiveRecord::Base
+class Quiz::Option < ActiveRecord::Base
 
-  self.table_name = "survey_options"
+  self.table_name = "quiz_options"
 
   # acceptable_attributes :text, :correct, :weight
 
@@ -29,7 +29,7 @@ class Survey::Option < ActiveRecord::Base
 
   def default_option_weight
     self.weight = 1 if correct? && self.weight == 0
-    self.correct = true if [Survey::QuestionsType.fill_in_blank].include?(self.question.questions_type_id)
+    self.correct = true if [Quiz::QuestionsType.fill_in_blank].include?(self.question.questions_type_id)
   end
 
 end

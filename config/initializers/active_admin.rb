@@ -47,5 +47,5 @@ ActiveAdmin.setup do |config|
 end
 
 module ActiveAdmin::ViewHelpers
-  include SurveysHelper
+  include QuizHelper
 end

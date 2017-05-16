@@ -10,21 +10,21 @@ Rails.application.routes.draw do
     get 'users', :to => 'devise/registrations#new'
   end
 
+  root 'course#index'
+
   get 'pages/about'
   get 'pages/record'
 
   get '/mycourses' => 'course#list'
   post '/enroll' => 'enroll#enroll'
 
-  root 'course#index'
+  resources :attempts
 
   resources :course do
     resources :lesson, only: [:show] do
       resources :component, only: [:show]
     end
   end
-
-  resources :survey_survey
 
   namespace :api, defaults: { format: :json } do
     namespace :v1, constraints: ApiConstraints.new(version: 1, default: true) do

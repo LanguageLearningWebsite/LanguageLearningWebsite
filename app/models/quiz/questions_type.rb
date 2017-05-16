@@ -1,4 +1,4 @@
-class Survey::QuestionsType
+class Quiz::QuestionsType
   @@questions_types = {:multiple_choice => 1, :fill_in_blank => 2}
 
   def self.questions_types
@@ -7,7 +7,7 @@ class Survey::QuestionsType
 
   def self.questions_types_title
     titled = {}
-    Survey::QuestionsType.questions_types.each{|k, v| titled[k.to_s.titleize] = v}
+    Quiz::QuestionsType.questions_types.each{|k, v| titled[k.to_s.titleize] = v}
     titled
   end
 
