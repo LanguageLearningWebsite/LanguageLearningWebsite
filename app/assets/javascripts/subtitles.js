@@ -1,5 +1,3 @@
-"use strict";
-
 $.expr[':'].textEquals = $.expr.createPseudo(function (arg) {
   return function (elem) {
     return $(elem).text().toLowerCase().match("^" + arg.toLowerCase() + "$");

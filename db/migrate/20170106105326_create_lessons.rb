@@ -5,7 +5,7 @@ class CreateLessons < ActiveRecord::Migration
       t.text :note
       t.string :video
       t.boolean :header, :null => false, :default => false
-      t.string :tag
+      t.integer :tag
       t.references :course, index: true, foreign_key: true
 
       t.timestamps null: false
