@@ -20,8 +20,6 @@
 //= require recorder
 //= require videojs-transcript
 //= require turbolinks
-//= require jquery.ui.widget
-//= require z.jquery.fileupload
 //= require_tree .
 
 toastr.options = {
