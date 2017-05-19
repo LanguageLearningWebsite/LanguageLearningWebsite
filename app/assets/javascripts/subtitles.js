@@ -1,6 +1,6 @@
 $.expr[':'].textEquals = $.expr.createPseudo(function(arg) {
     return function( elem ) {
-        return $(elem).text().toLowerCase().match(`^${arg.toLowerCase()}$`);
+        return $(elem).text().toLowerCase().match("^"+arg.toLowerCase()+"$");
     };
 });
 
@@ -58,8 +58,7 @@ function updateCaptionLine(metadataTrack, disp) {
     $('.word').click(function (e) {
       $('.word.active').removeClass('active');
       let word = e.target.innerText.toLowerCase();
-      console.log(word);
-      $(`.word:textEquals(${word})`).addClass('active');
+      $(".word:textEquals("+word+")").addClass('active');
 
       $.ajax({
         url: '/api/v1/translate?',
