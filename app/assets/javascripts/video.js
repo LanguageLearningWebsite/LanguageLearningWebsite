@@ -49,7 +49,7 @@ if (typeof window !== "undefined") {
 },{}],4:[function(_dereq_,module,exports){
 var getNative = _dereq_('../internal/getNative');
 
-/* Native method references for those with the same name as other `lodash` methods. */
+/* Native method references for those with the same name as other 'lodash' methods. */
 var nativeNow = getNative(Date, 'now');
 
 /**
@@ -76,27 +76,27 @@ module.exports = now;
 var isObject = _dereq_('../lang/isObject'),
     now = _dereq_('../date/now');
 
-/** Used as the `TypeError` message for "Functions" methods. */
+/** Used as the 'TypeError' message for "Functions" methods. */
 var FUNC_ERROR_TEXT = 'Expected a function';
 
-/* Native method references for those with the same name as other `lodash` methods. */
+/* Native method references for those with the same name as other 'lodash' methods. */
 var nativeMax = Math.max;
 
 /**
- * Creates a debounced function that delays invoking `func` until after `wait`
+ * Creates a debounced function that delays invoking 'func' until after 'wait'
  * milliseconds have elapsed since the last time the debounced function was
- * invoked. The debounced function comes with a `cancel` method to cancel
- * delayed invocations. Provide an options object to indicate that `func`
- * should be invoked on the leading and/or trailing edge of the `wait` timeout.
+ * invoked. The debounced function comes with a 'cancel' method to cancel
+ * delayed invocations. Provide an options object to indicate that 'func'
+ * should be invoked on the leading and/or trailing edge of the 'wait' timeout.
  * Subsequent calls to the debounced function return the result of the last
- * `func` invocation.
+ * 'func' invocation.
  *
- * **Note:** If `leading` and `trailing` options are `true`, `func` is invoked
+ * **Note:** If 'leading' and 'trailing' options are 'true', 'func' is invoked
  * on the trailing edge of the timeout only if the the debounced function is
- * invoked more than once during the `wait` timeout.
+ * invoked more than once during the 'wait' timeout.
  *
  * See [David Corbacho's article](http://drupalmotion.com/article/debounce-and-throttle-visual-explanation)
- * for details over the differences between `_.debounce` and `_.throttle`.
+ * for details over the differences between '_.debounce' and '_.throttle'.
  *
  * @static
  * @memberOf _
@@ -106,7 +106,7 @@ var nativeMax = Math.max;
  * @param {Object} [options] The options object.
  * @param {boolean} [options.leading=false] Specify invoking on the leading
  *  edge of the timeout.
- * @param {number} [options.maxWait] The maximum time `func` is allowed to be
+ * @param {number} [options.maxWait] The maximum time 'func' is allowed to be
  *  delayed before it's invoked.
  * @param {boolean} [options.trailing=true] Specify invoking on the trailing
  *  edge of the timeout.
@@ -116,13 +116,13 @@ var nativeMax = Math.max;
  * // avoid costly calculations while the window size is in flux
  * jQuery(window).on('resize', _.debounce(calculateLayout, 150));
  *
- * // invoke `sendMail` when the click event is fired, debouncing subsequent calls
+ * // invoke 'sendMail' when the click event is fired, debouncing subsequent calls
  * jQuery('#postbox').on('click', _.debounce(sendMail, 300, {
  *   'leading': true,
  *   'trailing': false
  * }));
  *
- * // ensure `batchLog` is invoked once after 1 second of debounced calls
+ * // ensure 'batchLog' is invoked once after 1 second of debounced calls
  * var source = new EventSource('/stream');
  * jQuery(source).on('message', _.debounce(batchLog, 250, {
  *   'maxWait': 1000
@@ -138,11 +138,11 @@ var nativeMax = Math.max;
  *   }
  * }, ['delete']);
  *
- * // ...at some point `models.todo` is changed
+ * // ...at some point 'models.todo' is changed
  * models.todo.completed = true;
  *
- * // ...before 1 second has passed `models.todo` is deleted
- * // which cancels the debounced `todoChanges` call
+ * // ...before 1 second has passed 'models.todo' is deleted
+ * // which cancels the debounced 'todoChanges' call
  * delete models.todo;
  */
 function debounce(func, wait, options) {
@@ -256,15 +256,15 @@ function debounce(func, wait, options) {
 module.exports = debounce;
 
 },{"../date/now":4,"../lang/isObject":33}],6:[function(_dereq_,module,exports){
-/** Used as the `TypeError` message for "Functions" methods. */
+/** Used as the 'TypeError' message for "Functions" methods. */
 var FUNC_ERROR_TEXT = 'Expected a function';
 
-/* Native method references for those with the same name as other `lodash` methods. */
+/* Native method references for those with the same name as other 'lodash' methods. */
 var nativeMax = Math.max;
 
 /**
- * Creates a function that invokes `func` with the `this` binding of the
- * created function and arguments from `start` and beyond provided as an array.
+ * Creates a function that invokes 'func' with the 'this' binding of the
+ * created function and arguments from 'start' and beyond provided as an array.
  *
  * **Note:** This method is based on the [rest parameter](https://developer.mozilla.org/Web/JavaScript/Reference/Functions/rest_parameters).
  *
@@ -319,23 +319,23 @@ module.exports = restParam;
 var debounce = _dereq_('./debounce'),
     isObject = _dereq_('../lang/isObject');
 
-/** Used as the `TypeError` message for "Functions" methods. */
+/** Used as the 'TypeError' message for "Functions" methods. */
 var FUNC_ERROR_TEXT = 'Expected a function';
 
 /**
- * Creates a throttled function that only invokes `func` at most once per
- * every `wait` milliseconds. The throttled function comes with a `cancel`
+ * Creates a throttled function that only invokes 'func' at most once per
+ * every 'wait' milliseconds. The throttled function comes with a 'cancel'
  * method to cancel delayed invocations. Provide an options object to indicate
- * that `func` should be invoked on the leading and/or trailing edge of the
- * `wait` timeout. Subsequent calls to the throttled function return the
- * result of the last `func` call.
+ * that 'func' should be invoked on the leading and/or trailing edge of the
+ * 'wait' timeout. Subsequent calls to the throttled function return the
+ * result of the last 'func' call.
  *
- * **Note:** If `leading` and `trailing` options are `true`, `func` is invoked
+ * **Note:** If 'leading' and 'trailing' options are 'true', 'func' is invoked
  * on the trailing edge of the timeout only if the the throttled function is
- * invoked more than once during the `wait` timeout.
+ * invoked more than once during the 'wait' timeout.
  *
  * See [David Corbacho's article](http://drupalmotion.com/article/debounce-and-throttle-visual-explanation)
- * for details over the differences between `_.throttle` and `_.debounce`.
+ * for details over the differences between '_.throttle' and '_.debounce'.
  *
  * @static
  * @memberOf _
@@ -353,7 +353,7 @@ var FUNC_ERROR_TEXT = 'Expected a function';
  * // avoid excessively updating the position while scrolling
  * jQuery(window).on('scroll', _.throttle(updatePosition, 100));
  *
- * // invoke `renewToken` when the click event is fired, but not more than once every 5 minutes
+ * // invoke 'renewToken' when the click event is fired, but not more than once every 5 minutes
  * jQuery('.interactive').on('click', _.throttle(renewToken, 300000, {
  *   'trailing': false
  * }));
@@ -381,12 +381,12 @@ module.exports = throttle;
 
 },{"../lang/isObject":33,"./debounce":5}],8:[function(_dereq_,module,exports){
 /**
- * Copies the values of `source` to `array`.
+ * Copies the values of 'source' to 'array'.
  *
  * @private
  * @param {Array} source The array to copy values from.
  * @param {Array} [array=[]] The array to copy values to.
- * @returns {Array} Returns `array`.
+ * @returns {Array} Returns 'array'.
  */
 function arrayCopy(source, array) {
   var index = -1,
@@ -403,13 +403,13 @@ module.exports = arrayCopy;
 
 },{}],9:[function(_dereq_,module,exports){
 /**
- * A specialized version of `_.forEach` for arrays without support for callback
- * shorthands and `this` binding.
+ * A specialized version of '_.forEach' for arrays without support for callback
+ * shorthands and 'this' binding.
  *
  * @private
  * @param {Array} array The array to iterate over.
  * @param {Function} iteratee The function invoked per iteration.
- * @returns {Array} Returns `array`.
+ * @returns {Array} Returns 'array'.
  */
 function arrayEach(array, iteratee) {
   var index = -1,
@@ -427,13 +427,13 @@ module.exports = arrayEach;
 
 },{}],10:[function(_dereq_,module,exports){
 /**
- * Copies properties of `source` to `object`.
+ * Copies properties of 'source' to 'object'.
  *
  * @private
  * @param {Object} source The object to copy properties from.
  * @param {Array} props The property names to copy.
  * @param {Object} [object={}] The object to copy properties to.
- * @returns {Object} Returns `object`.
+ * @returns {Object} Returns 'object'.
  */
 function baseCopy(source, props, object) {
   object || (object = {});
@@ -454,16 +454,16 @@ module.exports = baseCopy;
 var createBaseFor = _dereq_('./createBaseFor');
 
 /**
- * The base implementation of `baseForIn` and `baseForOwn` which iterates
- * over `object` properties returned by `keysFunc` invoking `iteratee` for
+ * The base implementation of 'baseForIn' and 'baseForOwn' which iterates
+ * over 'object' properties returned by 'keysFunc' invoking 'iteratee' for
  * each property. Iteratee functions may exit iteration early by explicitly
- * returning `false`.
+ * returning 'false'.
  *
  * @private
  * @param {Object} object The object to iterate over.
  * @param {Function} iteratee The function invoked per iteration.
- * @param {Function} keysFunc The function to get the keys of `object`.
- * @returns {Object} Returns `object`.
+ * @param {Function} keysFunc The function to get the keys of 'object'.
+ * @returns {Object} Returns 'object'.
  */
 var baseFor = createBaseFor();
 
@@ -474,13 +474,13 @@ var baseFor = _dereq_('./baseFor'),
     keysIn = _dereq_('../object/keysIn');
 
 /**
- * The base implementation of `_.forIn` without support for callback
- * shorthands and `this` binding.
+ * The base implementation of '_.forIn' without support for callback
+ * shorthands and 'this' binding.
  *
  * @private
  * @param {Object} object The object to iterate over.
  * @param {Function} iteratee The function invoked per iteration.
- * @returns {Object} Returns `object`.
+ * @returns {Object} Returns 'object'.
  */
 function baseForIn(object, iteratee) {
   return baseFor(object, iteratee, keysIn);
@@ -499,8 +499,8 @@ var arrayEach = _dereq_('./arrayEach'),
     keys = _dereq_('../object/keys');
 
 /**
- * The base implementation of `_.merge` without support for argument juggling,
- * multiple sources, and `this` binding `customizer` functions.
+ * The base implementation of '_.merge' without support for argument juggling,
+ * multiple sources, and 'this' binding 'customizer' functions.
  *
  * @private
  * @param {Object} object The destination object.
@@ -508,7 +508,7 @@ var arrayEach = _dereq_('./arrayEach'),
  * @param {Function} [customizer] The function to customize merged values.
  * @param {Array} [stackA=[]] Tracks traversed source objects.
  * @param {Array} [stackB=[]] Associates values with source counterparts.
- * @returns {Object} Returns `object`.
+ * @returns {Object} Returns 'object'.
  */
 function baseMerge(object, source, customizer, stackA, stackB) {
   if (!isObject(object)) {
@@ -556,7 +556,7 @@ var arrayCopy = _dereq_('./arrayCopy'),
     toPlainObject = _dereq_('../lang/toPlainObject');
 
 /**
- * A specialized version of `baseMerge` for arrays and objects which performs
+ * A specialized version of 'baseMerge' for arrays and objects which performs
  * deep merges and tracks traversed objects enabling objects with circular
  * references to be merged.
  *
@@ -568,7 +568,7 @@ var arrayCopy = _dereq_('./arrayCopy'),
  * @param {Function} [customizer] The function to customize merged values.
  * @param {Array} [stackA=[]] Tracks traversed source objects.
  * @param {Array} [stackB=[]] Associates values with source counterparts.
- * @returns {boolean} Returns `true` if the objects are equivalent, else `false`.
+ * @returns {boolean} Returns 'true' if the objects are equivalent, else 'false'.
  */
 function baseMergeDeep(object, source, key, mergeFunc, customizer, stackA, stackB) {
   var length = stackA.length,
@@ -619,7 +619,7 @@ module.exports = baseMergeDeep;
 var toObject = _dereq_('./toObject');
 
 /**
- * The base implementation of `_.property` without support for deep paths.
+ * The base implementation of '_.property' without support for deep paths.
  *
  * @private
  * @param {string} key The key of the property to get.
@@ -637,13 +637,13 @@ module.exports = baseProperty;
 var identity = _dereq_('../utility/identity');
 
 /**
- * A specialized version of `baseCallback` which only supports `this` binding
- * and specifying the number of arguments to provide to `func`.
+ * A specialized version of 'baseCallback' which only supports 'this' binding
+ * and specifying the number of arguments to provide to 'func'.
  *
  * @private
  * @param {Function} func The function to bind.
- * @param {*} thisArg The `this` binding of `func`.
- * @param {number} [argCount] The number of arguments to provide to `func`.
+ * @param {*} thisArg The 'this' binding of 'func'.
+ * @param {number} [argCount] The number of arguments to provide to 'func'.
  * @returns {Function} Returns the callback.
  */
 function bindCallback(func, thisArg, argCount) {
@@ -680,7 +680,7 @@ var bindCallback = _dereq_('./bindCallback'),
     restParam = _dereq_('../function/restParam');
 
 /**
- * Creates a `_.assign`, `_.defaults`, or `_.merge` function.
+ * Creates a '_.assign', '_.defaults', or '_.merge' function.
  *
  * @private
  * @param {Function} assigner The function to assign values.
@@ -721,7 +721,7 @@ module.exports = createAssigner;
 var toObject = _dereq_('./toObject');
 
 /**
- * Creates a base function for `_.forIn` or `_.forInRight`.
+ * Creates a base function for '_.forIn' or '_.forInRight'.
  *
  * @private
  * @param {boolean} [fromRight] Specify iterating from right to left.
@@ -750,7 +750,7 @@ module.exports = createBaseFor;
 var baseProperty = _dereq_('./baseProperty');
 
 /**
- * Gets the "length" property value of `object`.
+ * Gets the "length" property value of 'object'.
  *
  * **Note:** This function is used to avoid a [JIT bug](https://bugs.webkit.org/show_bug.cgi?id=142792)
  * that affects Safari on at least iOS 8.1-8.3 ARM64.
@@ -767,12 +767,12 @@ module.exports = getLength;
 var isNative = _dereq_('../lang/isNative');
 
 /**
- * Gets the native function at `key` of `object`.
+ * Gets the native function at 'key' of 'object'.
  *
  * @private
  * @param {Object} object The object to query.
  * @param {string} key The key of the method to get.
- * @returns {*} Returns the function if it's native, else `undefined`.
+ * @returns {*} Returns the function if it's native, else 'undefined'.
  */
 function getNative(object, key) {
   var value = object == null ? undefined : object[key];
@@ -786,11 +786,11 @@ var getLength = _dereq_('./getLength'),
     isLength = _dereq_('./isLength');
 
 /**
- * Checks if `value` is array-like.
+ * Checks if 'value' is array-like.
  *
  * @private
  * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is array-like, else `false`.
+ * @returns {boolean} Returns 'true' if 'value' is array-like, else 'false'.
  */
 function isArrayLike(value) {
   return value != null && isLength(getLength(value));
@@ -800,11 +800,11 @@ module.exports = isArrayLike;
 
 },{"./getLength":19,"./isLength":25}],22:[function(_dereq_,module,exports){
 /**
- * Checks if `value` is a host object in IE < 9.
+ * Checks if 'value' is a host object in IE < 9.
  *
  * @private
  * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is a host object, else `false`.
+ * @returns {boolean} Returns 'true' if 'value' is a host object, else 'false'.
  */
 var isHostObject = (function() {
   try {
@@ -813,8 +813,8 @@ var isHostObject = (function() {
     return function() { return false; };
   }
   return function(value) {
-    // IE < 9 presents many host objects as `Object` objects that can coerce
-    // to strings despite having improperly defined `toString` methods.
+    // IE < 9 presents many host objects as 'Object' objects that can coerce
+    // to strings despite having improperly defined 'toString' methods.
     return typeof value.toString != 'function' && typeof (value + '') == 'string';
   };
 }());
@@ -832,12 +832,12 @@ var reIsUint = /^\d+$/;
 var MAX_SAFE_INTEGER = 9007199254740991;
 
 /**
- * Checks if `value` is a valid array-like index.
+ * Checks if 'value' is a valid array-like index.
  *
  * @private
  * @param {*} value The value to check.
  * @param {number} [length=MAX_SAFE_INTEGER] The upper bounds of a valid index.
- * @returns {boolean} Returns `true` if `value` is a valid index, else `false`.
+ * @returns {boolean} Returns 'true' if 'value' is a valid index, else 'false'.
  */
 function isIndex(value, length) {
   value = (typeof value == 'number' || reIsUint.test(value)) ? +value : -1;
@@ -859,7 +859,7 @@ var isArrayLike = _dereq_('./isArrayLike'),
  * @param {*} value The potential iteratee value argument.
  * @param {*} index The potential iteratee index or key argument.
  * @param {*} object The potential iteratee object argument.
- * @returns {boolean} Returns `true` if the arguments are from an iteratee call, else `false`.
+ * @returns {boolean} Returns 'true' if the arguments are from an iteratee call, else 'false'.
  */
 function isIterateeCall(value, index, object) {
   if (!isObject(object)) {
@@ -885,13 +885,13 @@ module.exports = isIterateeCall;
 var MAX_SAFE_INTEGER = 9007199254740991;
 
 /**
- * Checks if `value` is a valid array-like length.
+ * Checks if 'value' is a valid array-like length.
  *
- * **Note:** This function is based on [`ToLength`](http://ecma-international.org/ecma-262/6.0/#sec-tolength).
+ * **Note:** This function is based on ['ToLength'](http://ecma-international.org/ecma-262/6.0/#sec-tolength).
  *
  * @private
  * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is a valid length, else `false`.
+ * @returns {boolean} Returns 'true' if 'value' is a valid length, else 'false'.
  */
 function isLength(value) {
   return typeof value == 'number' && value > -1 && value % 1 == 0 && value <= MAX_SAFE_INTEGER;
@@ -901,11 +901,11 @@ module.exports = isLength;
 
 },{}],26:[function(_dereq_,module,exports){
 /**
- * Checks if `value` is object-like.
+ * Checks if 'value' is object-like.
  *
  * @private
  * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is object-like, else `false`.
+ * @returns {boolean} Returns 'true' if 'value' is object-like, else 'false'.
  */
 function isObjectLike(value) {
   return !!value && typeof value == 'object';
@@ -928,8 +928,8 @@ var objectProto = Object.prototype;
 var hasOwnProperty = objectProto.hasOwnProperty;
 
 /**
- * A fallback implementation of `Object.keys` which creates an array of the
- * own enumerable property names of `object`.
+ * A fallback implementation of 'Object.keys' which creates an array of the
+ * own enumerable property names of 'object'.
  *
  * @private
  * @param {Object} object The object to query.
@@ -963,7 +963,7 @@ var isObject = _dereq_('../lang/isObject'),
     support = _dereq_('../support');
 
 /**
- * Converts `value` to an object if it's not one.
+ * Converts 'value' to an object if it's not one.
  *
  * @private
  * @param {*} value The value to process.
@@ -999,13 +999,13 @@ var hasOwnProperty = objectProto.hasOwnProperty;
 var propertyIsEnumerable = objectProto.propertyIsEnumerable;
 
 /**
- * Checks if `value` is classified as an `arguments` object.
+ * Checks if 'value' is classified as an 'arguments' object.
  *
  * @static
  * @memberOf _
  * @category Lang
  * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is correctly classified, else `false`.
+ * @returns {boolean} Returns 'true' if 'value' is correctly classified, else 'false'.
  * @example
  *
  * _.isArguments(function() { return arguments; }());
@@ -1026,29 +1026,29 @@ var getNative = _dereq_('../internal/getNative'),
     isLength = _dereq_('../internal/isLength'),
     isObjectLike = _dereq_('../internal/isObjectLike');
 
-/** `Object#toString` result references. */
+/** 'Object#toString' result references. */
 var arrayTag = '[object Array]';
 
 /** Used for native method references. */
 var objectProto = Object.prototype;
 
 /**
- * Used to resolve the [`toStringTag`](http://ecma-international.org/ecma-262/6.0/#sec-object.prototype.tostring)
+ * Used to resolve the ['toStringTag'](http://ecma-international.org/ecma-262/6.0/#sec-object.prototype.tostring)
  * of values.
  */
 var objToString = objectProto.toString;
 
-/* Native method references for those with the same name as other `lodash` methods. */
+/* Native method references for those with the same name as other 'lodash' methods. */
 var nativeIsArray = getNative(Array, 'isArray');
 
 /**
- * Checks if `value` is classified as an `Array` object.
+ * Checks if 'value' is classified as an 'Array' object.
  *
  * @static
  * @memberOf _
  * @category Lang
  * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is correctly classified, else `false`.
+ * @returns {boolean} Returns 'true' if 'value' is correctly classified, else 'false'.
  * @example
  *
  * _.isArray([1, 2, 3]);
@@ -1066,26 +1066,26 @@ module.exports = isArray;
 },{"../internal/getNative":20,"../internal/isLength":25,"../internal/isObjectLike":26}],31:[function(_dereq_,module,exports){
 var isObject = _dereq_('./isObject');
 
-/** `Object#toString` result references. */
+/** 'Object#toString' result references. */
 var funcTag = '[object Function]';
 
 /** Used for native method references. */
 var objectProto = Object.prototype;
 
 /**
- * Used to resolve the [`toStringTag`](http://ecma-international.org/ecma-262/6.0/#sec-object.prototype.tostring)
+ * Used to resolve the ['toStringTag'](http://ecma-international.org/ecma-262/6.0/#sec-object.prototype.tostring)
  * of values.
  */
 var objToString = objectProto.toString;
 
 /**
- * Checks if `value` is classified as a `Function` object.
+ * Checks if 'value' is classified as a 'Function' object.
  *
  * @static
  * @memberOf _
  * @category Lang
  * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is correctly classified, else `false`.
+ * @returns {boolean} Returns 'true' if 'value' is correctly classified, else 'false'.
  * @example
  *
  * _.isFunction(_);
@@ -1095,7 +1095,7 @@ var objToString = objectProto.toString;
  * // => false
  */
 function isFunction(value) {
-  // The use of `Object#toString` avoids issues with the `typeof` operator
+  // The use of 'Object#toString' avoids issues with the 'typeof' operator
   // in older versions of Chrome and Safari which return 'function' for regexes
   // and Safari 8 which returns 'object' for typed array constructors.
   return isObject(value) && objToString.call(value) == funcTag;
@@ -1127,13 +1127,13 @@ var reIsNative = RegExp('^' +
 );
 
 /**
- * Checks if `value` is a native function.
+ * Checks if 'value' is a native function.
  *
  * @static
  * @memberOf _
  * @category Lang
  * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is a native function, else `false`.
+ * @returns {boolean} Returns 'true' if 'value' is a native function, else 'false'.
  * @example
  *
  * _.isNative(Array.prototype.push);
@@ -1156,14 +1156,14 @@ module.exports = isNative;
 
 },{"../internal/isHostObject":22,"../internal/isObjectLike":26,"./isFunction":31}],33:[function(_dereq_,module,exports){
 /**
- * Checks if `value` is the [language type](https://es5.github.io/#x8) of `Object`.
- * (e.g. arrays, functions, objects, regexes, `new Number(0)`, and `new String('')`)
+ * Checks if 'value' is the [language type](https://es5.github.io/#x8) of 'Object'.
+ * (e.g. arrays, functions, objects, regexes, 'new Number(0)', and 'new String('')')
  *
  * @static
  * @memberOf _
  * @category Lang
  * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is an object, else `false`.
+ * @returns {boolean} Returns 'true' if 'value' is an object, else 'false'.
  * @example
  *
  * _.isObject({});
@@ -1191,7 +1191,7 @@ var baseForIn = _dereq_('../internal/baseForIn'),
     isObjectLike = _dereq_('../internal/isObjectLike'),
     support = _dereq_('../support');
 
-/** `Object#toString` result references. */
+/** 'Object#toString' result references. */
 var objectTag = '[object Object]';
 
 /** Used for native method references. */
@@ -1201,23 +1201,23 @@ var objectProto = Object.prototype;
 var hasOwnProperty = objectProto.hasOwnProperty;
 
 /**
- * Used to resolve the [`toStringTag`](http://ecma-international.org/ecma-262/6.0/#sec-object.prototype.tostring)
+ * Used to resolve the ['toStringTag'](http://ecma-international.org/ecma-262/6.0/#sec-object.prototype.tostring)
  * of values.
  */
 var objToString = objectProto.toString;
 
 /**
- * Checks if `value` is a plain object, that is, an object created by the
- * `Object` constructor or one with a `[[Prototype]]` of `null`.
+ * Checks if 'value' is a plain object, that is, an object created by the
+ * 'Object' constructor or one with a '[[Prototype]]' of 'null'.
  *
- * **Note:** This method assumes objects created by the `Object` constructor
+ * **Note:** This method assumes objects created by the 'Object' constructor
  * have no inherited enumerable properties.
  *
  * @static
  * @memberOf _
  * @category Lang
  * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is a plain object, else `false`.
+ * @returns {boolean} Returns 'true' if 'value' is a plain object, else 'false'.
  * @example
  *
  * function Foo() {
@@ -1239,7 +1239,7 @@ var objToString = objectProto.toString;
 function isPlainObject(value) {
   var Ctor;
 
-  // Exit early for non `Object` objects.
+  // Exit early for non 'Object' objects.
   if (!(isObjectLike(value) && objToString.call(value) == objectTag && !isHostObject(value) && !isArguments(value)) ||
       (!hasOwnProperty.call(value, 'constructor') && (Ctor = value.constructor, typeof Ctor == 'function' && !(Ctor instanceof Ctor)))) {
     return false;
@@ -1269,26 +1269,26 @@ module.exports = isPlainObject;
 },{"../internal/baseForIn":12,"../internal/isHostObject":22,"../internal/isObjectLike":26,"../support":41,"./isArguments":29}],35:[function(_dereq_,module,exports){
 var isObjectLike = _dereq_('../internal/isObjectLike');
 
-/** `Object#toString` result references. */
+/** 'Object#toString' result references. */
 var stringTag = '[object String]';
 
 /** Used for native method references. */
 var objectProto = Object.prototype;
 
 /**
- * Used to resolve the [`toStringTag`](http://ecma-international.org/ecma-262/6.0/#sec-object.prototype.tostring)
+ * Used to resolve the ['toStringTag'](http://ecma-international.org/ecma-262/6.0/#sec-object.prototype.tostring)
  * of values.
  */
 var objToString = objectProto.toString;
 
 /**
- * Checks if `value` is classified as a `String` primitive or object.
+ * Checks if 'value' is classified as a 'String' primitive or object.
  *
  * @static
  * @memberOf _
  * @category Lang
  * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is correctly classified, else `false`.
+ * @returns {boolean} Returns 'true' if 'value' is correctly classified, else 'false'.
  * @example
  *
  * _.isString('abc');
@@ -1307,7 +1307,7 @@ module.exports = isString;
 var isLength = _dereq_('../internal/isLength'),
     isObjectLike = _dereq_('../internal/isObjectLike');
 
-/** `Object#toString` result references. */
+/** 'Object#toString' result references. */
 var argsTag = '[object Arguments]',
     arrayTag = '[object Array]',
     boolTag = '[object Boolean]',
@@ -1333,7 +1333,7 @@ var arrayBufferTag = '[object ArrayBuffer]',
     uint16Tag = '[object Uint16Array]',
     uint32Tag = '[object Uint32Array]';
 
-/** Used to identify `toStringTag` values of typed arrays. */
+/** Used to identify 'toStringTag' values of typed arrays. */
 var typedArrayTags = {};
 typedArrayTags[float32Tag] = typedArrayTags[float64Tag] =
 typedArrayTags[int8Tag] = typedArrayTags[int16Tag] =
@@ -1352,19 +1352,19 @@ typedArrayTags[stringTag] = typedArrayTags[weakMapTag] = false;
 var objectProto = Object.prototype;
 
 /**
- * Used to resolve the [`toStringTag`](http://ecma-international.org/ecma-262/6.0/#sec-object.prototype.tostring)
+ * Used to resolve the ['toStringTag'](http://ecma-international.org/ecma-262/6.0/#sec-object.prototype.tostring)
  * of values.
  */
 var objToString = objectProto.toString;
 
 /**
- * Checks if `value` is classified as a typed array.
+ * Checks if 'value' is classified as a typed array.
  *
  * @static
  * @memberOf _
  * @category Lang
  * @param {*} value The value to check.
- * @returns {boolean} Returns `true` if `value` is correctly classified, else `false`.
+ * @returns {boolean} Returns 'true' if 'value' is correctly classified, else 'false'.
  * @example
  *
  * _.isTypedArray(new Uint8Array);
@@ -1384,8 +1384,8 @@ var baseCopy = _dereq_('../internal/baseCopy'),
     keysIn = _dereq_('../object/keysIn');
 
 /**
- * Converts `value` to a plain object flattening inherited enumerable
- * properties of `value` to own properties of the plain object.
+ * Converts 'value' to a plain object flattening inherited enumerable
+ * properties of 'value' to own properties of the plain object.
  *
  * @static
  * @memberOf _
@@ -1419,11 +1419,11 @@ var getNative = _dereq_('../internal/getNative'),
     shimKeys = _dereq_('../internal/shimKeys'),
     support = _dereq_('../support');
 
-/* Native method references for those with the same name as other `lodash` methods. */
+/* Native method references for those with the same name as other 'lodash' methods. */
 var nativeKeys = getNative(Object, 'keys');
 
 /**
- * Creates an array of the own enumerable property names of `object`.
+ * Creates an array of the own enumerable property names of 'object'.
  *
  * **Note:** Non-object values are coerced to objects. See the
  * [ES spec](http://ecma-international.org/ecma-262/6.0/#sec-object.keys)
@@ -1471,7 +1471,7 @@ var arrayEach = _dereq_('../internal/arrayEach'),
     isString = _dereq_('../lang/isString'),
     support = _dereq_('../support');
 
-/** `Object#toString` result references. */
+/** 'Object#toString' result references. */
 var arrayTag = '[object Array]',
     boolTag = '[object Boolean]',
     dateTag = '[object Date]',
@@ -1482,7 +1482,7 @@ var arrayTag = '[object Array]',
     regexpTag = '[object RegExp]',
     stringTag = '[object String]';
 
-/** Used to fix the JScript `[[DontEnum]]` bug. */
+/** Used to fix the JScript '[[DontEnum]]' bug. */
 var shadowProps = [
   'constructor', 'hasOwnProperty', 'isPrototypeOf', 'propertyIsEnumerable',
   'toLocaleString', 'toString', 'valueOf'
@@ -1497,7 +1497,7 @@ var errorProto = Error.prototype,
 var hasOwnProperty = objectProto.hasOwnProperty;
 
 /**
- * Used to resolve the [`toStringTag`](http://ecma-international.org/ecma-262/6.0/#sec-object.prototype.tostring)
+ * Used to resolve the ['toStringTag'](http://ecma-international.org/ecma-262/6.0/#sec-object.prototype.tostring)
  * of values.
  */
 var objToString = objectProto.toString;
@@ -1519,7 +1519,7 @@ arrayEach(shadowProps, function(key) {
 });
 
 /**
- * Creates an array of the own and inherited enumerable property names of `object`.
+ * Creates an array of the own and inherited enumerable property names of 'object'.
  *
  * **Note:** Non-object values are coerced to objects.
  *
@@ -1564,9 +1564,9 @@ function keysIn(object) {
   while (++index < length) {
     result[index] = (index + '');
   }
-  // lodash skips the `constructor` property when it infers it's iterating
-  // over a `prototype` object because IE < 9 can't set the `[[Enumerable]]`
-  // attribute of an existing property and the `constructor` property of a
+  // lodash skips the 'constructor' property when it infers it's iterating
+  // over a 'prototype' object because IE < 9 can't set the '[[Enumerable]]'
+  // attribute of an existing property and the 'constructor' property of a
   // prototype defaults to non-enumerable.
   for (var key in object) {
     if (!(skipProto && key == 'prototype') &&
@@ -1604,11 +1604,11 @@ var baseMerge = _dereq_('../internal/baseMerge'),
 
 /**
  * Recursively merges own enumerable properties of the source object(s), that
- * don't resolve to `undefined` into the destination object. Subsequent sources
- * overwrite property assignments of previous sources. If `customizer` is
+ * don't resolve to 'undefined' into the destination object. Subsequent sources
+ * overwrite property assignments of previous sources. If 'customizer' is
  * provided it's invoked to produce the merged values of the destination and
- * source properties. If `customizer` returns `undefined` merging is handled
- * by the method instead. The `customizer` is bound to `thisArg` and invoked
+ * source properties. If 'customizer' returns 'undefined' merging is handled
+ * by the method instead. The 'customizer' is bound to 'thisArg' and invoked
  * with five arguments: (objectValue, sourceValue, key, object, source).
  *
  * @static
@@ -1617,8 +1617,8 @@ var baseMerge = _dereq_('../internal/baseMerge'),
  * @param {Object} object The destination object.
  * @param {...Object} [sources] The source objects.
  * @param {Function} [customizer] The function to customize assigned values.
- * @param {*} [thisArg] The `this` binding of `customizer`.
- * @returns {Object} Returns `object`.
+ * @param {*} [thisArg] The 'this' binding of 'customizer'.
+ * @returns {Object} Returns 'object'.
  * @example
  *
  * var users = {
@@ -1682,7 +1682,7 @@ var support = {};
   for (var key in new Ctor) { props.push(key); }
 
   /**
-   * Detect if `name` or `message` properties of `Error.prototype` are
+   * Detect if 'name' or 'message' properties of 'Error.prototype' are
    * enumerable by default (IE < 9, Safari < 5.1).
    *
    * @memberOf _.support
@@ -1692,12 +1692,12 @@ var support = {};
     propertyIsEnumerable.call(errorProto, 'name');
 
   /**
-   * Detect if `prototype` properties are enumerable by default.
+   * Detect if 'prototype' properties are enumerable by default.
    *
    * Firefox < 3.6, Opera > 9.50 - Opera < 11.60, and Safari < 5.1
    * (if the prototype or a property on the prototype has been set)
-   * incorrectly set the `[[Enumerable]]` value of a function's `prototype`
-   * property to `true`.
+   * incorrectly set the '[[Enumerable]]' value of a function's 'prototype'
+   * property to 'true'.
    *
    * @memberOf _.support
    * @type boolean
@@ -1705,10 +1705,10 @@ var support = {};
   support.enumPrototypes = propertyIsEnumerable.call(Ctor, 'prototype');
 
   /**
-   * Detect if properties shadowing those on `Object.prototype` are non-enumerable.
+   * Detect if properties shadowing those on 'Object.prototype' are non-enumerable.
    *
    * In IE < 9 an object's own properties, shadowing non-enumerable ones,
-   * are made non-enumerable as well (a.k.a the JScript `[[DontEnum]]` bug).
+   * are made non-enumerable as well (a.k.a the JScript '[[DontEnum]]' bug).
    *
    * @memberOf _.support
    * @type boolean
@@ -1724,14 +1724,14 @@ var support = {};
   support.ownLast = props[0] != 'x';
 
   /**
-   * Detect if `Array#shift` and `Array#splice` augment array-like objects
+   * Detect if 'Array#shift' and 'Array#splice' augment array-like objects
    * correctly.
    *
    * Firefox < 10, compatibility modes of IE 8, and IE < 9 have buggy Array
-   * `shift()` and `splice()` functions that fail to remove the last element,
-   * `value[0]`, of array-like objects even though the "length" property is
-   * set to `0`. The `shift()` method is buggy in compatibility modes of IE 8,
-   * while `splice()` is buggy regardless of mode in IE < 9.
+   * 'shift()' and 'splice()' functions that fail to remove the last element,
+   * 'value[0]', of array-like objects even though the "length" property is
+   * set to '0'. The 'shift()' method is buggy in compatibility modes of IE 8,
+   * while 'splice()' is buggy regardless of mode in IE < 9.
    *
    * @memberOf _.support
    * @type boolean
@@ -1760,7 +1760,7 @@ module.exports = support;
  * @memberOf _
  * @category Utility
  * @param {*} value Any value.
- * @returns {*} Returns `value`.
+ * @returns {*} Returns 'value'.
  * @example
  *
  * var object = { 'user': 'fred' };
@@ -3043,7 +3043,7 @@ var ClickableComponent = (function (_Component) {
     // actionable child elements.
 
     //let className = this.constructor.name;
-    //log.warn(`Adding a child to a ClickableComponent (${className}) can cause issues with assistive technology which supports ARIA, since an element with role="button" cannot have actionable child elements.`);
+    //log.warn('Adding a child to a ClickableComponent (${className}) can cause issues with assistive technology which supports ARIA, since an element with role="button" cannot have actionable child elements.');
 
     return _Component.prototype.addChild.call(this, child, options);
   };
@@ -3145,7 +3145,7 @@ var _component = _dereq_('./component');
 var _component2 = _interopRequireDefault(_component);
 
 /**
- * The `CloseButton` component is a button which fires a "close" event
+ * The 'CloseButton' component is a button which fires a "close" event
  * when it is activated.
  *
  * @extends Button
@@ -3231,23 +3231,23 @@ var _utilsMergeOptionsJs2 = _interopRequireDefault(_utilsMergeOptionsJs);
  * Components are embeddable UI objects that are represented by both a
  * javascript object and an element in the DOM. They can be children of other
  * components, and can have many children themselves.
- * ```js
+ * '''js
  *     // adding a button to the player
  *     var button = player.addChild('button');
  *     button.el(); // -> button element
- * ```
- * ```html
+ * '''
+ * '''html
  *     <div class="video-js">
  *       <div class="vjs-button">Button</div>
  *     </div>
- * ```
+ * '''
  * Components are also event targets.
- * ```js
+ * '''js
  *     button.on('click', function(){
  *       console.log('Button Clicked!');
  *     });
  *     button.trigger('customevent');
- * ```
+ * '''
  *
  * @param {Object} player  Main Player
  * @param {Object=} options Object of option names and values
@@ -3259,7 +3259,7 @@ var Component = (function () {
   function Component(player, options, ready) {
     _classCallCheck(this, Component);
 
-    // The component might be the player itself and we can't pass `this` to super
+    // The component might be the player itself and we can't pass 'this' to super
     if (!player && this.play) {
       this.player_ = player = this; // eslint-disable-line
     } else {
@@ -3361,7 +3361,7 @@ var Component = (function () {
    * Whenever a property is an object on both options objects
    * the two properties will be merged using mergeOptions.
    *
-   * ```js
+   * '''js
    *     Parent.prototype.options_ = {
    *       optionSet: {
    *         'childOne': { 'foo': 'bar', 'asdf': 'fdsa' },
@@ -3378,9 +3378,9 @@ var Component = (function () {
    *     }
    *
    *     this.options(newOptions);
-   * ```
+   * '''
    * RESULT
-   * ```js
+   * '''js
    *     {
    *       optionSet: {
    *         'childOne': { 'foo': 'baz', 'asdf': 'fdsa', 'abc': '123' },
@@ -3389,7 +3389,7 @@ var Component = (function () {
    *         'childFour': {}
    *       }
    *     }
-   * ```
+   * '''
    *
    * @param  {Object} obj Object of new option values
    * @return {Object}     A NEW object of this.options_ and obj merged
@@ -3409,9 +3409,9 @@ var Component = (function () {
 
   /**
    * Get the component's DOM element
-   * ```js
+   * '''js
    *     var domEl = myComponent.el();
-   * ```
+   * '''
    *
    * @return {Element}
    * @method el
@@ -3473,9 +3473,9 @@ var Component = (function () {
 
   /**
    * Get the component's ID
-   * ```js
+   * '''js
    *     var id = myComponent.id();
-   * ```
+   * '''
    *
    * @return {String}
    * @method id
@@ -3487,9 +3487,9 @@ var Component = (function () {
 
   /**
    * Get the component's name. The name is often used to reference the component.
-   * ```js
+   * '''js
    *     var name = myComponent.name();
-   * ```
+   * '''
    *
    * @return {String}
    * @method name
@@ -3501,9 +3501,9 @@ var Component = (function () {
 
   /**
    * Get an array of all child components
-   * ```js
+   * '''js
    *     var kids = myComponent.children();
-   * ```
+   * '''
    *
    * @return {Array} The children
    * @method children
@@ -3537,7 +3537,7 @@ var Component = (function () {
 
   /**
    * Adds a child component inside this component
-   * ```js
+   * '''js
    *     myComponent.el();
    *     // -> <div class='my-component'></div>
    *     myComponent.children();
@@ -3546,16 +3546,16 @@ var Component = (function () {
    *     var myButton = myComponent.addChild('MyButton');
    *     // -> <div class='my-component'><div class="my-button">myButton<div></div>
    *     // -> myButton === myComponent.children()[0];
-   * ```
+   * '''
    * Pass in options for child constructors and options for children of the child
-   * ```js
+   * '''js
    *     var myButton = myComponent.addChild('MyButton', {
    *       text: 'Press Me',
    *       buttonChildExample: {
    *         buttonChildOption: true
    *       }
    *     });
-   * ```
+   * '''
    *
    * @param {String|Component} child The class name or instance of a child to add
    * @param {Object=} options Options, including options to be passed to children of the child.
@@ -3582,7 +3582,7 @@ var Component = (function () {
 
       // Same as above, but true is deprecated so show a warning.
       if (options === true) {
-        _utilsLogJs2['default'].warn('Initializing a child component with `true` is deprecated. Children should be defined in an array when possible, but if necessary use an object instead of `true`.');
+        _utilsLogJs2['default'].warn('Initializing a child component with 'true' is deprecated. Children should be defined in an array when possible, but if necessary use an object instead of 'true'.');
         options = {};
       }
 
@@ -3685,7 +3685,7 @@ var Component = (function () {
 
   /**
    * Add and initialize default child components from options
-   * ```js
+   * '''js
    *     // when an instance of MyComponent is created, all children in options
    *     // will be added to the instance by their name strings and options
    *     MyComponent.prototype.options_ = {
@@ -3706,12 +3706,12 @@ var Component = (function () {
    *         myChildOption: true
    *       }
    *     });
-   * ```
+   * '''
    * The children option can also be an array of
    * child options objects (that also include a 'name' key).
    * This can be used if you have two child components of the
    * same type that need different options.
-   * ```js
+   * '''js
    *     var myComp = new MyComponent(player, {
    *       children: [
    *         'button',
@@ -3725,7 +3725,7 @@ var Component = (function () {
    *         }
    *       ]
    *     });
-   * ```
+   * '''
    *
    * @method initChildren
    */
@@ -3737,7 +3737,7 @@ var Component = (function () {
 
     if (children) {
       (function () {
-        // `this` is `parent`
+        // 'this' is 'parent'
         var parentOptions = _this.options_;
 
         var handleAdd = function handleAdd(child) {
@@ -3837,27 +3837,27 @@ var Component = (function () {
 
   /**
    * Add an event listener to this component's element
-   * ```js
+   * '''js
    *     var myFunc = function(){
    *       var myComponent = this;
    *       // Do something when the event is fired
    *     };
    *
    *     myComponent.on('eventType', myFunc);
-   * ```
+   * '''
    * The context of myFunc will be myComponent unless previously bound.
    * Alternatively, you can add a listener to another element or component.
-   * ```js
+   * '''js
    *     myComponent.on(otherElement, 'eventName', myFunc);
    *     myComponent.on(otherComponent, 'eventName', myFunc);
-   * ```
-   * The benefit of using this over `VjsEvents.on(otherElement, 'eventName', myFunc)`
-   * and `otherComponent.on('eventName', myFunc)` is that this way the listeners
+   * '''
+   * The benefit of using this over 'VjsEvents.on(otherElement, 'eventName', myFunc)'
+   * and 'otherComponent.on('eventName', myFunc)' is that this way the listeners
    * will be automatically cleaned up when either component is disposed.
    * It will also bind myComponent as the context of myFunc.
    * **NOTE**: When using this on elements in the page other than window
    * and document (both permanent), if you remove the element from the DOM
-   * you need to call `myComponent.trigger(el, 'dispose')` on it to clean up
+   * you need to call 'myComponent.trigger(el, 'dispose')' on it to clean up
    * references to it and allow the browser to garbage collect it.
    *
    * @param  {String|Component} first   The event type or other component
@@ -3907,7 +3907,7 @@ var Component = (function () {
             Events.on(target, 'dispose', cleanRemover);
 
             // Should be a component
-            // Not using `instanceof Component` because it makes mock players difficult
+            // Not using 'instanceof Component' because it makes mock players difficult
           } else if (typeof first.on === 'function') {
               // Add the listener to the other component
               target.on(type, fn);
@@ -3921,18 +3921,18 @@ var Component = (function () {
 
   /**
    * Remove an event listener from this component's element
-   * ```js
+   * '''js
    *     myComponent.off('eventType', myFunc);
-   * ```
+   * '''
    * If myFunc is excluded, ALL listeners for the event type will be removed.
    * If eventType is excluded, ALL listeners will be removed from the component.
-   * Alternatively you can use `off` to remove listeners that were added to other
-   * elements or components using `myComponent.on(otherComponent...`.
+   * Alternatively you can use 'off' to remove listeners that were added to other
+   * elements or components using 'myComponent.on(otherComponent...'.
    * In this case both the event type and listener function are REQUIRED.
-   * ```js
+   * '''js
    *     myComponent.off(otherElement, 'eventType', myFunc);
    *     myComponent.off(otherComponent, 'eventType', myFunc);
-   * ```
+   * '''
    *
    * @param  {String=|Component}  first  The event type or other component
    * @param  {Function=|String}       second The listener function or event type
@@ -3970,15 +3970,15 @@ var Component = (function () {
 
   /**
    * Add an event listener to be triggered only once and then removed
-   * ```js
+   * '''js
    *     myComponent.one('eventName', myFunc);
-   * ```
+   * '''
    * Alternatively you can add a listener to another element or component
    * that will be triggered only once.
-   * ```js
+   * '''js
    *     myComponent.one(otherElement, 'eventName', myFunc);
    *     myComponent.one(otherComponent, 'eventName', myFunc);
-   * ```
+   * '''
    *
    * @param  {String|Component}  first   The event type or other component
    * @param  {Function|String}       second  The listener function or event type
@@ -4016,12 +4016,12 @@ var Component = (function () {
 
   /**
    * Trigger an event on an element
-   * ```js
+   * '''js
    *     myComponent.trigger('eventName');
    *     myComponent.trigger({'type':'eventName'});
    *     myComponent.trigger('eventName', {data: 'some data'});
    *     myComponent.trigger({'type':'eventName'}, {data: 'some data'});
-   * ```
+   * '''
    *
    * @param  {Event|Object|String} event  A string (the type) or an event object with a type attribute
    * @param  {Object} [hash] data hash to pass along with the event
@@ -4093,18 +4093,18 @@ var Component = (function () {
   };
 
   /**
-   * Finds a single DOM element matching `selector` within the component's
-   * `contentEl` or another custom context.
+   * Finds a single DOM element matching 'selector' within the component's
+   * 'contentEl' or another custom context.
    *
    * @method $
    * @param  {String} selector
-   *         A valid CSS selector, which will be passed to `querySelector`.
+   *         A valid CSS selector, which will be passed to 'querySelector'.
    *
    * @param  {Element|String} [context=document]
    *         A DOM element within which to query. Can also be a selector
    *         string in which case the first matching element will be used
    *         as context. If missing (or no element matches selector), falls
-   *         back to `document`.
+   *         back to 'document'.
    *
    * @return {Element|null}
    */
@@ -4114,18 +4114,18 @@ var Component = (function () {
   };
 
   /**
-   * Finds a all DOM elements matching `selector` within the component's
-   * `contentEl` or another custom context.
+   * Finds a all DOM elements matching 'selector' within the component's
+   * 'contentEl' or another custom context.
    *
    * @method $$
    * @param  {String} selector
-   *         A valid CSS selector, which will be passed to `querySelectorAll`.
+   *         A valid CSS selector, which will be passed to 'querySelectorAll'.
    *
    * @param  {Element|String} [context=document]
    *         A DOM element within which to query. Can also be a selector
    *         string in which case the first matching element will be used
    *         as context. If missing (or no element matches selector), falls
-   *         back to `document`.
+   *         back to 'document'.
    *
    * @return {NodeList}
    */
@@ -4177,8 +4177,8 @@ var Component = (function () {
    *
    * @param  {String} classToToggle
    * @param  {Boolean|Function} [predicate]
-   *         Can be a function that returns a Boolean. If `true`, the class
-   *         will be added; if `false`, the class will be removed. If not
+   *         Can be a function that returns a Boolean. If 'true', the class
+   *         will be added; if 'false', the class will be removed. If not
    *         given, the class will be added if not present and vice versa.
    *
    * @return {Component}
@@ -4708,12 +4708,12 @@ var Component = (function () {
     // Make sure to check the unobfuscated version for external libs
     var init = props.init || props.init || this.prototype.init || this.prototype.init || function () {};
     // In Resig's simple class inheritance (previously used) the constructor
-    //  is a function that calls `this.init.apply(arguments)`
-    // However that would prevent us from using `ParentObject.call(this);`
-    //  in a Child constructor because the `this` in `this.init`
+    //  is a function that calls 'this.init.apply(arguments)'
+    // However that would prevent us from using 'ParentObject.call(this);'
+    //  in a Child constructor because the 'this' in 'this.init'
     //  would still refer to the Child and cause an infinite loop.
     // We would instead have to do
-    //    `ParentObject.prototype.init.apply(this, arguments);`
+    //    'ParentObject.prototype.init.apply(this, arguments);'
     //  Bleh. We're not creating a _super() function, so it's good to keep
     //  the parent constructor reference simple.
     var subObj = function subObj() {
@@ -5998,7 +5998,7 @@ var MouseTimeDisplay = (function (_Component) {
    * This takes in a horizontal position for the bar and returns a clamped position.
    * Clamped position means that it will keep the position greater than half the width
    * of the tooltip and smaller than the player width minus half the width o the tooltip.
-   * It will only clamp the position if `keepTooltipsInside` option is set.
+   * It will only clamp the position if 'keepTooltipsInside' option is set.
    *
    * @param {Number} position the position the bar wants to be
    * @return {Number} newPosition the (potentially) clamped position
@@ -8687,7 +8687,7 @@ var _utilsLog2 = _interopRequireDefault(_utilsLog);
  * @file extend.js
  *
  * A combination of node inherits and babel's inherits (after transpile).
- * Both work the same but node adds `super_` to the subClass
+ * Both work the same but node adds 'super_' to the subClass
  * and Bable adds the superClass as __proto__. Both seem useful.
  */
 var _inherits = function _inherits(subClass, superClass) {
@@ -8713,10 +8713,10 @@ var _inherits = function _inherits(subClass, superClass) {
 /*
  * Function for subclassing using the same inheritance that
  * videojs uses internally
- * ```js
+ * '''js
  * var Button = videojs.getComponent('Button');
- * ```
- * ```js
+ * '''
+ * '''js
  * var MyButton = videojs.extend(Button, {
  *   constructor: function(player, options) {
  *     Button.call(this, player, options);
@@ -8725,7 +8725,7 @@ var _inherits = function _inherits(subClass, superClass) {
  *     // doSomething
  *   }
  * });
- * ```
+ * '''
  */
 var extendFn = function extendFn(superClass) {
   var subClassMethods = arguments.length <= 1 || arguments[1] === undefined ? {} : arguments[1];
@@ -8904,7 +8904,7 @@ var _objectAssign2 = _interopRequireDefault(_objectAssign);
  */
 function MediaError(value) {
 
-  // Allow redundant calls to this constructor to avoid having `instanceof`
+  // Allow redundant calls to this constructor to avoid having 'instanceof'
   // checks peppered around the code.
   if (value instanceof MediaError) {
     return value;
@@ -8917,7 +8917,7 @@ function MediaError(value) {
     this.message = value;
   } else if (typeof value === 'object') {
 
-    // We assign the `code` property manually because native MediaError objects
+    // We assign the 'code' property manually because native MediaError objects
     // do not expose it as an own/enumerable property of the object.
     if (typeof value.code === 'number') {
       this.code = value.code;
@@ -9328,7 +9328,7 @@ var _objectAssign = _dereq_('object.assign');
 var _objectAssign2 = _interopRequireDefault(_objectAssign);
 
 /**
- * The component for a menu item. `<li>`
+ * The component for a menu item. '<li>'
  *
  * @param {Player|Object} player
  * @param {Object=} options
@@ -9640,7 +9640,7 @@ var MODAL_CLASS_NAME = 'vjs-modal-dialog';
 var ESC = 27;
 
 /**
- * The `ModalDialog` displays over the video and its controls, which blocks
+ * The 'ModalDialog' displays over the video and its controls, which blocks
  * interaction with the player until it is closed.
  *
  * Modal dialogs include a "Close" button and will close when that button
@@ -9673,11 +9673,11 @@ var ModalDialog = (function (_Component) {
    *         A text label for the modal, primarily for accessibility.
    *
    * @param  {Boolean} [options.temporary=true]
-   *         If `true`, the modal can only be opened once; it will be
+   *         If 'true', the modal can only be opened once; it will be
    *         disposed as soon as it's closed.
    *
    * @param  {Boolean} [options.uncloseable=false]
-   *         If `true`, the user will not be able to close the modal
+   *         If 'true', the user will not be able to close the modal
    *         through the UI in the normal ways. Programmatic closing is
    *         still possible.
    *
@@ -9836,7 +9836,7 @@ var ModalDialog = (function (_Component) {
    *
    * @method opened
    * @param  {Boolean} [value]
-   *         If given, it will open (`true`) or close (`false`) the modal.
+   *         If given, it will open ('true') or close ('false') the modal.
    *
    * @return {Boolean}
    */
@@ -9887,7 +9887,7 @@ var ModalDialog = (function (_Component) {
    *
    * @method closeable
    * @param  {Boolean} [value]
-   *         If given as a Boolean, it will set the `closeable` option.
+   *         If given as a Boolean, it will set the 'closeable' option.
    *
    * @return {Boolean}
    */
@@ -9939,7 +9939,7 @@ var ModalDialog = (function (_Component) {
    *
    * @method fillWith
    * @param  {Mixed} [content]
-   *         The same rules apply to this as apply to the `content` option.
+   *         The same rules apply to this as apply to the 'content' option.
    *
    * @return {ModalDialog}
    */
@@ -9995,8 +9995,8 @@ var ModalDialog = (function (_Component) {
    * @method content
    * @param  {Mixed} [value]
    *         If defined, sets the internal content value to be used on the
-   *         next call(s) to `fill`. This value is normalized before being
-   *         inserted. To "clear" the internal content value, pass `null`.
+   *         next call(s) to 'fill'. This value is normalized before being
+   *         inserted. To "clear" the internal content value, pass 'null'.
    *
    * @return {Mixed}
    */
@@ -10165,17 +10165,17 @@ var _techHtml5Js = _dereq_('./tech/html5.js');
 var _techHtml5Js2 = _interopRequireDefault(_techHtml5Js);
 
 /**
- * An instance of the `Player` class is created when any of the Video.js setup methods are used to initialize a video.
- * ```js
+ * An instance of the 'Player' class is created when any of the Video.js setup methods are used to initialize a video.
+ * '''js
  * var myPlayer = videojs('example_video_1');
- * ```
- * In the following example, the `data-setup` attribute tells the Video.js library to create a player instance when the library is ready.
- * ```html
+ * '''
+ * In the following example, the 'data-setup' attribute tells the Video.js library to create a player instance when the library is ready.
+ * '''html
  * <video id="example_video_1" data-setup='{}' controls>
  *   <source src="my-source.mp4" type="video/mp4">
  * </video>
- * ```
- * After an instance has been created it can be accessed globally using `Video('example_video_1')`.
+ * '''
+ * After an instance has been created it can be accessed globally using 'Video('example_video_1')'.
  *
  * @param {Element} tag        The original video tag used for configuring options
  * @param {Object=} options    Object of option names and values
@@ -10213,7 +10213,7 @@ var Player = (function (_Component) {
     options = _objectAssign2['default'](Player.getTagSettings(tag), options);
 
     // Delay the initialization of children because we need to set up
-    // player properties first, and can't use `this` before `super()`
+    // player properties first, and can't use 'this' before 'super()'
     options.initChildren = false;
 
     // Same with creating the element
@@ -10382,9 +10382,9 @@ var Player = (function (_Component) {
 
   /**
    * Destroys the video player and does any necessary cleanup
-   * ```js
+   * '''js
    *     myPlayer.dispose();
-   * ```
+   * '''
    * This is especially helpful if you are dynamically adding and removing videos
    * to/from the DOM.
    *
@@ -10831,7 +10831,7 @@ var Player = (function (_Component) {
   /**
    * Return a reference to the current tech.
    * It will only return a reference to the tech if given an object with the
-   * `IWillNotUseThisInPlugins` property on it. This is try and prevent misuse
+   * 'IWillNotUseThisInPlugins' property on it. This is try and prevent misuse
    * of techs by plugins.
    *
    * @param {Object}
@@ -10843,7 +10843,7 @@ var Player = (function (_Component) {
     if (safety && safety.IWillNotUseThisInPlugins) {
       return this.tech_;
     }
-    var errorText = '\n      Please make sure that you are not using this inside of a plugin.\n      To disable this alert and error, please pass in an object with\n      `IWillNotUseThisInPlugins` to the `tech` method. See\n      https://github.com/videojs/video.js/issues/2617 for more info.\n    ';
+    var errorText = '\n      Please make sure that you are not using this inside of a plugin.\n      To disable this alert and error, please pass in an object with\n      'IWillNotUseThisInPlugins' to the 'tech' method. See\n      https://github.com/videojs/video.js/issues/2617 for more info.\n    ';
     _globalWindow2['default'].alert(errorText);
     throw new Error(errorText);
   };
@@ -10901,7 +10901,7 @@ var Player = (function (_Component) {
    */
 
   Player.prototype.removeTechControlsListeners_ = function removeTechControlsListeners_() {
-    // We don't want to just use `this.off()` because there might be other needed
+    // We don't want to just use 'this.off()' because there might be other needed
     // listeners added by techs that extend this.
     this.off(this.tech_, 'tap', this.handleTechTap_);
     this.off(this.tech_, 'touchstart', this.handleTechTouchStart_);
@@ -10953,7 +10953,7 @@ var Player = (function (_Component) {
    */
 
   Player.prototype.handleTechLoadStart_ = function handleTechLoadStart_() {
-    // TODO: Update to use `emptied` event instead. See #1277.
+    // TODO: Update to use 'emptied' event instead. See #1277.
 
     this.removeClass('vjs-ended');
 
@@ -11103,7 +11103,7 @@ var Player = (function (_Component) {
    * Fired the first time a video is played
    * Not part of the HLS spec, and we're not sure if this is the best
    * implementation yet, so use sparingly. If you don't have a reason to
-   * prevent playback, use `myPlayer.one('play');` instead.
+   * prevent playback, use 'myPlayer.one('play');' instead.
    *
    * @private
    * @method handleTechFirstPlay_
@@ -11494,9 +11494,9 @@ var Player = (function (_Component) {
 
   /**
    * start media playback
-   * ```js
+   * '''js
    *     myPlayer.play();
-   * ```
+   * '''
    *
    * @return {Player} self
    * @method play
@@ -11517,9 +11517,9 @@ var Player = (function (_Component) {
 
   /**
    * Pause the video playback
-   * ```js
+   * '''js
    *     myPlayer.pause();
-   * ```
+   * '''
    *
    * @return {Player} self
    * @method pause
@@ -11532,10 +11532,10 @@ var Player = (function (_Component) {
 
   /**
    * Check if the player is paused
-   * ```js
+   * '''js
    *     var isPaused = myPlayer.paused();
    *     var isPlaying = !myPlayer.paused();
-   * ```
+   * '''
    *
    * @return {Boolean} false if the media is currently playing, or true otherwise
    * @method paused
@@ -11574,12 +11574,12 @@ var Player = (function (_Component) {
 
   /**
    * Get or set the current time (in seconds)
-   * ```js
+   * '''js
    *     // get
    *     var whereYouAt = myPlayer.currentTime();
    *     // set
    *     myPlayer.currentTime(120); // 2 minutes into the video
-   * ```
+   * '''
    *
    * @param  {Number|String=} seconds The time to seek to
    * @return {Number}        The time in seconds, when not setting
@@ -11607,9 +11607,9 @@ var Player = (function (_Component) {
   /**
    * Normally gets the length in time of the video in seconds;
    * in all but the rarest use cases an argument will NOT be passed to the method
-   * ```js
+   * '''js
    *     var lengthOfVideo = myPlayer.duration();
-   * ```
+   * '''
    * **NOTE**: The video must have started loading before the duration can be
    * known, and in the case of Flash, may not be known until the video starts
    * playing.
@@ -11649,9 +11649,9 @@ var Player = (function (_Component) {
 
   /**
    * Calculates how much time is left.
-   * ```js
+   * '''js
    *     var timeLeft = myPlayer.remainingTime();
-   * ```
+   * '''
    * Not a native video element function, but useful
    *
    * @return {Number} The time remaining in seconds
@@ -11670,7 +11670,7 @@ var Player = (function (_Component) {
    * Get a TimeRange object with the times of the video that have been downloaded
    * If you just want the percent of the video that's been downloaded,
    * use bufferedPercent.
-   * ```js
+   * '''js
    *     // Number of different ranges of time have been buffered. Usually 1.
    *     numberOfRanges = bufferedTimeRange.length,
    *     // Time in seconds when the first range starts. Usually 0.
@@ -11679,7 +11679,7 @@ var Player = (function (_Component) {
    *     firstRangeEnd = bufferedTimeRange.end(0),
    *     // Length in seconds of the first time range
    *     firstRangeLength = firstRangeEnd - firstRangeStart;
-   * ```
+   * '''
    *
    * @return {Object} A mock TimeRange object (following HTML spec)
    * @method buffered
@@ -11697,9 +11697,9 @@ var Player = (function (_Component) {
 
   /**
    * Get the percent (as a decimal) of the video that's been downloaded
-   * ```js
+   * '''js
    *     var howMuchIsDownloaded = myPlayer.bufferedPercent();
-   * ```
+   * '''
    * 0 means none, 1 means all.
    * (This method isn't in the HTML5 spec, but it's very convenient)
    *
@@ -11733,12 +11733,12 @@ var Player = (function (_Component) {
 
   /**
    * Get or set the current volume of the media
-   * ```js
+   * '''js
    *     // get
    *     var howLoudIsIt = myPlayer.volume();
    *     // set
    *     myPlayer.volume(0.5); // Set volume to half
-   * ```
+   * '''
    * 0 is off (muted), 1.0 is all the way up, 0.5 is half way.
    *
    * @param  {Number} percentAsDecimal The new volume as a decimal percent
@@ -11765,12 +11765,12 @@ var Player = (function (_Component) {
 
   /**
    * Get the current muted state, or turn mute on or off
-   * ```js
+   * '''js
    *     // get
    *     var isVolumeMuted = myPlayer.muted();
    *     // set
    *     myPlayer.muted(true); // mute the volume
-   * ```
+   * '''
    *
    * @param  {Boolean=} muted True to mute, false to unmute
    * @return {Boolean} True if mute is on, false if not when getting
@@ -11801,12 +11801,12 @@ var Player = (function (_Component) {
 
   /**
    * Check if the player is in fullscreen mode
-   * ```js
+   * '''js
    *     // get
    *     var fullscreenOrNot = myPlayer.isFullscreen();
    *     // set
    *     myPlayer.isFullscreen(true); // tell the player it's in fullscreen
-   * ```
+   * '''
    * NOTE: As of the latest HTML5 spec, isFullscreen is no longer an official
    * property and instead document.fullscreenElement is used. But isFullscreen is
    * still a valuable property for internal player workings.
@@ -11827,9 +11827,9 @@ var Player = (function (_Component) {
 
   /**
    * Increase the size of the video to full screen
-   * ```js
+   * '''js
    *     myPlayer.requestFullscreen();
-   * ```
+   * '''
    * In some browsers, full screen is not supported natively, so it enters
    * "full window mode", where the video fills the browser window.
    * In browsers and devices that support native full screen, sometimes the
@@ -11883,9 +11883,9 @@ var Player = (function (_Component) {
 
   /**
    * Return the video to its normal size after having been in full screen mode
-   * ```js
+   * '''js
    *     myPlayer.exitFullscreen();
-   * ```
+   * '''
    *
    * @return {Player} self
    * @method exitFullscreen
@@ -12013,7 +12013,7 @@ var Player = (function (_Component) {
 
   /**
    * Select source based on tech-order or source-order
-   * Uses source-order selection if `options.sourceOrder` is truthy. Otherwise,
+   * Uses source-order selection if 'options.sourceOrder' is truthy. Otherwise,
    * defaults to tech-order selection
    *
    * @param {Array} sources The sources for a media asset
@@ -12024,10 +12024,10 @@ var Player = (function (_Component) {
   Player.prototype.selectSource = function selectSource(sources) {
     var _this3 = this;
 
-    // Get only the techs specified in `techOrder` that exist and are supported by the
+    // Get only the techs specified in 'techOrder' that exist and are supported by the
     // current platform
     var techs = this.options_.techOrder.map(_utilsToTitleCaseJs2['default']).map(function (techName) {
-      // `Component.getComponent(...)` is for support of old behavior of techs
+      // 'Component.getComponent(...)' is for support of old behavior of techs
       // being registered as components.
       // Remove once that deprecated behavior is removed.
       return [techName, _techTechJs2['default'].getTech(techName) || _componentJs2['default'].getComponent(techName)];
@@ -12045,8 +12045,8 @@ var Player = (function (_Component) {
       return false;
     });
 
-    // Iterate over each `innerArray` element once per `outerArray` element and execute
-    // `tester` with both. If `tester` returns a non-falsy value, exit early and return
+    // Iterate over each 'innerArray' element once per 'outerArray' element and execute
+    // 'tester' with both. If 'tester' returns a non-falsy value, exit early and return
     // that value.
     var findFirstPassingTechSourcePair = function findFirstPassingTechSourcePair(outerArray, innerArray, tester) {
       var found = undefined;
@@ -12079,7 +12079,7 @@ var Player = (function (_Component) {
       }
     };
 
-    // Depending on the truthiness of `options.sourceOrder`, we swap the order of techs and sources
+    // Depending on the truthiness of 'options.sourceOrder', we swap the order of techs and sources
     // to select from them based on their priority.
     if (this.options_.sourceOrder) {
       // Source-first ordering
@@ -12098,26 +12098,26 @@ var Player = (function (_Component) {
    * **URL String**: A URL to the the video file. Use this method if you are sure
    * the current playback technology (HTML5/Flash) can support the source you
    * provide. Currently only MP4 files can be used in both HTML5 and Flash.
-   * ```js
+   * '''js
    *     myPlayer.src("http://www.example.com/path/to/video.mp4");
-   * ```
+   * '''
    * **Source Object (or element):* * A javascript object containing information
    * about the source file. Use this method if you want the player to determine if
    * it can support the file using the type information.
-   * ```js
+   * '''js
    *     myPlayer.src({ type: "video/mp4", src: "http://www.example.com/path/to/video.mp4" });
-   * ```
+   * '''
    * **Array of Source Objects:* * To provide multiple versions of the source so
    * that it can be played using HTML5 across browsers you can use an array of
    * source objects. Video.js will detect which version is supported and load that
    * file.
-   * ```js
+   * '''js
    *     myPlayer.src([
    *       { type: "video/mp4", src: "http://www.example.com/path/to/video.mp4" },
    *       { type: "video/webm", src: "http://www.example.com/path/to/video.webm" },
    *       { type: "video/ogg", src: "http://www.example.com/path/to/video.ogv" }
    *     ]);
-   * ```
+   * '''
    *
    * @param  {String|Object|Array=} source The source URL, object, or array of sources
    * @return {String} The current video source when getting
@@ -12232,7 +12232,7 @@ var Player = (function (_Component) {
 
   /**
    * Reset the player. Loads the first tech in the techOrder,
-   * and calls `reset` on the tech`.
+   * and calls 'reset' on the tech'.
    *
    * @return {Player} Returns the player
    * @method reset
@@ -12246,7 +12246,7 @@ var Player = (function (_Component) {
 
   /**
    * Returns the fully qualified URL of the current source value e.g. http://mysite.com/video.mp4
-   * Can be used in conjuction with `currentType` to assist in rebuilding the current source object.
+   * Can be used in conjuction with 'currentType' to assist in rebuilding the current source object.
    *
    * @return {String} The current source
    * @method currentSrc
@@ -12327,12 +12327,12 @@ var Player = (function (_Component) {
    * Get or set the poster image source url
    *
    * ##### EXAMPLE:
-   * ```js
+   * '''js
    *     // get
    *     var currentPoster = myPlayer.poster();
    *     // set
    *     myPlayer.poster('http://example.com/myImage.jpg');
-   * ```
+   * '''
    *
    * @param  {String=} src Poster image source URL
    * @return {String} poster URL when getting
@@ -12664,7 +12664,7 @@ var Player = (function (_Component) {
 
     // Run an interval every 250 milliseconds instead of stuffing everything into
     // the mousemove/touchmove function itself, to prevent performance degradation.
-    // `this.reportUserActivity` simply sets this.userActivity_ to true, which
+    // 'this.reportUserActivity' simply sets this.userActivity_ to true, which
     // then gets picked up by this loop
     // http://ejohn.org/blog/learning-from-twitter/
     var inactivityTimeout = undefined;
@@ -13009,18 +13009,18 @@ var Player = (function (_Component) {
   };
 
   /**
-   * Creates a simple modal dialog (an instance of the `ModalDialog`
+   * Creates a simple modal dialog (an instance of the 'ModalDialog'
    * component) that immediately overlays the player with arbitrary
    * content and removes itself when closed.
    *
    * @param {String|Function|Element|Array|Null} content
-   *        Same as `ModalDialog#content`'s param of the same name.
+   *        Same as 'ModalDialog#content''s param of the same name.
    *
    *        The most straight-forward usage is to provide a string or DOM
    *        element.
    *
    * @param {Object} [options]
-   *        Extra options which will be passed on to the `ModalDialog`.
+   *        Extra options which will be passed on to the 'ModalDialog'.
    *
    * @return {ModalDialog}
    */
@@ -13568,8 +13568,8 @@ var PosterImage = (function (_ClickableComponent) {
     });
 
     // To ensure the poster image resizes while maintaining its original aspect
-    // ratio, use a div with `background-size` when available. For browsers that
-    // do not support `background-size` (e.g. IE8), fall back on using a regular
+    // ratio, use a div with 'background-size' when available. For browsers that
+    // do not support 'background-size' (e.g. IE8), fall back on using a regular
     // img element.
     if (!browser.BACKGROUND_SIZE_SUPPORTED) {
       this.fallbackImg_ = Dom.createEl('img');
@@ -14351,7 +14351,7 @@ var Flash = (function (_Tech) {
       return this.currentSrc();
     }
 
-    // Setting src through `src` not `setSrc` will be deprecated
+    // Setting src through 'src' not 'setSrc' will be deprecated
     return this.setSrc(_src);
   };
 
@@ -15522,7 +15522,7 @@ var Html5 = (function (_Tech) {
     if (_src === undefined) {
       return this.el_.src;
     } else {
-      // Setting src through `src` instead of `setSrc` will be deprecated
+      // Setting src through 'src' instead of 'setSrc' will be deprecated
       this.setSrc(_src);
     }
   };
@@ -15550,7 +15550,7 @@ var Html5 = (function (_Tech) {
   };
 
   /**
-   * Reset the tech. Removes all sources and calls `load`.
+   * Reset the tech. Removes all sources and calls 'load'.
    *
    * @method reset
    */
@@ -16248,7 +16248,7 @@ Html5.disposeMediaElement = function (el) {
     el.removeChild(el.firstChild);
   }
 
-  // remove any src reference. not setting `src=''` because that causes a warning
+  // remove any src reference. not setting 'src=''' because that causes a warning
   // in firefox
   el.removeAttribute('src');
 
@@ -16278,7 +16278,7 @@ Html5.resetMediaElement = function (el) {
   }
 
   // remove any src reference.
-  // not setting `src=''` because that throws an error
+  // not setting 'src=''' because that throws an error
   el.removeAttribute('src');
 
   if (typeof el.load === 'function') {
@@ -17060,7 +17060,7 @@ var Tech = (function (_Component) {
 
   /*
    * Return whether the argument is a Tech or not.
-   * Can be passed either a Class like `Html5` or a instance like `player.tech_`
+   * Can be passed either a Class like 'Html5' or a instance like 'player.tech_'
    *
    * @param {Object} component An item to check
    * @return {Boolean}         Whether it is a tech or not
@@ -18328,7 +18328,7 @@ var trackToJson_ = function trackToJson_(track) {
 /**
  * Examine a tech and return a JSON-compatible javascript array that
  * represents the state of all text tracks currently configured. The
- * return array is compatible with `jsonToTextTracks`.
+ * return array is compatible with 'jsonToTextTracks'.
  * @param tech {tech} the tech object to query
  * @return {Array} a serializable javascript representation of the
  * @function textTracksToJson
@@ -18357,7 +18357,7 @@ var textTracksToJson = function textTracksToJson(tech) {
  * Creates a set of remote text tracks on a tech based on an array of
  * javascript text track representations.
  * @param json {Array} an array of text track representation objects,
- * like those that would be produced by `textTracksToJson`
+ * like those that would be produced by 'textTracksToJson'
  * @param tech {tech} the tech to create text tracks on
  * @function jsonToTextTracks
  */
@@ -18589,7 +18589,7 @@ var TextTrackSettings = (function (_Component) {
     _Component.call(this, player, options);
     this.hide();
 
-    // Grab `persistTextTrackSettings` from the player options if not passed in child options
+    // Grab 'persistTextTrackSettings' from the player options if not passed in child options
     if (options.persistTextTrackSettings === undefined) {
       this.options_.persistTextTrackSettings = this.options_.playerOptions.persistTextTrackSettings;
     }
@@ -20300,7 +20300,7 @@ function addElClass(element, classToAdd) {
   if (element.classList) {
     element.classList.add(classToAdd);
 
-    // Don't need to `throwIfWhitespace` here because `hasElClass` will do it
+    // Don't need to 'throwIfWhitespace' here because 'hasElClass' will do it
     // in the case of classList not being supported.
   } else if (!hasElClass(element, classToAdd)) {
       element.className = (element.className + ' ' + classToAdd).trim();
@@ -20338,16 +20338,16 @@ function removeElClass(element, classToRemove) {
  * @param    {Element} element
  * @param    {String} classToToggle
  * @param    {Boolean|Function} [predicate]
- *           Can be a function that returns a Boolean. If `true`, the class
- *           will be added; if `false`, the class will be removed. If not
+ *           Can be a function that returns a Boolean. If 'true', the class
+ *           will be added; if 'false', the class will be removed. If not
  *           given, the class will be added if not present and vice versa.
  */
 
 function toggleElClass(element, classToToggle, predicate) {
 
-  // This CANNOT use `classList` internally because IE does not support the
-  // second parameter to the `classList.toggle()` method! Which is fine because
-  // `classList` will be used by the add/remove functions.
+  // This CANNOT use 'classList' internally because IE does not support the
+  // second parameter to the 'classList.toggle()' method! Which is fine because
+  // 'classList' will be used by the add/remove functions.
   var has = hasElClass(element, classToToggle);
 
   if (typeof predicate === 'function') {
@@ -20583,7 +20583,7 @@ function emptyEl(el) {
  * Normalizes content for eventual insertion into the DOM.
  *
  * This allows a wide range of content definition methods, but protects
- * from falling into the trap of simply writing to `innerHTML`, which is
+ * from falling into the trap of simply writing to 'innerHTML', which is
  * an XSS concern.
  *
  * The content for an element can be passed in multiple types and
@@ -20644,7 +20644,7 @@ function normalizeContent(content) {
  * @function appendContent
  * @param    {Element} el
  * @param    {String|Element|TextNode|Array|Function} content
- *           See: `normalizeContent`
+ *           See: 'normalizeContent'
  * @return   {Element}
  */
 
@@ -20657,12 +20657,12 @@ function appendContent(el, content) {
 
 /**
  * Normalizes and inserts content into an element; this is identical to
- * `appendContent()`, except it empties the element first.
+ * 'appendContent()', except it empties the element first.
  *
  * @function insertContent
  * @param    {Element} el
  * @param    {String|Element|TextNode|Array|Function} content
- *           See: `normalizeContent`
+ *           See: 'normalizeContent'
  * @return   {Element}
  */
 
@@ -20671,18 +20671,18 @@ function insertContent(el, content) {
 }
 
 /**
- * Finds a single DOM element matching `selector` within the optional
- * `context` of another DOM element (defaulting to `document`).
+ * Finds a single DOM element matching 'selector' within the optional
+ * 'context' of another DOM element (defaulting to 'document').
  *
  * @function $
  * @param    {String} selector
- *           A valid CSS selector, which will be passed to `querySelector`.
+ *           A valid CSS selector, which will be passed to 'querySelector'.
  *
  * @param    {Element|String} [context=document]
  *           A DOM element within which to query. Can also be a selector
  *           string in which case the first matching element will be used
  *           as context. If missing (or no element matches selector), falls
- *           back to `document`.
+ *           back to 'document'.
  *
  * @return   {Element|null}
  */
@@ -20690,18 +20690,18 @@ var $ = createQuerier('querySelector');
 
 exports.$ = $;
 /**
- * Finds a all DOM elements matching `selector` within the optional
- * `context` of another DOM element (defaulting to `document`).
+ * Finds a all DOM elements matching 'selector' within the optional
+ * 'context' of another DOM element (defaulting to 'document').
  *
  * @function $$
  * @param    {String} selector
- *           A valid CSS selector, which will be passed to `querySelectorAll`.
+ *           A valid CSS selector, which will be passed to 'querySelectorAll'.
  *
  * @param    {Element|String} [context=document]
  *           A DOM element within which to query. Can also be a selector
  *           string in which case the first matching element will be used
  *           as context. If missing (or no element matches selector), falls
- *           back to `document`.
+ *           back to 'document'.
  *
  * @return   {NodeList}
  */
@@ -21277,7 +21277,7 @@ var logByType = function logByType(type, args) {
   var console = _globalWindow2['default'].console;
 
   // If there's no console then don't try to output messages, but they will
-  // still be stored in `log.history`.
+  // still be stored in 'log.history'.
   //
   // Was setting these once outside of this function, but containing them
   // in the function makes it easier to test cases where console doesn't exist
@@ -21413,7 +21413,7 @@ var customizer = function customizer(destination, source) {
 
 /**
  * Merge one or more options objects, recursively merging **only**
- * plain object properties.  Previously `deepMerge`.
+ * plain object properties.  Previously 'deepMerge'.
  *
  * @param  {...Object} source One or more objects to merge
  * @returns {Object}          a new object that is the union of all
@@ -21823,10 +21823,10 @@ if (typeof HTMLVideoElement === 'undefined') {
 /**
  * Doubles as the main function for users to create a player instance and also
  * the main library object.
- * The `videojs` function can be used to initialize or retrieve a player.
- * ```js
+ * The 'videojs' function can be used to initialize or retrieve a player.
+ * '''js
  *     var myPlayer = videojs('my_video_id');
- * ```
+ * '''
  *
  * @param  {String|Element} id      Video element or video element ID
  * @param  {Object=} options        Optional options object for config/settings
@@ -21909,10 +21909,10 @@ videojs.VERSION = '5.11.7';
  * The global options object. These are the settings that take effect
  * if no overrides are specified when the player is created.
  *
- * ```js
+ * '''js
  *     videojs.options.autoplay = true
  *     // -> all players will autoplay by default
- * ```
+ * '''
  *
  * @type {Object}
  */
@@ -21939,11 +21939,11 @@ videojs.players = _player2['default'].players;
 
 /**
  * Get a component class object by name
- * ```js
+ * '''js
  *     var VjsButton = videojs.getComponent('Button');
  *     // Create a new instance of the component
  *     var myButton = new VjsButton(myPlayer);
- * ```
+ * '''
  *
  * @return {Component} Component identified by name
  * @mixes videojs
@@ -21955,10 +21955,10 @@ videojs.getComponent = _component2['default'].getComponent;
  * Register a component so it can referred to by name
  * Used when adding to other
  * components, either through addChild
- * `component.addChild('myComponent')`
+ * 'component.addChild('myComponent')'
  * or through default children options
- * `{ children: ['myComponent'] }`.
- * ```js
+ * '{ children: ['myComponent'] }'.
+ * '''js
  *     // Get a component to subclass
  *     var VjsButton = videojs.getComponent('Button');
  *     // Subclass the component (see 'extend' doc for more info)
@@ -21967,9 +21967,9 @@ videojs.getComponent = _component2['default'].getComponent;
  *     VjsButton.registerComponent('MySepcialButton', MySepcialButton);
  *     // (optionally) add the new component as a default player child
  *     myPlayer.addChild('MySepcialButton');
- * ```
+ * '''
  * NOTE: You could also just initialize the component before adding.
- * `component.addChild(new MyComponent());`
+ * 'component.addChild(new MyComponent());'
  *
  * @param {String} The class name of the component
  * @param {Component} The component class
@@ -21987,11 +21987,11 @@ videojs.registerComponent = function (name, comp) {
 
 /**
  * Get a Tech class object by name
- * ```js
+ * '''js
  *     var Html5 = videojs.getTech('Html5');
  *     // Create a new instance of the component
  *     var html5 = new Html5(options);
- * ```
+ * '''
  *
  * @return {Tech} Tech identified by name
  * @mixes videojs
@@ -22003,7 +22003,7 @@ videojs.getTech = _techTechJs2['default'].getTech;
  * Register a Tech so it can referred to by name.
  * This is used in the tech order for the player.
  *
- * ```js
+ * '''js
  *     // get the Html5 Tech
  *     var Html5 = videojs.getTech('Html5');
  *     var MyTech = videojs.extend(Html5, {});
@@ -22012,7 +22012,7 @@ videojs.getTech = _techTechJs2['default'].getTech;
  *     var player = videojs('myplayer', {
  *       techOrder: ['myTech', 'html5']
  *     });
- * ```
+ * '''
  *
  * @param {String} The class name of the tech
  * @param {Tech} The tech class
@@ -22032,7 +22032,7 @@ videojs.browser = browser;
 
 /**
  * Whether or not the browser supports touch events. Included for backward
- * compatibility with 4.x, but deprecated. Use `videojs.browser.TOUCH_ENABLED`
+ * compatibility with 4.x, but deprecated. Use 'videojs.browser.TOUCH_ENABLED'
  * instead going forward.
  *
  * @deprecated
@@ -22042,8 +22042,8 @@ videojs.TOUCH_ENABLED = browser.TOUCH_ENABLED;
 
 /**
  * Subclass an existing class
- * Mimics ES6 subclassing with the `extend` keyword
- * ```js
+ * Mimics ES6 subclassing with the 'extend' keyword
+ * '''js
  *     // Create a basic javascript 'class'
  *     function MyClass(name){
  *       // Set a property at initialization
@@ -22064,11 +22064,11 @@ videojs.TOUCH_ENABLED = browser.TOUCH_ENABLED;
  *     // Create an instance of the new sub class
  *     var myInstance = new MySubClass('John');
  *     myInstance.sayMyName(); // -> should alert "John"
- * ```
+ * '''
  *
  * @param {Function} The Class to subclass
  * @param {Object} An object including instace methods for the new class
- *                   Optionally including a `constructor` function
+ *                   Optionally including a 'constructor' function
  * @return {Function} The newly created subclass
  * @mixes videojs
  * @method extend
@@ -22080,7 +22080,7 @@ videojs.extend = _extendJs2['default'];
  * Performs a deep merge like lodash.merge but **only merges plain objects**
  * (not arrays, elements, anything else)
  * Other values will be copied directly from the second object.
- * ```js
+ * '''js
  *     var defaultOptions = {
  *       foo: true,
  *       bar: {
@@ -22098,7 +22098,7 @@ videojs.extend = _extendJs2['default'];
  *     // result.foo = false;
  *     // result.bar.a = true;
  *     // result.bar.b = [4,5,6];
- * ```
+ * '''
  *
  * @param {Object} defaults  The options object whose values will be overriden
  * @param {Object} overrides The options object with values to override the first
@@ -22118,7 +22118,7 @@ videojs.mergeOptions = _srcJsUtilsMergeOptionsJs2['default'];
  *     });
  *
  * NOTE: as of v5.0 we require an ES5 shim, so you should use the native
- * `function(){}.bind(newContext);` instead of this.
+ * 'function(){}.bind(newContext);' instead of this.
  *
  * @param  {*}        context The object to bind as scope
  * @param  {Function} fn      The function to be bound to a scope
@@ -22133,7 +22133,7 @@ videojs.bind = Fn.bind;
  * in the player options, or the plugin function on the player instance is
  * called.
  * **See the plugin guide in the docs for a more detailed example**
- * ```js
+ * '''js
  *     // Make a plugin that alerts when the player plays
  *     videojs.plugin('myPlugin', function(myPluginOptions) {
  *       myPluginOptions = myPluginOptions || {};
@@ -22165,7 +22165,7 @@ videojs.bind = Fn.bind;
  *     });
  *     // Click play
  *     // --> Should alert 'Plugin added later!'
- * ```
+ * '''
  *
  * @param {String} name The plugin name
  * @param {Function} fn The plugin function that will be called with options
@@ -22176,9 +22176,9 @@ videojs.plugin = _pluginsJs2['default'];
 
 /**
  * Adding languages so that they're available to all players.
- * ```js
+ * '''js
  *     videojs.addLanguage('es', { 'Hello': 'Hola' });
- * ```
+ * '''
  *
  * @param  {String} code The language code or dictionary property
  * @param  {Object} data The data values to be translated
@@ -22401,8 +22401,8 @@ videojs.removeClass = Dom.removeElClass;
  * @param  {Element} element
  * @param  {String} classToToggle
  * @param  {Boolean|Function} [predicate]
- *         Can be a function that returns a Boolean. If `true`, the class
- *         will be added; if `false`, the class will be removed. If not
+ *         Can be a function that returns a Boolean. If 'true', the class
+ *         will be added; if 'false', the class will be removed. If not
  *         given, the class will be added if not present and vice versa.
  */
 videojs.toggleClass = Dom.toggleElClass;
@@ -22466,7 +22466,7 @@ videojs.appendContent = Dom.appendContent;
 
 /**
  * Normalizes and inserts content into an element; this is identical to
- * `appendContent()`, except it empties the element first.
+ * 'appendContent()', except it empties the element first.
  *
  * The content for an element can be passed in multiple types and
  * combinations, whose behavior is as follows:
