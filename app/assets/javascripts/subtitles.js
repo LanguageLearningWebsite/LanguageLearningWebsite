@@ -1,34 +1,36 @@
-$.expr[':'].textEquals = $.expr.createPseudo(function(arg) {
-    return function( elem ) {
-        return $(elem).text().toLowerCase().match("^"+arg.toLowerCase()+"$");
-    };
+"use strict";
+
+$.expr[':'].textEquals = $.expr.createPseudo(function (arg) {
+  return function (elem) {
+    return $(elem).text().toLowerCase().match("^" + arg.toLowerCase() + "$");
+  };
 });
 
 function updateTranscript(id) {
-  let player = videojs(id);
-  player.on('loadedmetadata', function(){
+  var player = videojs(id);
+  player.on('loadedmetadata', function () {
     // Set up any options.
-    let options = {
+    var options = {
       showTitle: false,
-      showTrackSelector: false,
+      showTrackSelector: false
     };
 
     // Initialize the plugin.
-    let transcript = this.transcript(options);
+    var transcript = this.transcript(options);
 
     // Then attach the widget to the page.
-    let transcriptContainer = document.querySelector('#transcript');
+    var transcriptContainer = document.querySelector('#transcript');
     transcriptContainer.appendChild(transcript.el());
 
     $('#transcript').hide();
 
     var Button = videojs.getComponent('Button');
     var MyButton = videojs.extend(Button, {
-      constructor: function() {
+      constructor: function constructor() {
         Button.apply(this, arguments);
         /* initialize your button */
       },
-      handleClick: function() {
+      handleClick: function handleClick() {
         /* do something on click */
         $('#transcript').toggle();
         $('.video-container').toggleClass('width-100');
@@ -38,16 +40,16 @@ function updateTranscript(id) {
       }
     });
     videojs.registerComponent('MyButton', MyButton);
-    let controlBar = this.getChild('controlBar');
-    let myButtonInstance = controlBar.addChild('myButton', {}, 14);
+    var controlBar = this.getChild('controlBar');
+    var myButtonInstance = controlBar.addChild('myButton', {}, 14);
     myButtonInstance.addClass("vjs-transcript-toggle-button");
     myButtonInstance.el().setAttribute("title", "Transcript");
   });
 }
 
 function updateCaptionLine(metadataTrack, disp) {
-  let myCues = metadataTrack.activeCues;      // activeCues is an array of current cues.
-  let text;
+  var myCues = metadataTrack.activeCues; // activeCues is an array of current cues.
+  var text = void 0;
   if (myCues && myCues[0]) {
     text = myCues[0].text;
     if (metadataTrack.label === 'simplified-characters') {
@@ -57,8 +59,8 @@ function updateCaptionLine(metadataTrack, disp) {
     }
     $('.word').click(function (e) {
       $('.word.active').removeClass('active');
-      let word = e.target.innerText.toLowerCase();
-      $(".word:textEquals("+word+")").addClass('active');
+      var word = e.target.innerText.toLowerCase();
+      $(".word:textEquals(" + word + ")").addClass('active');
 
       $.ajax({
         url: '/api/v1/translate?',
@@ -66,10 +68,10 @@ function updateCaptionLine(metadataTrack, disp) {
         async: true,
         dataType: 'json',
         data: {
-          phrase: word,
+          phrase: word
         },
         'crossDomain': true,
-        'success': function (data) {
+        'success': function success(data) {
           $('#dictionary').empty();
           if (data.length === 0) {
             $('#dictionary').append("Unable to look up the word!");
@@ -77,10 +79,10 @@ function updateCaptionLine(metadataTrack, disp) {
             $('#dictionary').append("<h5>Simplified: " + data[0].simplified + "</h5>");
             $('#dictionary').append("<h5>Traditional: " + data[0].traditional + "</h5>");
             $('#dictionary').append("<ol id='definitionList'></ol>");
-            let i = 0;
+            var i = 0;
             for (; i < data.length; i++) {
-              pronunciation = "<b>Pronunciation:</b> " + data[i].pronunciation
-              definition = "<br><b>Definition:</b> " + data[i].definitions
+              pronunciation = "<b>Pronunciation:</b> " + data[i].pronunciation;
+              definition = "<br><b>Definition:</b> " + data[i].definitions;
               $("#definitionList").append("<li>" + pronunciation + definition + "</li>");
             };
           }
@@ -93,14 +95,14 @@ function updateCaptionLine(metadataTrack, disp) {
 }
 
 function updateCaption(id, captionLanguage, placeHolder) {
-  let player = videojs(id);
-  player.on('loadedmetadata', function() {
-    let tracks = this.textTracks();
-    let metadataTrack;
-    let disp = document.getElementById(placeHolder);
+  var player = videojs(id);
+  player.on('loadedmetadata', function () {
+    var tracks = this.textTracks();
+    var metadataTrack = void 0;
+    var disp = document.getElementById(placeHolder);
 
-    for (let i = 0; i < tracks.length; i++) {
-      let track = tracks[i];
+    for (var i = 0; i < tracks.length; i++) {
+      var track = tracks[i];
       if (track.kind === 'captions' && track.label === captionLanguage) {
         metadataTrack = track;
       };
@@ -108,20 +110,20 @@ function updateCaption(id, captionLanguage, placeHolder) {
     };
 
     if (captionLanguage !== 'English') {
-      tracks.addEventListener('change', function() {
-        for (let i = 0; i < tracks.length; i++) {
-          let track = tracks[i];
-          if (track.kind === 'captions' && track.mode === 'showing') {
-            metadataTrack = track;
+      tracks.addEventListener('change', function () {
+        for (var _i = 0; _i < tracks.length; _i++) {
+          var _track = tracks[_i];
+          if (_track.kind === 'captions' && _track.mode === 'showing') {
+            metadataTrack = _track;
           }
-          track.mode = 'hidden';
+          _track.mode = 'hidden';
         }
-        updateCaptionLine(metadataTrack, disp)
+        updateCaptionLine(metadataTrack, disp);
       });
     }
 
-    metadataTrack.addEventListener('cuechange', function() {
-      updateCaptionLine(metadataTrack, disp)
+    metadataTrack.addEventListener('cuechange', function () {
+      updateCaptionLine(metadataTrack, disp);
     });
   });
 }
