@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
   get 'pages/about'
   get 'pages/record'
+
   get '/mycourses' => 'course#list'
   post '/enroll' => 'enroll#enroll'
 
@@ -24,6 +25,7 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do
     namespace :v1, constraints: ApiConstraints.new(version: 1, default: true) do
       get '/translate' => 'translate#show'
+      get '/aws_presigned_url' => 'aws#presigned_url'
     end
   end
 end
