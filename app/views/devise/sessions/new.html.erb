@@ -11,10 +11,10 @@
     <!-- <%= f.text_field :username, autofocus: true , class: "form-control validate" %> -->
     <%= f.password_field :password, autocomplete: "off", class: "form-control validate", placeholder:"password" %>
     <% if devise_mapping.rememberable? -%>
-      <%= f.check_box :remember_me %> <%= f.label :remember_me %>
+      <%= f.check_box :remember_me %> <%= f.label :remember_me,  :style => "font-size: 14px;" %>
     <% end -%>
     <%= f.submit "Sign in", class: 'btn btn-lg btn-primary btn-block btn-signin'%>
-    <%= link_to "Forgot password", new_user_password_path %>
+    <%= link_to "Forgot password", new_user_password_path, :style => "font-size: 14px;" %>
   <% end %>
 </div>
 
