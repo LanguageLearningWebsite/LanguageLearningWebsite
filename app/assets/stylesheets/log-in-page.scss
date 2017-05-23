@@ -6,7 +6,7 @@
  */
 body {
     background-repeat: no-repeat;
-    background-image: linear-gradient(rgb(104, 145, 162), rgb(12, 97, 33));
+    /* background-image: linear-gradient(rgb(104, 145, 162), rgb(12, 97, 33)); */
 }
 
 .card-container.card {
@@ -42,8 +42,9 @@ body {
 }
 
 .profile-img-card {
-    width: 96px;
-    height: 96px;
+    background: lightcoral;
+    width: 120px;
+    height: 120px;
     margin: 0 auto 10px;
     display: block;
     -moz-border-radius: 50%;
@@ -107,7 +108,7 @@ body {
 
 .btn.btn-signin {
     /*background-color: #4d90fe; */
-    background-color: rgb(104, 145, 162);
+    background-color: lightcoral;
     /* background-color: linear-gradient(rgb(104, 145, 162), rgb(12, 97, 33));*/
     padding: 0px;
     font-weight: 700;
@@ -126,7 +127,7 @@ body {
 .btn.btn-signin:hover,
 .btn.btn-signin:active,
 .btn.btn-signin:focus {
-    background-color: rgb(12, 97, 33);
+    background-color: #708090;
 }
 
 .forgot-password {

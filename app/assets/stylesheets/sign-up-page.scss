@@ -3,7 +3,7 @@ change sign up page
 */
 body {
   background-repeat: no-repeat;
-  background-image: linear-gradient(rgb(104, 145, 162), rgb(12, 97, 33));
+  background-image: gainsboro;
 }
 
 form { margin: 0px 10px; }
@@ -44,3 +44,14 @@ h2 {
 .left { float: left; }
 
 .right { float: right; }
+
+.btn.btn-primary{
+  background: lightcoral;
+  
+}
+.btn.btn-primary:hover,
+.btn.btn-primary:active,
+
+.btn.btn-primary:focus {
+    background-color: #708090;
+}
