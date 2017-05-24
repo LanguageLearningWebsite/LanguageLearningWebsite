@@ -1,0 +1,38 @@
+body{
+  text-align: center;
+}
+
+h2 {
+  padding: 40px 50px;
+  font-family:Verdana, Arial, Helvetica, sans-serif;
+}
+
+.btn-update{
+  background: #228B22;
+  padding: 10px 120px;
+}
+.btn-cancel{
+  background: #B22222;
+  padding: 10px 79px;
+}
+
+.btn.btn-primary:focus {
+    background-color: #A9A9A9;
+}
+
+.btn-back{
+margin: auto;
+}
+
+label{
+  float:left;
+  text-align: right;
+}
+.form-text{
+  float: left;
+}
+.left { float: left; }
+
+.right { float: right; }
+
+form { margin: 0px 10px; }
