@@ -1,0 +1,36 @@
+body{
+  text-align: center;
+}
+
+h2 {
+  padding: 40px 50px;
+  font-family:Verdana, Arial, Helvetica, sans-serif;
+}
+
+.btn-update{
+  padding: 10px 100px;
+  margin-bottom: 20px;
+}
+.btn-cancel{
+  padding: 10px 59px;
+}
+
+.btn.btn-primary:focus {
+    background-color: #A9A9A9;
+}
+
+.card-container{
+  max-width: 500px;
+  padding: 20px 40px;
+  margin:auto;
+}
+
+label{
+  float:left;
+  text-align: right;
+}
+.form-text{
+  float: left;
+}
+
+form { margin: 0px 10px; }
