@@ -23,7 +23,7 @@
 }
 
 .video-js .vjs-load-progress div,.vjs-seeking .vjs-big-play-button,.vjs-waiting .vjs-big-play-button {
-    display: none!important
+    display: none !important
 }
 
 .video-js .vjs-mouse-display:after,.video-js .vjs-play-progress:after {

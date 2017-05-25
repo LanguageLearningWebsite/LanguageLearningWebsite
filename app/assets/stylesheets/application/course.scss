@@ -1,3 +1,7 @@
+// Place all the styles related to the Course controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
 $accent: #ffcc00;
 //$accent: #52be7f;
 $cardBackground: darken(#e1bee7  ,5);
@@ -7,7 +11,7 @@ section, footer, nav {
   display: block;
 }
 
-.wrapper{
+.wrapper {
   -webkit-text-size-adjust: none;
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   font-weight: 300;
@@ -15,10 +19,12 @@ section, footer, nav {
   line-height: 1.4em;
   margin: auto;
 }
- a {
+
+a {
   text-decoration: none;
   color: #333;
 }
+
 figure {
   margin: 0;
 }

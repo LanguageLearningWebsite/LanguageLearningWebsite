@@ -10,11 +10,8 @@ Rails.application.config.assets.version = '1.0'
 # application.js, application.css, and all non-JS/CSS in app/assets folder are already added.
 # Rails.application.config.assets.precompile += %w( search.js )
 
-Rails.application.config.assets.precompile += %w( log-in-page.scss )
 Rails.application.config.assets.precompile += %w( video-js.css )
 Rails.application.config.assets.precompile += %w( videojs-transcript.css )
 Rails.application.config.assets.precompile += %w( custom-videojs-player.css )
-Rails.application.config.assets.precompile += %w( sidebar.scss )
-Rails.application.config.assets.precompile += %w( home-page.scss )
-Rails.application.config.assets.precompile += %w( about.scss )
-Rails.application.config.assets.precompile += %w( edit-user.scss )
+Rails.application.config.assets.precompile += %w( devise/registrations.scss )
+Rails.application.config.assets.precompile += %w( devise/edit-account.css )

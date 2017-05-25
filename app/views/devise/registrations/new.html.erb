@@ -1,4 +1,4 @@
-<%= stylesheet_link_tag 'log-in-page', media: 'all', 'data-turbolinks-track' => true %>
+<%= stylesheet_link_tag 'devise/registrations', media: 'all', 'data-turbolinks-track' => true %>
 
 <div class="card card-container" style="text-align:center; max-width: 400px; padding: 20px 20px;">
 	<h2>Create an Account</h2>
@@ -26,6 +26,7 @@
 	<p style="font-size: 14px; margin-bottom: 5px;">By creating an account, you agree to our <a href="#">Terms of Use</a> and our <a href="#">Privacy Policy</a>.</p>
 	<hr>
 	<p style="font-size: 14px;">Already have an account? <%= link_to 'Sign in', new_user_session_path %></p>
+	<p style="font-size: 14px;"><%= params[:controller] %></p>
 </div>
 
 <script type="text/javascript">
