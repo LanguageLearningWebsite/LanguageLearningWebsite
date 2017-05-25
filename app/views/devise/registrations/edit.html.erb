@@ -1,58 +1,47 @@
-<%= stylesheet_link_tag 'edit-user', media: 'all', 'data-turbolinks-track' => true %>
+<%= stylesheet_link_tag 'log-in-page', media: 'all', 'data-turbolinks-track' => true %>
 
-<div class="row justify-content-md-center">
-  <div class="card col-md-4 mt-3 mb-3">
-    <h2>General Account Settings</h2>
+<div class="card card-container" style="max-width: 450px; padding: 20px 20px;">
+	<h2>Account Settings</h2>
 
-    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put, class: 'form-horizontal' }) do |f| %>
-      <%= render partial: "shared/devisemes" %>
-
-      <div class="form-group">
-        <%= f.label :first_name, style:"text-align:left" %>
-        <%= f.text_field :first_name, autofocus: true, class: 'form-control validate'  %>
-      </div>
-
-      <div class="form-group">
-        <%= f.label :last_name  %>
-        <%= f.text_field :last_name, autofocus: true, class: 'form-control validate'  %>
-      </div>
-
-      <div class="form-group">
-        <%= f.label :username  %>
-        <%= f.text_field :username, autofocus: true, class: 'form-control validate'  %>
-      </div>
-
-      <div class="form-group">
-        <%= f.label :email  %>
-        <%= f.email_field :email, class: 'form-control validate'  %>
-      </div>
-
-      <div class="form-group has-success">
-        <%= f.label :password %>
-        <%= f.password_field :password, autocomplete: "off", class: 'form-control validate'  %>
-        <small id="emailHelp" class="form-text text-muted">(leave blank if you don't want to change it)</small>
-      </div>
-
-      <div class="form-group has-danger">
-        <%= f.label :password_confirmation %>
-        <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control validate'  %>
-      </div>
-
-      <div class="form-group has-danger">
-        <%= f.label :current_password %>
-        <%= f.password_field :current_password, autocomplete: "off", class: 'form-control validate' %>
-        <small id="emailHelp" class="form-text text-muted">(enter current password to confirm your changes)</small>
-      </div>
-
-      <div class="form-group">
-          <%= f.submit "Update", class: "btn btn-primary btn-update", style: 'margin-bottom: 15px;' %>
-          <div>
-            <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: 'btn btn-primary btn-cancel', style: 'margin-bottom: 15px;' %>
-            <%= button_to "Back", :back , class: "btn btn-primary btn-back"%>
-          </div>
-        </div>
-      </div>
-
-    <% end %>
-  </div>
+	<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: 'form-signin'}) do |f| %>
+    <%= render partial: "shared/devisemes" %>
+		<div class="form-group">
+      <%= f.label :first_name %>
+			<%= f.text_field :first_name, class: "form-control validate", :maxlength => 50, autofocus: true %>
+		</div>
+		<div class="form-group">
+      <%= f.label :last_name %>
+			<%= f.text_field :last_name, class: "form-control validate", :maxlength => 50, autofocus: true %>
+		</div>
+		<div class="form-group">
+      <%= f.label :email  %>
+			<%= f.email_field :email, class: "form-control validate", placeholder:"Email Address" %>
+		</div>
+    <div class="form-group">
+      <%= f.label :username %>
+      <%= f.text_field :username, class: "form-control validate", :maxlength => 50, autofocus: true %>
+    </div>
+    <div class="form-group has-success">
+      <%= f.label :password %>
+      <%= f.password_field :password, autocomplete: "off", class: 'form-control validate'  %>
+      <small id="emailHelp" class="form-text text-muted">(leave blank if you don't want to change it)</small>
+    </div>
+    <div class="form-group has-danger">
+      <%= f.label :password_confirmation %>
+      <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control validate'  %>
+    </div>
+    <div class="form-group has-danger">
+      <%= f.label :current_password %>
+      <%= f.password_field :current_password, autocomplete: "off", class: 'form-control validate' %>
+      <small id="emailHelp" class="form-text text-muted">(enter current password to confirm your changes)</small>
+    </div>
+    <%= f.submit "Update", class: "btn btn-primary btn-account btn-update" %>
+	<% end %>
+  <%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?" }, method: :delete, class: 'btn btn-xs btn-account btn-cancel' %>
 </div>
+
+<script type="text/javascript">
+  $('.message a').click(function(){
+     $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
+  });
+</script>
