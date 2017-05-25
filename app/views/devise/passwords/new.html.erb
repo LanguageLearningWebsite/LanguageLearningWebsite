@@ -1,20 +1,21 @@
 
 
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post, class: 'form-horizontal' }) do |f| %>
-<%= render partial: "shared/devisemes" %>
+  <%= render partial: "shared/devisemes" %>
 
-<div class="card text-center" style="text-align:center;">
-<div class="form-group">
-    <div class="col-sm-6">
+  <div class="card card-container col-6 offset-3" style="text-align:center; padding: 30px 20px">
+    <form>
+      <div class="form-group">
         <h2>Forgot your password?</h2>
+      </div>
+      <div class="form-group">
         <%= f.email_field :email, autofocus: true, class: "form-control validate", placeholder:"Email Address" %>
-    </div>
-</div>
-<div class="form-group">
-    <div class="col-sm-6 col-sm-offset-2">
-        <%= f.submit "Send me reset password instructions", class: "btn btn-primary" %>
-    </div>
-</div>
-</div>
+      </div>
+      <div class="form-group text-align:center">
+        <%= f.submit "Send me the new password", class: "btn btn-outline-info" %>
+      </div>
+    </form>
+  </div>
 
-<% end %>
+
+  <% end %>
