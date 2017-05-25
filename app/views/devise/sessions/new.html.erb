@@ -1,7 +1,7 @@
 <%= stylesheet_link_tag 'log-in-page', media: 'all', 'data-turbolinks-track' => true %>
 
 <div class="card card-container" style="text-align:center;">
-  <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
+  <%= render partial: "shared/devisemes" %>
   <img id="profile-img" class="profile-img-card" src="/assets/images/hat.svg" />
   <p id="profile-name" class="profile-name-card"></p>
 
@@ -13,13 +13,13 @@
     <% if devise_mapping.rememberable? -%>
       <%= f.check_box :remember_me %> <%= f.label :remember_me,  :style => "font-size: 14px;" %>
     <% end -%>
-    <%= f.submit "Sign in", class: 'btn btn-lg btn-primary btn-block btn-signin'%>
+    <%= f.submit "Sign in", class: 'btn btn-lg btn-primary btn-block btn-account btn-signin'%>
     <%= link_to "Forgot password", new_user_password_path, :style => "font-size: 14px;" %>
   <% end %>
 </div>
 
 <script type="text/javascript">
-$('.message a').click(function(){
-   $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
-});
+  $('.message a').click(function(){
+     $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
+  });
 </script>

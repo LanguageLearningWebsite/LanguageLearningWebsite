@@ -49,7 +49,7 @@
             <div class="row">
               <div class="col-md-3">
                 <% if @prev_lesson %>
-                  <%= link_to [@prev_lesson.course, @prev_lesson], class: "btn btn-outline-info btn-md btn-block pull-left btn-previous", 'data-toggle': 'tooltip', 'data-placement':'top', title:" @prev_lesson.long_title" do %>
+                  <%= link_to [@prev_lesson.course, @prev_lesson], class: "btn btn-outline-info btn-md btn-block pull-left btn-previous", 'data-toggle': 'tooltip', 'data-placement':'top', title: @prev_lesson.title do %>
                     <i class="fa fa-chevron-left" style="margin-right: 15px;" aria-hidden="true"></i><i>Previous</i>
                   <!--  <span class="tooltiptext"><%= @prev_lesson.long_title %></span> -->
                   <% end %>
@@ -64,7 +64,7 @@
               </div>
               <div class="col-md-3">
                 <% if @next_lesson %>
-                  <%= link_to [@next_lesson.course, @next_lesson], class: "btn btn-outline-info btn-md btn-block pull-left btn-next" do %>
+                  <%= link_to [@next_lesson.course, @next_lesson], class: "btn btn-outline-info btn-md btn-block pull-left btn-next", 'data-toggle': 'tooltip', 'data-placement':'top', title: @next_lesson.title do %>
                     Next<i class="fa fa-chevron-right" style="margin-left: 15px;" aria-hidden="true"></i>
                   <% end %>
                 <% else %>

@@ -1,5 +1,6 @@
-<%= stylesheet_link_tag 'sign-up-page', media: 'all', 'data-turbolinks-track' => true %>
+<%= stylesheet_link_tag 'log-in-page', media: 'all', 'data-turbolinks-track' => true %>
 
+<<<<<<< HEAD
 <div class="container-sign-up" style="text-align:center;">
 	<div class = "row">
 		<div class="panel panel-sign-up">
@@ -36,7 +37,39 @@
 			<p class="form-group">By creating an account, you agree to our <a href="#">Terms of Use</a> and our <a href="#">Privacy Policy</a>.</p>
 			<hr>
 			<p class="form-group">Already have an account? <%= link_to 'Sign in', new_user_session_path %></p>
+=======
+<div class="card card-container" style="text-align:center; max-width: 400px; padding: 20px 20px;">
+	<h2>Create an Account</h2>
+>>>>>>> 9fe194e686800d7148a8a4025b6e44b7789b3e1b
 
+	<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: 'form-signin'}) do |f| %>
+		<%= render partial: "shared/devisemes" %>
+		<div class="form-group">
+			<%= f.text_field :first_name, class: "form-control validate", :maxlength => 50, autofocus: true, placeholder:"First Name" %>
 		</div>
-	</div>
+		<div class="form-group">
+			<%= f.text_field :last_name, class: "form-control validate", :maxlength => 50, autofocus: true, placeholder:"Last Name" %>
+		</div>
+		<div class="form-group">
+			<%= f.text_field :username, class: "form-control validate", :maxlength => 50, autofocus: true, placeholder:"User Name" %>
+		</div>
+		<div class="form-group">
+			<%= f.email_field :email, class: "form-control validate", placeholder:"Email Address" %>
+		</div>
+		<div class="form-group">
+			<%= f.password_field :password, autocomplete: "off", class: "form-control validate", placeholder:"Password" %>
+		</div>
+		<div class="form-group">
+			<%= f.submit "Sign up", class: "btn btn-lg btn-primary btn-block btn-account btn-signin" %>
+		</div>
+	<% end %>
+	<p style="font-size: 14px; margin-bottom: 5px;">By creating an account, you agree to our <a href="#">Terms of Use</a> and our <a href="#">Privacy Policy</a>.</p>
+	<hr>
+	<p style="font-size: 14px;">Already have an account? <%= link_to 'Sign in', new_user_session_path %></p>
 </div>
+
+<script type="text/javascript">
+	$('.message a').click(function(){
+	   $('form').animate({height: "toggle", opacity: "toggle"}, "slow");
+	});
+</script>
