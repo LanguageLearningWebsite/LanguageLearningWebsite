@@ -8,8 +8,8 @@ class Component < ActiveRecord::Base
   def course
   end
 
-  def build_componetable(params)
+  def build_componentable(params)
     raise "Unknown componentable_type: #{componentable_type}" unless COMPONENTABLE_TYPES.include?(componentable_type)
-    self.componetable = componentable_type.constantize.new(params)
+    self.componentable = componentable_type.constantize.new(params)
   end
 end

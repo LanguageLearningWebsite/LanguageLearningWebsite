@@ -27,13 +27,7 @@ ActiveAdmin.register Lesson do
       f.input :course, label: "Course"
       f.input :title, label: "Title"
       f.input :note, label: "Note"
-      f.input :video, label: "Video"
       f.input :header, label: "Header"
-      f.has_many :captions, allow_destroy: true, new_record: "Add Captions" do |e|
-        e.input :label
-        e.input :language
-        e.input :file, hint: content_tag(:span, "Upload vtt/srt caption")
-      end
     end
 
     actions

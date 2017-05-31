@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170530081154) do
+ActiveRecord::Schema.define(version: 20170531183625) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 20170530081154) do
   create_table "captions", force: :cascade do |t|
     t.string   "label"
     t.string   "language"
-    t.integer  "lesson_id"
+    t.integer  "video_id"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
     t.string   "file_file_name"
@@ -58,7 +58,7 @@ ActiveRecord::Schema.define(version: 20170530081154) do
     t.datetime "file_updated_at"
   end
 
-  add_index "captions", ["lesson_id"], name: "index_captions_on_lesson_id"
+  add_index "captions", ["video_id"], name: "index_captions_on_video_id"
 
   create_table "components", force: :cascade do |t|
     t.string   "name"
@@ -113,7 +113,6 @@ ActiveRecord::Schema.define(version: 20170530081154) do
   create_table "lessons", force: :cascade do |t|
     t.string   "title"
     t.text     "note"
-    t.string   "video"
     t.boolean  "header",     default: false, null: false
     t.integer  "tag"
     t.integer  "course_id"
@@ -145,5 +144,11 @@ ActiveRecord::Schema.define(version: 20170530081154) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+
+  create_table "videos", force: :cascade do |t|
+    t.string   "url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
 end

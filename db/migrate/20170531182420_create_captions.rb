@@ -3,7 +3,7 @@ class CreateCaptions < ActiveRecord::Migration
     create_table :captions do |t|
       t.string :label
       t.string :language
-      t.references :lesson, index: true, foreign_key: true
+      t.references :video, index: true, foreign_key: true
 
       t.timestamps null: false
     end
