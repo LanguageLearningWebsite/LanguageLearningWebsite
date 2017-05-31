@@ -1,4 +1,6 @@
 <div class="row justify-content-md-center">
+
+<!--
   <div class="col-md-3 mt-4 mb-4">
     <div class="card text-center">
       <% if !@joined %>
@@ -33,28 +35,29 @@
       <% end %>
     </div>
   </div>
+  -->
 
-  <div class="col-md-6 mt-4 mb-4">
-    <div class="card">
-      <%= image_tag @course.image(:medium), :class => "card-img-top img-responsive" %>
-      <div class="card-block">
-        <h4 class="card-title"><%= @course.name %></h4>
-        <hr>
-        <p class="card-text"><%= @course.content %></p>
-        <div class="list-group">
-          <% @lessons.each do |lesson| %>
-            <% if lesson.header %>
-              <div class="list-group-item active">
-                <i class="fa fa-graduation-cap"> <%= lesson.title %></i>
-              </div>
-            <% else %>
-              <%= link_to [lesson.course, lesson], :class => "list-group-item list-group-item-action", :"data-turbolinks" => false do %>
-                <%= lesson.title %>
-              <% end %>
-            <% end %>
+  <div class="card mb-3" style="text-align:center">
+  <%= image_tag @course.image(:medium), :class => "card-img-top img-responsive" %>
+  <div class="card-block">
+    <h4 class="card-title" ><%= @course.name %></h4>
+    <hr>
+    <div class="container col-10">
+      <p class="card-text"><%= @course.content %></p>
+    </div>
+    <hr>
+    <div class="list-group col-8 offset-2">
+      <% @lessons.each do |lesson| %>
+        <% if lesson.header %>
+          <a class="list-group-item list-group-item-action list-group-item-info">
+            <i class="fa fa-graduation-cap"> <%= lesson.title %></i>
+          </a>
+        <% else %>
+          <%= link_to [lesson.course, lesson], :class => "list-group-item list-group-item-action", :"data-turbolinks" => false do %>
+          <%= lesson.title %>
           <% end %>
-        </div>
-      </div>
+        <% end %>
+      <% end %>
     </div>
   </div>
 </div>

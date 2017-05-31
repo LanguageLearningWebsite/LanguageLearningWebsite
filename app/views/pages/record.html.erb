@@ -1,22 +1,36 @@
-<h1>Recorder.js simple WAV export example</h1>
+<body style="text-align: center">
 
-<p>Make sure you are using a recent version of Google Chrome.</p>
-<p>Also before you enable microphone input either plug in headphones or turn the volume down if you want to avoid ear splitting feedback!</p>
+<div class="col-10 offset-1" style="padding: 50px 20px">
+<div class="card text-center">
+  <div class="card-header">
+    recording
+  </div>
+  <div class="card-block">
+    <h1 class="card-title">Let's Chat</h1>
+  </br>
+    <p class="card-text">Make sure you are using a recent version of Google Chrome. <br> Also before you enable microphone input either plug in headphones or <br>  turn the volume down if you want to avoid ear splitting feedback!</p>
+    <button onclick="startRecording(this);" class="btn btn-success">Record</button>
+    <button onclick="stopRecording(this);" class="btn btn-danger" disabled>Stop</button>
+  </br>
+    <button id="button"; class="btn btn-success" style="margin-top: 20px" disabled>upload</button>
 
-<button onclick="startRecording(this);">record</button>
-<button onclick="stopRecording(this);" disabled>stop</button>
+  </br>
+    <ul id="recordingslist"></ul>
+    <pre id="log"></pre>
+    <style type='text/css'>
+      ul { list-style: none; }
+      #recordingslist audio { display: block; text-align: center; margin: 50px 40px; }
+      #recordingslist button { display: block; margin: 30px 30px;}
+    </style>
+  </div>
+  <div class="card-footer text-muted">
+    2 days ago
+  </div>
+</div>
+</div>
+</body>
 
-<h2>Recordings</h2>
-<ul id="recordingslist"></ul>
 
-<h2>Log</h2>
-<pre id="log"></pre>
-
-<style type='text/css'>
-  ul { list-style: none; }
-  #recordingslist audio { display: block; margin-bottom: 10px; }
-  #recordingslist button { display: block; margin-bottom: 10px; }
-</style>
 
 <script type="text/javascript">
   function __log(e, data) {
@@ -63,7 +77,14 @@
       var li = document.createElement('li');
       var au = document.createElement('audio');
       var hf = document.createElement('a');
-      var up = document.createElement('button');
+      var up = document.getElementById('button');
+
+      up.disabled = false;
+
+      au.style.margin = "auto";
+      au.style.paddingTop = "60px";
+      up.style.margin = "auto";
+
       console.log(blob.type);
 
       au.controls = true;
