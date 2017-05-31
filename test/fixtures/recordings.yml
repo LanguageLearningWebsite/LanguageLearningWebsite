@@ -1,9 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  name: 
-  url: 
+  url: MyString
+  user_id: 
+  recording_list_id: 
 
 two:
-  name: 
-  url: 
+  url: MyString
+  user_id: 
+  recording_list_id: 

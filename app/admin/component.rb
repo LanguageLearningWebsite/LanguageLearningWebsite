@@ -6,6 +6,7 @@ ActiveAdmin.register Component do
     css_class = f.object.componentable ? "inputs" : "inputs polyform"
 
     f.inputs "Component" do
+      f.input :name
       input :course, as: :select, collection: Course.all
       f.input :lesson, as: :select, collection: option_groups_from_collection_for_select(Course.all, :lessons, :name, :id, :title)
       if !f.object.componentable
@@ -22,6 +23,11 @@ ActiveAdmin.register Component do
           e.input :language
           e.input :file, hint: content_tag(:span, "Upload vtt/srt caption")
         end
+      end
+    end
+
+    if f.object.componentable_type != 'Video' && f.object.componentable_type != 'Quiz'
+      f.inputs 'Recording', for: [:componentable, f.object.componentable || Recording.new], id: 'Recording_poly', class: css_class do |fc|
       end
     end
 
