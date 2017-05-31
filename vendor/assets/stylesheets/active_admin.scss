@@ -2,4 +2,6 @@
 @import "active_admin/base";
 
 $skinLogo: none;
-@import "active_skin";
+.polyform {display: none}
+.select2 {width: 'resolve'}
+// @import "active_skin";

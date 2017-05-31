@@ -44,7 +44,7 @@ class Lesson < ActiveRecord::Base
       if lessons.empty?
         lessons = Lesson
       end
-      max_tag = lessons.maximum("tag")
+      max_tag = lessons.maximum("tag") || 0
       Lesson.where("tag > ?", max_tag).update_all("tag = tag + 1")
       self.tag = max_tag + 1
     end

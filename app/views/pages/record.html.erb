@@ -104,12 +104,12 @@
         data: {"base_url" : base_url,
               "file_name" : hf.download},
         success: function(data) {
-          up.addEventListener("click", function(){
+          up.addEventListener("click", function() {
             $.ajax({
-              type:'PUT',
-              url:data['url'],
+              type: 'PUT',
+              url: data['url'],
               crossDomain: true,
-              data:blob,
+              data: blob,
               contentType: blob.type,
               processData: false
             });

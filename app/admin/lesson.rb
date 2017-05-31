@@ -23,6 +23,7 @@ ActiveAdmin.register Lesson do
 
   form do |f|
     f.inputs "Lesson" do
+      # input :course, as: :select
       f.input :course, label: "Course"
       f.input :title, label: "Title"
       f.input :note, label: "Note"
