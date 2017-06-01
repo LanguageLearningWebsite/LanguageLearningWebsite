@@ -49,7 +49,7 @@
               <div class="col-md-3">
                 <% if @prev_lesson %>
                   <%= link_to [@prev_lesson.course, @prev_lesson], class: "btn btn-outline-info btn-md btn-block pull-left btn-previous", 'data-toggle': 'tooltip', 'data-placement':'top', title: @prev_lesson.title do %>
-                    <i class="fa fa-chevron-left" style="margin-right: 15px;" aria-hidden="true"></i><i>Previous</i>
+                    <i class="fa fa-chevron-left" style="margin-right: 15px;" aria-hidden="true"></i>Previous
                   <!--  <span class="tooltiptext"><%= @prev_lesson.long_title %></span> -->
                   <% end %>
                 <% else %>
@@ -79,13 +79,9 @@
               <div class="video-container width-100">
                 <video crossdomain id="video1" class="video-js vjs-default-skin" controls preload="auto" data-setup='{"playbackRates": [0.5, 1, 1.5, 2], "fluid": true}'>
                   <source src="<%= @lesson.components.first.componentable.url %>" type="video/mp4" />
-                  <track id="pinyin" label="pinyin" kind="captions" srclang="zh-Hans" src="/assets/subtitles/pinyin.vtt">
-                  <track id="simplified-characters" label="simplified-characters" kind="captions" srclang="zh-Hans" src="/assets/subtitles/simplified-characters.vtt">
-                  <track id="English" label="English" kind="captions" srclang="zh-Hans" src="/assets/subtitles/English.vtt">
-                  <track id="EN-Chinese" label="EN-Chinese" kind="captions" srclang="zh-Hans" src="/assets/subtitles/EL-Chinese.vtt">
-                  <!-- <% @lesson.components.first.componentable.captions.each do |c| %>
-                    <track id="<%= c.label %>" label="<%= c.label %>" kind="captions" srclang="<%= c.language %>" src="<%= c.file.url %>">
-                  <% end %> -->
+                  <% @lesson.components.first.componentable.captions.each do |c| %>
+                    <track id="<%= c.file_file_name.split(".")[0] %>" label="<%= c.file_file_name.split(".")[0] %>" kind="captions" src="<%= c.file.url %>">
+                  <% end %>
                   <p class="vjs-no-js">
                     To view this video please enable JavaScript, and consider upgrading to a web browser that
                     <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
@@ -98,6 +94,26 @@
             </div>
             <div id="subtitle-display-1" class="subtitle-display width-100"></div>
             <div id="subtitle-display-2" class="subtitle-display width-100"></div>
+            <ul class="nav nav-tabs" role="tablist">
+              <li class="nav-item">
+                <a class="nav-link active" href="#profile" role="tab" data-toggle="tab">profile</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#buzz" role="tab" data-toggle="tab">buzz</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#references" role="tab" data-toggle="tab">references</a>
+              </li>
+            </ul>
+
+            <!-- Tab panes -->
+            <div class="tab-content">
+              <div role="tabpanel" class="tab-pane fade in active" id="profile">
+
+              </div>
+              <div role="tabpanel" class="tab-pane fade" id="buzz">bbb</div>
+              <div role="tabpanel" class="tab-pane fade" id="references">ccc</div>
+            </div>
           </div>
         </div>
       </div>

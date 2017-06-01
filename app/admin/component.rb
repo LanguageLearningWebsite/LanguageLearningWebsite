@@ -1,6 +1,6 @@
 ActiveAdmin.register Component do
   permit_params :name, :lesson_id, :componentable_type, :componentable_id, :position,
-    componentable_attributes: [:id, :url, captions_attributes: [:id, :label, :language, :file, :_destroy]]
+    componentable_attributes: [:id, :url, captions_attributes: [:id, :file, :_destroy]]
 
   preserve_default_filters!
   remove_filter :componentable_type
@@ -39,9 +39,8 @@ ActiveAdmin.register Component do
       f.inputs 'Video', for: [:componentable, f.object.componentable || Video.new], id: 'Video_poly', class: css_class do |fc|
         fc.input :url
         fc.has_many :captions, allow_destroy: true, new_record: "Add Captions" do |e|
-          e.input :label
-          e.input :language
-          e.input :file, hint: content_tag(:span, "Upload vtt/srt caption")
+          file_name = e.object.file_file_name
+          e.input :file, hint: file_name ? link_to(file_name, e.object.file.url) : content_tag(:span, "Upload vtt/srt caption")
         end
       end
     end

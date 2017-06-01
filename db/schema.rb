@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170531191059) do
+ActiveRecord::Schema.define(version: 20170601074920) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -47,8 +47,6 @@ ActiveRecord::Schema.define(version: 20170531191059) do
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
 
   create_table "captions", force: :cascade do |t|
-    t.string   "label"
-    t.string   "language"
     t.integer  "video_id"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false

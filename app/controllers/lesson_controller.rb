@@ -13,6 +13,7 @@ class LessonController < ApplicationController
 
     if joined
       @lesson = @lessons.find(params[:id])
+      @components = @lesson.components
       @next_lesson = @lesson.next
       @prev_lesson = @lesson.previous
     else
