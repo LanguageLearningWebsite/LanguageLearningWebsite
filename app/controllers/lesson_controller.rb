@@ -3,7 +3,7 @@ class LessonController < ApplicationController
 
   def show
     course = Course.find(params[:course_id])
-    @lessons = course.lessons.order(:tag)
+    @lessons = course.lessons.order(:position)
 
     joined = false
 
@@ -20,4 +20,5 @@ class LessonController < ApplicationController
       redirect_to course
     end
   end
+
 end

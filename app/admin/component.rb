@@ -1,24 +1,20 @@
 ActiveAdmin.register Component do
-  permit_params :name, :lesson_id, :componentable_type, :componentable_id,
+  permit_params :name, :lesson_id, :componentable_type, :componentable_id, :position,
     componentable_attributes: [:id, :url, captions_attributes: [:id, :label, :language, :file, :_destroy]]
+
+  preserve_default_filters!
+  remove_filter :componentable_type
+  before_action :set_position, only: [:reorder]
 
   config.sort_order = 'position_asc' # assuming Widget.insert_at modifies the `position` attribute
   config.paginate   = false
   reorderable
 
-  # sortable tree: false,
-  #           sorting_attribute: :position
-
-  # index :as => :sortable do
-  #   label :full_title
-  #
-  #   actions
-  # end
-
   index as: :reorderable_table do
     selectable_column
     column :name
-    column :componentable_type
+    column :lesson
+    column "Type", :componentable_type
     column :position
 
     actions
@@ -59,11 +55,11 @@ ActiveAdmin.register Component do
   end
 
   controller do
-    def create
-      @component = Component.new permitted_params[:component]
-      if @component.save
-        redirect_to collection_path
-      end
+    def set_position
+      lesson = Component.find(params[:id]).lesson
+      min_position = lesson.components.pluck(:position).min
+      params[:position] = (min_position + params[:position].to_i - 1)
+      puts params[:position]
     end
   end
 end

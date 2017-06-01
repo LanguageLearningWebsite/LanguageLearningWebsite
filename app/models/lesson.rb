@@ -3,9 +3,10 @@ class Lesson < ActiveRecord::Base
   friendly_id :title, use: [:slugged, :finders]
 
   before_create :set_position
-  has_many :components
 
+  has_many :components
   belongs_to :course
+  acts_as_list scope: :course
 
   validates :title, presence: true, length: { maximum: 50 }
   validates :course, presence: true
@@ -35,7 +36,7 @@ class Lesson < ActiveRecord::Base
   def lesson_header
     self.class.where("position < ? AND header = ? AND course_id = ?", position, true, course_id).last
   end
-
+  
   def set_position
     if position.nil?
       lessons = Lesson.where("course_id = ?", course_id)

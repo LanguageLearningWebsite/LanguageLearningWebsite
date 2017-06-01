@@ -2,18 +2,13 @@ ActiveAdmin.register Lesson do
   permit_params :id, :title, :note, :video, :header, :position, :course_id, :full_title,
                   captions_attributes: [:id, :label, :language, :file, :_destroy]
 
+  preserve_default_filters!
+  remove_filter :components
+  before_action :set_position, only: [:reorder]
+
   config.sort_order = 'position_asc' # assuming Widget.insert_at modifies the `position` attribute
   config.paginate   = false
   reorderable
-
-  # sortable tree: false,
-  #           sorting_attribute: :position
-  #
-  # index :as => :sortable do
-	# 	label :full_title
-  #
-	# 	actions
-	# end
 
   index as: :reorderable_table do
     selectable_column
@@ -32,7 +27,7 @@ ActiveAdmin.register Lesson do
       row :header
       row :position
 
-      reorderable_table_for f.components do
+      reorderable_table_for f.components.order(:position) do
         column :name
         column :componentable_type
         column :position
@@ -53,5 +48,13 @@ ActiveAdmin.register Lesson do
 
   action_item :view, only: :show do
     link_to 'Back', :back
+  end
+
+  controller do
+    def set_position
+      course = Lesson.find(params[:id]).course
+      min_position = course.lessons.pluck(:position).min
+      params[:position] = (min_position + params[:position].to_i - 1)
+    end
   end
 end
