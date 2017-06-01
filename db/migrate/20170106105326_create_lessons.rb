@@ -4,7 +4,7 @@ class CreateLessons < ActiveRecord::Migration
       t.string :title
       t.text :note
       t.boolean :header, :null => false, :default => false
-      t.integer :tag
+      t.integer :position
       t.references :course, index: true, foreign_key: true
 
       t.timestamps null: false

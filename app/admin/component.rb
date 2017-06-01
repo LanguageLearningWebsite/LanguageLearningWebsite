@@ -1,14 +1,38 @@
 ActiveAdmin.register Component do
-  permit_params :name, :componentable_type, :componentable_id,
+  permit_params :name, :lesson_id, :componentable_type, :componentable_id,
     componentable_attributes: [:id, :url, captions_attributes: [:id, :label, :language, :file, :_destroy]]
+
+  config.sort_order = 'position_asc' # assuming Widget.insert_at modifies the `position` attribute
+  config.paginate   = false
+  reorderable
+
+  # sortable tree: false,
+  #           sorting_attribute: :position
+
+  # index :as => :sortable do
+  #   label :full_title
+  #
+  #   actions
+  # end
+
+  index as: :reorderable_table do
+    selectable_column
+    column :name
+    column :componentable_type
+    column :position
+
+    actions
+  end
 
   form do |f|
     css_class = f.object.componentable ? "inputs" : "inputs polyform"
 
     f.inputs "Component" do
       f.input :name
-      input :course, as: :select, collection: Course.all
-      f.input :lesson, as: :select, collection: option_groups_from_collection_for_select(Course.all, :lessons, :name, :id, :title)
+      default_course = f.object.lesson.course.name if f.object.lesson
+      default_lesson = f.object.lesson.id if f.object.lesson
+      input :course, as: :select, collection: options_for_select(Course.pluck(:name), default_course)
+      f.input :lesson, as: :select, collection: option_groups_from_collection_for_select(Course.all, :lessons, :name, :id, :title, default_lesson)
       if !f.object.componentable
         f.input :componentable_type, input_html: {class: 'polyselect'},
         collection: Component::COMPONENTABLE_TYPES

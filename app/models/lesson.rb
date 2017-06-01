@@ -2,7 +2,8 @@ class Lesson < ActiveRecord::Base
   extend FriendlyId
   friendly_id :title, use: [:slugged, :finders]
 
-  before_create :set_tag
+  before_create :set_position
+  has_many :components
 
   belongs_to :course
 
@@ -24,26 +25,26 @@ class Lesson < ActiveRecord::Base
   end
 
   def next
-    self.class.where("tag > ? AND (header = ? OR header IS NULL) AND course_id = ?", tag, false, course_id).first
+    self.class.where("position > ? AND (header = ? OR header IS NULL) AND course_id = ?", position, false, course_id).first
   end
 
   def previous
-    self.class.where("tag < ? AND (header = ? OR header IS NULL) AND course_id = ?", tag, false, course_id).last
+    self.class.where("position < ? AND (header = ? OR header IS NULL) AND course_id = ?", position, false, course_id).last
   end
 
   def lesson_header
-    self.class.where("tag < ? AND header = ? AND course_id = ?", tag, true, course_id).last
+    self.class.where("position < ? AND header = ? AND course_id = ?", position, true, course_id).last
   end
 
-  def set_tag
-    if tag.nil?
+  def set_position
+    if position.nil?
       lessons = Lesson.where("course_id = ?", course_id)
       if lessons.empty?
         lessons = Lesson
       end
-      max_tag = lessons.maximum("tag") || 0
-      Lesson.where("tag > ?", max_tag).update_all("tag = tag + 1")
-      self.tag = max_tag + 1
+      max_position = lessons.maximum("position") || 0
+      Lesson.where("position > ?", max_position).update_all("position = position + 1")
+      self.position = max_position + 1
     end
   end
 end

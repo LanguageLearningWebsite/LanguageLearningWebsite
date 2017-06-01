@@ -62,6 +62,7 @@ ActiveRecord::Schema.define(version: 20170531191059) do
 
   create_table "components", force: :cascade do |t|
     t.string   "name"
+    t.integer  "position"
     t.integer  "lesson_id"
     t.integer  "componentable_id"
     t.string   "componentable_type"
@@ -114,7 +115,7 @@ ActiveRecord::Schema.define(version: 20170531191059) do
     t.string   "title"
     t.text     "note"
     t.boolean  "header",     default: false, null: false
-    t.integer  "tag"
+    t.integer  "position"
     t.integer  "course_id"
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
