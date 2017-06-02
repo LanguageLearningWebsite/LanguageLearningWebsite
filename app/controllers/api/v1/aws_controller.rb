@@ -5,7 +5,7 @@ class Api::V1::AwsController < ApplicationController
   def presigned_url
     base_url = params[:base_url]
     file_name = params[:file_name]
-    Recording.create!(:name => file_name, :url => base_url)
+    Recording.create!(:url => (base_url + file_name), :user_id => params[:user], :recording_list_id => params[:recording_list])
     obj = S3_BUCKET.object(base_url + file_name)
     url = URI.parse(obj.presigned_url(:put))
     render json: {:url => url.to_s}

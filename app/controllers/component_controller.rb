@@ -1,7 +1,9 @@
-class LessonController < ApplicationController
+class ComponentController < ApplicationController
   before_action :authenticate_user!
 
   def show
+    @component = Component.find(params[:id])
+
     @course = Course.find(params[:course_id])
     @lessons = @course.lessons.order(:position)
 
@@ -12,7 +14,7 @@ class LessonController < ApplicationController
     end
 
     if joined
-      @lesson = @lessons.find(params[:id])
+      @lesson = @lessons.find(params[:lesson_id])
       @components = @lesson.components.order(:position)
       @next_lesson = @lesson.next
       @prev_lesson = @lesson.previous
@@ -21,5 +23,4 @@ class LessonController < ApplicationController
       redirect_to course
     end
   end
-
 end

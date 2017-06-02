@@ -19,7 +19,9 @@ Rails.application.routes.draw do
   root 'course#index'
 
   resources :course do
-    resources :lesson, only: [:show]
+    resources :lesson, only: [:show] do
+      resources :component, only: [:show]
+    end
   end
 
   namespace :api, defaults: { format: :json } do

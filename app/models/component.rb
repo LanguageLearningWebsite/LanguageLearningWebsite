@@ -1,4 +1,7 @@
 class Component < ActiveRecord::Base
+  extend FriendlyId
+  friendly_id :name, use: [:slugged, :finders]
+
   before_create :set_position
 
   belongs_to :lesson
@@ -7,7 +10,7 @@ class Component < ActiveRecord::Base
   belongs_to :componentable, polymorphic: true, :dependent => :destroy
   accepts_nested_attributes_for :componentable, :allow_destroy => true
 
-  COMPONENTABLE_TYPES = %w(Recording Video Quiz)
+  COMPONENTABLE_TYPES = %w(RecordingList Video Quiz)
 
   def course
   end

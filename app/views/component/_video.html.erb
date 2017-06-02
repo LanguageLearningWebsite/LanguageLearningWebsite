@@ -1,0 +1,49 @@
+<%= stylesheet_link_tag "video-js" %>
+<%= stylesheet_link_tag "custom-videojs-player" %>
+<%= stylesheet_link_tag "videojs-transcript" %>
+
+<div class="main-player">
+  <div class="video-container width-100">
+    <video crossdomain id="<%= video_id %>" class="video-js vjs-default-skin" controls preload="auto" data-setup='{"playbackRates": [0.5, 1, 1.5, 2], "fluid": true}'>
+      <source src="<%= video.url %>" type="video/mp4" />
+      <% if !video.captions.empty? %>
+        <% video.captions.each do |c| %>
+          <track id="<%= c.file_file_name.split(".")[0] %>" label="<%= c.file_file_name.split(".")[0] %>" kind="captions" src="<%= c.file.url %>">
+        <% end %>
+      <% end %>
+      <p class="vjs-no-js">
+        To view this video please enable JavaScript, and consider upgrading to a web browser that
+        <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+      </p>
+    </video>
+  </div>
+  <div class="transcript-container width-30">
+    <div class="vjs-transcript" id="transcript"></div>
+  </div>
+</div>
+<div id="subtitle-display-1" class="subtitle-display width-100"></div>
+<div id="subtitle-display-2" class="subtitle-display width-100"></div>
+
+<% if !video.captions.empty? %>
+  <script type="text/javascript">
+    setTimeout(function () {
+      updateTranscript("<%= video_id %>");
+      updateCaption("<%= video_id %>", 'simplified-characters', 'subtitle-display-1');
+      updateCaption("<%= video_id %>", 'English', 'subtitle-display-2');
+    }, 0);
+
+    if (window.innerWidth <= 768) {
+      $('.subtitle-display').insertAfter($('.video-container'))
+    } else {
+      $('.subtitle-display').insertAfter($('.main-player'))
+    };
+
+    window.onresize = function(event) {
+      if (window.innerWidth <= 768) {
+        $('.subtitle-display').insertAfter($('.video-container'))
+      } else {
+        $('.subtitle-display').insertAfter($('.main-player'))
+      };
+    };
+  </script>
+<% end %>

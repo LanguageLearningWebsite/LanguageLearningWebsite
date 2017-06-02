@@ -1,6 +1,6 @@
 ActiveAdmin.register Component do
   permit_params :name, :lesson_id, :componentable_type, :componentable_id, :position,
-    componentable_attributes: [:id, :url, captions_attributes: [:id, :file, :_destroy]]
+    componentable_attributes: [:id, :url, :limit, captions_attributes: [:id, :file, :_destroy]]
 
   preserve_default_filters!
   remove_filter :componentable_type
@@ -35,7 +35,7 @@ ActiveAdmin.register Component do
       end
     end
 
-    if f.object.componentable_type != 'Recording' && f.object.componentable_type != 'Quiz'
+    if f.object.componentable_type != 'RecordingList' && f.object.componentable_type != 'Quiz'
       f.inputs 'Video', for: [:componentable, f.object.componentable || Video.new], id: 'Video_poly', class: css_class do |fc|
         fc.input :url
         fc.has_many :captions, allow_destroy: true, new_record: "Add Captions" do |e|
@@ -46,7 +46,8 @@ ActiveAdmin.register Component do
     end
 
     if f.object.componentable_type != 'Video' && f.object.componentable_type != 'Quiz'
-      f.inputs 'Recording', for: [:componentable, f.object.componentable || Recording.new], id: 'Recording_poly', class: css_class do |fc|
+      f.inputs 'RecordingList', for: [:componentable, f.object.componentable || RecordingList.new], id: 'RecordingList_poly', class: css_class do |fc|
+        fc.input :limit
       end
     end
 
