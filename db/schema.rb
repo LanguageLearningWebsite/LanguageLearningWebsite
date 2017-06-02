@@ -11,7 +11,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< 5e9dd305d185d1a4b911eb53b65690134ebf162f
 ActiveRecord::Schema.define(version: 20170614024901) do
+=======
+ActiveRecord::Schema.define(version: 20170602074521) do
+>>>>>>> Add component tabs to lesson view
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
