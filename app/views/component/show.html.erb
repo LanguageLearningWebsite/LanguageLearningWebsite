@@ -17,7 +17,7 @@
           <li class="dropdown-header" style="text-align: center";><i class="fa fa-angle-double-up fa-2x" aria-hidden="true"></i></li>
           <% else %>
           <li>
-            <%= link_to [lesson.course, lesson, lesson.components.order(:position).first], :"data-turbolinks" => false do %>
+            <%= link_to [lesson.course, lesson, lesson.first_component], :"data-turbolinks" => false do %>
               <%= lesson.title %>
             <% end %>
           </li>
@@ -43,7 +43,7 @@
             <div class="row">
               <div class="col-md-3">
                 <% if @prev_lesson %>
-                  <%= link_to [@prev_lesson.course, @prev_lesson, @prev_lesson.components.order(:position).last], class: "btn btn-outline-info btn-md btn-block pull-left btn-previous", 'data-toggle': 'tooltip', 'data-placement':'top', title: @prev_lesson.title do %>
+                  <%= link_to [@prev_lesson.course, @prev_lesson, @prev_lesson.last_component], class: "btn btn-outline-info btn-md btn-block pull-left btn-previous", 'data-toggle': 'tooltip', 'data-placement':'top', title: @prev_lesson.title do %>
                     <i class="fa fa-chevron-left" style="margin-right: 15px;" aria-hidden="true"></i>Previous
                   <% end %>
                 <% else %>
@@ -57,7 +57,7 @@
               </div>
               <div class="col-md-3">
                 <% if @next_lesson %>
-                  <%= link_to [@next_lesson.course, @next_lesson, @next_lesson.components.order(:position).first], class: "btn btn-outline-info btn-md btn-block pull-left btn-next", 'data-toggle': 'tooltip', 'data-placement':'top', title: @next_lesson.title do %>
+                  <%= link_to [@next_lesson.course, @next_lesson, @next_lesson.first_component], class: "btn btn-outline-info btn-md btn-block pull-left btn-next", 'data-toggle': 'tooltip', 'data-placement':'top', title: @next_lesson.title do %>
                     Next<i class="fa fa-chevron-right" style="margin-left: 15px;" aria-hidden="true"></i>
                   <% end %>
                 <% else %>
@@ -85,7 +85,7 @@
                   <% if @component.componentable_type == 'Video' %>
                     <%= render 'video', :video => @component.componentable, :video_id => 'video1' %>
                   <% elsif @component.componentable_type == 'RecordingList' %>
-                    <%= render 'recording', :user => @current_user, :recording_list => @component.componentable_id %>
+                    <%= render 'recording', :user_id => @current_user.id, :recording_list_id => @component.componentable_id %>
                   <% end %>
                 </div>
               </div>
@@ -93,7 +93,7 @@
               <% if @component.componentable_type == 'Video' %>
                 <%= render 'video', :video => @component.componentable, :video_id => 'video1' %>
               <% elsif @component.componentable_type == 'RecordingList' %>
-                <%= render 'recording', :user => @current_user, :recording_list => @component.componentable_id %>
+                <%= render 'recording', :user_id => @current_user.id, :recording_list_id => @component.componentable_id %>
               <% end %>
             <% end %>
           </div>

@@ -1,7 +1,7 @@
 <button onclick="startRecording(this);">record</button>
 <button onclick="stopRecording(this);" disabled>stop</button>
 
-<h2><%= recording_list %> Recordings</h2>
+<h2>Recordings</h2>
 <ul id="recordingslist"></ul>
 
 <style type='text/css'>
@@ -17,7 +17,6 @@
   function startUserMedia(stream) {
     var input = audio_context.createMediaStreamSource(stream);
     recorder = new Recorder(input);
-
   }
 
   function startRecording(button) {
@@ -49,17 +48,14 @@
       hf.download = new Date().toISOString() + '.wav';
       hf.innerHTML = hf.download;
       up.innerHTML = "Upload";
-      var base_url = '<%= raw @s3_base_url %>';
+      var url = '<%= raw @s3_base_url %>' + hf.download;
       $.ajax({
         url: "/api/v1/aws_presigned_url?",
         type: "GET",
         async: true,
         crossDomain: true,
         dataType: "json",
-        data: {"base_url" : base_url,
-              "file_name" : hf.download,
-              "user": '<%= user.id %>',
-              "recording_list": '<%= recording_list %>'},
+        data: {"url" : url },
         success: function(data) {
           up.addEventListener("click", function() {
             $.ajax({
@@ -68,7 +64,19 @@
               crossDomain: true,
               data: blob,
               contentType: blob.type,
-              processData: false
+              processData: false,
+              success: function(data) {
+                $.ajax({
+                  type: 'GET',
+                  url: "/api/v1/recordings/new?",
+                  crossDomain: true,
+                  async: true,
+                  dataType: "json",
+                  data: { "url" : url,
+                          "user_id": '<%= user_id %>',
+                          "recording_list_id": '<%= recording_list_id %>' }
+                });
+              }
             });
           });
         }
@@ -81,7 +89,6 @@
   }
 
   $(document).on('turbolinks:load', function init() {
-    console.log('<%= recording_list %>');
     try {
       // webkit shim
       window.AudioContext = window.AudioContext || window.webkitAudioContext;

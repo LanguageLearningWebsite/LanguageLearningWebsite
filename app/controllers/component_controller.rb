@@ -1,5 +1,6 @@
 class ComponentController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_s3_base_url
 
   def show
     @component = Component.find(params[:id])
@@ -22,5 +23,10 @@ class ComponentController < ApplicationController
       flash[:notice] = "You haven't enroll in the course!"
       redirect_to course
     end
+  end
+
+  private
+  def set_s3_base_url
+    @s3_base_url = "#{SecureRandom.uuid}/"
   end
 end

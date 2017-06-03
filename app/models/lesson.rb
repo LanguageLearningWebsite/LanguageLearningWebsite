@@ -33,10 +33,18 @@ class Lesson < ActiveRecord::Base
     self.class.where("position < ? AND (header = ? OR header IS NULL) AND course_id = ?", position, false, course_id).last
   end
 
+  def first_component
+    self.components.order(:position).first
+  end
+
+  def last_component
+    self.components.order(:position).last
+  end
+
   def lesson_header
     self.class.where("position < ? AND header = ? AND course_id = ?", position, true, course_id).last
   end
-  
+
   def set_position
     if position.nil?
       lessons = Lesson.where("course_id = ?", course_id)

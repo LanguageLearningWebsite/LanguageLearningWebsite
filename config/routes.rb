@@ -28,6 +28,7 @@ Rails.application.routes.draw do
     namespace :v1, constraints: ApiConstraints.new(version: 1, default: true) do
       get '/translate' => 'translate#show'
       get '/aws_presigned_url' => 'aws#presigned_url'
+      get '/recordings/new' => 'recording#new'
     end
   end
 end
