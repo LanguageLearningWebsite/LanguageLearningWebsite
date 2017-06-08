@@ -85,7 +85,7 @@
                   <% if @component.componentable_type == 'Video' %>
                     <%= render 'video', :video => @component.componentable, :video_id => 'video1' %>
                   <% elsif @component.componentable_type == 'RecordingList' %>
-                    <%= render 'recording', :user_id => @current_user.id, :recording_list_id => @component.componentable_id %>
+                    <%= render 'recording', :recording_list_id => @component.componentable_id %>
                   <% end %>
                 </div>
               </div>
@@ -93,7 +93,7 @@
               <% if @component.componentable_type == 'Video' %>
                 <%= render 'video', :video => @component.componentable, :video_id => 'video1' %>
               <% elsif @component.componentable_type == 'RecordingList' %>
-                <%= render 'recording', :user_id => @current_user.id, :recording_list_id => @component.componentable_id %>
+                <%= render 'recording', :recording_list_id => @component.componentable_id %>
               <% end %>
             <% end %>
           </div>

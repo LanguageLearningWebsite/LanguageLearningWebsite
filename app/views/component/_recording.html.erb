@@ -134,7 +134,6 @@
             success: function(data) {
               var params = {
                 url: currentRecordingUrl,
-                user_id: '<%= user_id %>',
                 recording_list_id: '<%= recording_list_id %>'
               }
               window.location.href = '/api/v1/recordings/new?' + $.param(params);

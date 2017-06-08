@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   has_many :enrollments
   has_many :courses, through: :enrollments
-  has_many :recordings
+  has_many :recordings, :dependent => :destroy
   has_many :recording_lists, through: :recordings
 
   devise :database_authenticatable, :registerable,
