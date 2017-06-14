@@ -20,7 +20,7 @@ class ComponentController < ApplicationController
       @next_lesson = @lesson.next
       @prev_lesson = @lesson.previous
     else
-      flash[:notice] = "You haven't enroll in the course!"
+      flash[:error] = "You haven't enroll in the course!"
       redirect_to course
     end
   end

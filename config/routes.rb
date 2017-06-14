@@ -29,6 +29,7 @@ Rails.application.routes.draw do
       get '/translate' => 'translate#show'
       get '/aws_presigned_url' => 'aws#presigned_url'
       get '/recordings/new' => 'recording#new'
+      get '/recordings/submit' => 'recording#submit'
     end
   end
 end
