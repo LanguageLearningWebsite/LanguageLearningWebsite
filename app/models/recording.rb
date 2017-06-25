@@ -2,7 +2,7 @@ class Recording < ActiveRecord::Base
   belongs_to :user
   belongs_to :recording_list
   validates :user, :recording_list, :url, presence: true
-  validate :validate_number_of_recordings
+  validate :validate_number_of_recordings, :on => :create
 
   before_destroy :delete_s3
 

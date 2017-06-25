@@ -17,7 +17,7 @@ class Api::V1::RecordingController < ApplicationController
   def submit
     recording = Recording.find(params[:id])
     component = recording.recording_list.component
-    recording.update(submitted: true)
+    recording.update!(submitted: true)
     flash[:notice] = "Recording submitted for grading!"
     redirect_to course_lesson_component_path(component.lesson.course, component.lesson, component)
   end
