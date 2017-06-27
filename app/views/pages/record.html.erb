@@ -1,0 +1,109 @@
+<%= stylesheet_link_tag "video-js" %>
+<%= stylesheet_link_tag "videojs.record" %>
+<%= stylesheet_link_tag "style" %>
+
+<style>
+/* change player background color */
+#myAudio {
+  background-color: #9FD6BA;
+}
+</style>
+
+</br>
+<div class="card col-md-10 offset-1">
+  </br>
+  <audio id="myAudio" class="video-js vjs-default-skin card-img-top" style="margin: auto;" ></audio>
+  <div class="card-block" style="text-align:center">
+    </br>
+    <div id="recordingslist" ></div>
+    <a type="button" class="btn btn-success">Submit</a>
+  </div>
+
+</div>
+
+
+<script>
+var x = 0;
+var player = videojs("myAudio",
+{
+    controls: true,
+    width: 600,
+    height: 300,
+    plugins: {
+        wavesurfer: {
+            src: "live",
+            waveColor: "black",
+            progressColor: "#2E732D",
+            debug: true,
+            cursorWidth: 1,
+            msDisplayMax: 20,
+            hideScrollbar: true
+        },
+        record: {
+            audio: true,
+            video: false,
+            maxLength: 20,
+            debug: true,
+            audioEngine: "recorder.js"
+        }
+    }
+});
+// error handling
+player.on('deviceError', function()
+{
+    console.log('device error:', player.deviceErrorCode);
+});
+player.on('error', function(error)
+{
+    console.log('error:', error);
+});
+// user clicked the record button and started recording
+player.on('startRecord', function()
+{
+    console.log('started recording!');
+});
+// user completed recording and stream is available
+player.on('finishRecord', function()
+{
+    // the blob object contains the recorded data that
+    // can be downloaded by the user, stored on server etc.
+    console.log('finished recording: ', player.recordedData);
+     var blob = player.recordedData;
+
+
+     var url = URL.createObjectURL(blob);
+     var div = document.createElement('div');
+     div.className += "form-check";
+
+     var label = document.createElement('label');
+      label.className += "form-check-label";
+
+     var input = document.createElement('input');
+
+     input.className += "form-check-input";
+     input.setAttribute("type", "radio");
+     x++;
+     input.setAttribute("value", "option"+x);
+     input.setAttribute("name", "recordings");
+     input.setAttribute("id", "recording"+x);
+
+     var au = document.createElement('audio');
+     var linebreak = document.createElement("br");
+     var hf = document.createElement('a');
+
+     au.controls = true;
+     au.src = url;
+     hf.href = url;
+     hf.download = new Date().toISOString() + '.wav';
+     hf.innerHTML = hf.download;
+
+     label.appendChild(input);
+     label.appendChild(au);
+     label.appendChild(linebreak);
+     label.appendChild(hf);
+     div.appendChild(label);
+
+     document.getElementById("recordingslist").appendChild(div);
+
+});
+</script>
