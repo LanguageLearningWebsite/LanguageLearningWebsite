@@ -1,7 +1,3 @@
-<%= stylesheet_link_tag "video-js" %>
-<%= stylesheet_link_tag "custom-videojs-player" %>
-<%= stylesheet_link_tag "videojs-transcript" %>
-
 <% content_for(:body_attributes) do %>
   data-turbolinks="false"
 <% end %>
@@ -30,9 +26,7 @@
       <% if !@lessons.empty? %></ul></li><% end %>
     </ul>
   </div>
-  <!-- /#sidebar-wrapper -->
 
-  <!-- Page Content -->
   <div id="page-content-wrapper">
     <div class="row">
       <div class="col-md-1">
@@ -49,8 +43,7 @@
               <div class="col-md-3">
                 <% if @prev_lesson %>
                   <%= link_to [@prev_lesson.course, @prev_lesson], class: "btn btn-outline-info btn-md btn-block pull-left btn-previous", 'data-toggle': 'tooltip', 'data-placement':'top', title: @prev_lesson.title do %>
-                    <i class="fa fa-chevron-left" style="margin-right: 15px;" aria-hidden="true"></i><i>Previous</i>
-                  <!--  <span class="tooltiptext"><%= @prev_lesson.long_title %></span> -->
+                    <i class="fa fa-chevron-left" style="margin-right: 15px;" aria-hidden="true"></i>Previous
                   <% end %>
                 <% else %>
                   <button class="btn btn-outline-info btn-md btn-block pull-left disabled" disabled>
@@ -75,29 +68,12 @@
             </div>
           </div>
           <div class="card-block">
-            <div class="main-player">
-              <div class="video-container width-100">
-                <video crossdomain id="video1" class="video-js vjs-default-skin" controls preload="auto" data-setup='{"playbackRates": [0.5, 1, 1.5, 2], "fluid": true}'>
-                  <source src="<%= @lesson.video %>" type="video/mp4" />
-                  <track id="pinyin" label="pinyin" kind="captions" srclang="zh-Hans" src="/assets/subtitles/pinyin.vtt">
-                  <track id="simplified-characters" label="simplified-characters" kind="captions" srclang="zh-Hans" src="/assets/subtitles/simplified-characters.vtt">
-                  <track id="English" label="English" kind="captions" srclang="zh-Hans" src="/assets/subtitles/English.vtt">
-                  <track id="EN-Chinese" label="EN-Chinese" kind="captions" srclang="zh-Hans" src="/assets/subtitles/EL-Chinese.vtt">
-                  <!-- <% @lesson.captions.each do |c| %>
-                    <track id="<%= c.label %>" label="<%= c.label %>" kind="captions" srclang="<%= c.language %>" src="<%= c.file.url %>">
-                  <% end %> -->
-                  <p class="vjs-no-js">
-                    To view this video please enable JavaScript, and consider upgrading to a web browser that
-                    <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
-                  </p>
-                </video>
-              </div>
-              <div class="transcript-container width-30">
-                <div class="vjs-transcript" id="transcript"></div>
-              </div>
-            </div>
-            <div id="subtitle-display-1" class="subtitle-display width-100"></div>
-            <div id="subtitle-display-2" class="subtitle-display width-100"></div>
+            <ul class="nav nav-tabs nav-fill" role="tablist" style="margin-bottom: 10px;">
+              <% @components.each do |component| %>
+                <% name = component.name.split(" ").join("-").downcase %>
+                <li class="nav-item"><a class="nav-link" href="<%= course_lesson_component_path(@course, @lesson, component) %>"><%= component.name %></a></li>
+              <% end %>
+            </ul>
           </div>
         </div>
       </div>
@@ -115,31 +91,9 @@
       </div>
     </div>
   </div>
-  <!-- /#page-content-wrapper -->
 </div>
-<!-- /#wrapper -->
 
 <script type="text/javascript">
-  setTimeout(function () {
-    updateTranscript('video1');
-    updateCaption('video1', 'simplified-characters', 'subtitle-display-1');
-    updateCaption('video1', 'English', 'subtitle-display-2');
-  }, 0);
-
-  if (window.innerWidth <= 768) {
-    $('.subtitle-display').insertAfter($('.video-container'))
-  } else {
-    $('.subtitle-display').insertAfter($('.main-player'))
-  };
-
-  window.onresize = function(event) {
-    if (window.innerWidth <= 768) {
-      $('.subtitle-display').insertAfter($('.video-container'))
-    } else {
-      $('.subtitle-display').insertAfter($('.main-player'))
-    };
-  };
-
   $("#menu-toggle").click(function(e) {
     e.preventDefault();
     $("#wrapper").toggleClass("toggled");
@@ -174,5 +128,4 @@
   $(function () {
     $('[data-toggle="tooltip"]').tooltip()
   })
-
 </script>

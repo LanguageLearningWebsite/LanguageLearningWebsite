@@ -3,9 +3,8 @@ class CreateLessons < ActiveRecord::Migration
     create_table :lessons do |t|
       t.string :title
       t.text :note
-      t.string :video
       t.boolean :header, :null => false, :default => false
-      t.integer :tag
+      t.integer :position
       t.references :course, index: true, foreign_key: true
 
       t.timestamps null: false

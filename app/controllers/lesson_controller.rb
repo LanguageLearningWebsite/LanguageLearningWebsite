@@ -2,17 +2,18 @@ class LessonController < ApplicationController
   before_action :authenticate_user!
 
   def show
-    course = Course.find(params[:course_id])
-    @lessons = course.lessons.order(:tag)
+    @course = Course.find(params[:course_id])
+    @lessons = @course.lessons.order(:position)
 
     joined = false
 
     if !current_user.nil? && !current_user.courses.nil?
-      joined = current_user.courses.include?(course)
+      joined = current_user.courses.include?(@course)
     end
 
     if joined
       @lesson = @lessons.find(params[:id])
+      @components = @lesson.components.order(:position)
       @next_lesson = @lesson.next
       @prev_lesson = @lesson.previous
     else
@@ -20,4 +21,5 @@ class LessonController < ApplicationController
       redirect_to course
     end
   end
+
 end

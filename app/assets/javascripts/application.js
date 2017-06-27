@@ -19,6 +19,12 @@
 //= require subtitles
 //= require recorder
 //= require videojs-transcript
+//= require RecordRTC.min
+//= require videojs.record
+//= require wavesurfer.min
+//= require wavesurfer.microphone
+//= require videojs.wavesurfer.min
+//= require videojs.record.recorderjs
 //= require turbolinks
 //= require_tree .
 

@@ -19,13 +19,17 @@ Rails.application.routes.draw do
   root 'course#index'
 
   resources :course do
-    resources :lesson, only: [:show]
+    resources :lesson, only: [:show] do
+      resources :component, only: [:show]
+    end
   end
 
   namespace :api, defaults: { format: :json } do
     namespace :v1, constraints: ApiConstraints.new(version: 1, default: true) do
       get '/translate' => 'translate#show'
       get '/aws_presigned_url' => 'aws#presigned_url'
+      get '/recordings/new' => 'recording#new'
+      get '/recordings/submit' => 'recording#submit'
     end
   end
 end

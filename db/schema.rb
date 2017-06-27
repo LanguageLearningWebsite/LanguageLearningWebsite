@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170322075713) do
+ActiveRecord::Schema.define(version: 20170614024901) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -47,9 +47,7 @@ ActiveRecord::Schema.define(version: 20170322075713) do
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
 
   create_table "captions", force: :cascade do |t|
-    t.string   "label"
-    t.string   "language"
-    t.integer  "lesson_id"
+    t.integer  "video_id"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
     t.string   "file_file_name"
@@ -58,7 +56,22 @@ ActiveRecord::Schema.define(version: 20170322075713) do
     t.datetime "file_updated_at"
   end
 
-  add_index "captions", ["lesson_id"], name: "index_captions_on_lesson_id"
+  add_index "captions", ["video_id"], name: "index_captions_on_video_id"
+
+  create_table "components", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "position"
+    t.integer  "lesson_id"
+    t.integer  "componentable_id"
+    t.string   "componentable_type"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "slug"
+  end
+
+  add_index "components", ["componentable_type", "componentable_id"], name: "index_components_on_componentable_type_and_componentable_id"
+  add_index "components", ["lesson_id"], name: "index_components_on_lesson_id"
+  add_index "components", ["slug"], name: "index_components_on_slug", unique: true
 
   create_table "courses", force: :cascade do |t|
     t.string   "name"
@@ -101,9 +114,8 @@ ActiveRecord::Schema.define(version: 20170322075713) do
   create_table "lessons", force: :cascade do |t|
     t.string   "title"
     t.text     "note"
-    t.string   "video"
     t.boolean  "header",     default: false, null: false
-    t.integer  "tag"
+    t.integer  "position"
     t.integer  "course_id"
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
@@ -112,6 +124,24 @@ ActiveRecord::Schema.define(version: 20170322075713) do
 
   add_index "lessons", ["course_id"], name: "index_lessons_on_course_id"
   add_index "lessons", ["slug"], name: "index_lessons_on_slug", unique: true
+
+  create_table "recording_lists", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "limit"
+  end
+
+  create_table "recordings", force: :cascade do |t|
+    t.string   "url"
+    t.integer  "user_id"
+    t.integer  "recording_list_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.boolean  "submitted"
+  end
+
+  add_index "recordings", ["recording_list_id"], name: "index_recordings_on_recording_list_id"
+  add_index "recordings", ["user_id"], name: "index_recordings_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -133,5 +163,11 @@ ActiveRecord::Schema.define(version: 20170322075713) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+
+  create_table "videos", force: :cascade do |t|
+    t.string   "url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
 end

@@ -7,7 +7,7 @@ class CourseController < ApplicationController
 
   def show
     @course = Course.find(params[:id])
-    @lessons = @course.lessons.order(:tag)
+    @lessons = @course.lessons.order(:position)
 
     @joined = false
 

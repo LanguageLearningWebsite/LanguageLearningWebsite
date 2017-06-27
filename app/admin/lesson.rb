@@ -1,24 +1,38 @@
 ActiveAdmin.register Lesson do
-  permit_params :id, :title, :note, :video, :header, :tag, :course_id, :full_title,
+  permit_params :id, :title, :note, :video, :header, :position, :course_id, :full_title,
                   captions_attributes: [:id, :label, :language, :file, :_destroy]
 
-  sortable tree: false,
-            sorting_attribute: :tag
+  preserve_default_filters!
+  remove_filter :components
+  before_action :set_position, only: [:reorder]
 
-  index :as => :sortable do
-		label :full_title
+  config.sort_order = 'position_asc' # assuming Widget.insert_at modifies the `position` attribute
+  config.paginate   = false
+  reorderable
 
-		actions
-	end
-
-  index do
+  index as: :reorderable_table do
     selectable_column
-    column :header
     column :title
-    column :tag
     column :course
+    column :header
+    column :position
 
     actions
+  end
+
+  show do |f|
+    attributes_table do
+      row :title
+      row :course
+      row :header
+      row :position
+
+      reorderable_table_for f.components.order(:position) do
+        column :name
+        column :componentable_type
+        column :position
+      end
+    end
   end
 
   form do |f|
@@ -26,13 +40,7 @@ ActiveAdmin.register Lesson do
       f.input :course, label: "Course"
       f.input :title, label: "Title"
       f.input :note, label: "Note"
-      f.input :video, label: "Video"
       f.input :header, label: "Header"
-      f.has_many :captions, allow_destroy: true, new_record: "Add Captions" do |e|
-        e.input :label
-        e.input :language
-        e.input :file, hint: content_tag(:span, "Upload vtt/srt caption")
-      end
     end
 
     actions
@@ -40,5 +48,13 @@ ActiveAdmin.register Lesson do
 
   action_item :view, only: :show do
     link_to 'Back', :back
+  end
+
+  controller do
+    def set_position
+      course = Lesson.find(params[:id]).course
+      min_position = course.lessons.pluck(:position).min
+      params[:position] = (min_position + params[:position].to_i - 1)
+    end
   end
 end

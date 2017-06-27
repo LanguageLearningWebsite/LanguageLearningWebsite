@@ -1,0 +1,150 @@
+<%= stylesheet_link_tag "video-js" %>
+<%= stylesheet_link_tag "videojs.record" %>
+<%= stylesheet_link_tag "style" %>
+
+<style type="text/css">
+  /* change player background color */
+  #myAudio {
+    background-color: #9FD6BA;
+  }
+</style>
+
+</br>
+<div class="col-md-10 offset-1">
+  <% if recording_list.check_submission(@current_user) %>
+    <div class="card-block">
+      <!-- <div id="recordingslist" ></div> -->
+      <% recording_list.recordings_for(@current_user).each do |recording| %>
+        <div class="form-check-label">
+          <label class="form-check-label">
+          <% if recording.submitted %>
+            <input class="form-check-input" type="radio" value="option<%= recording.id %>" name="recordings" id="<%= recording.id %>" checked>
+          <% else %>
+            <input class="form-check-input" type="radio" value="option<%= recording.id %>" name="recordings" id="<%= recording.id %>" disabled>
+          <% end %>
+              <audio src="<%= recording.presigned_url %>" controls>
+            </input>
+          </label>
+        </div>
+      <% end %>
+    </div>
+  <% else %>
+    <% if recording_list.check_limit(@current_user) %>
+      <p>You have a maximum of <%= recording_list.limit %> attempts and 10 seconds each attempt to speak.</p>
+      <p>Your recording will be automatically uploaded once finished.</p>
+      <p>Click the recording icon to initialize the recorder.</p>
+      <audio id="myAudio" class="video-js vjs-default-skin card-img-top" ></audio>
+      <br>
+    <% end %>
+    <div class="card-block">
+      <% recording_list.recordings_for(@current_user).each do |recording| %>
+        <div class="form-check-label">
+          <label class="form-check-label">
+            <input class="form-check-input" type="radio" value="option<%= recording.id %>" name="recordings" id="<%= recording.id %>">
+              <audio src="<%= recording.presigned_url %>" controls>
+            <input>
+          </label>
+        </div>
+      <% end %>
+      <% if recording_list.recordings_for(@current_user).count >= 1 %>
+        <a type="button" id="submitButton" class="btn btn-success" style="margin-left: 20px;">Submit</a>
+      <% end %>
+    </div>
+  <% end %>
+</div>
+
+<script type="text/javascript">
+  var currentRecording;
+  if ($('#myAudio').length) {
+   var player = videojs("myAudio",
+   {
+     controls: true,
+     width: 600,
+     height: 300,
+    //  fluid: true,
+     plugins: {
+       wavesurfer: {
+         src: "live",
+         waveColor: "black",
+         progressColor: "#2E732D",
+         cursorWidth: 1,
+         msDisplayMax: 10,
+         hideScrollbar: false,
+         debug: false
+       },
+       record: {
+         audio: true,
+         video: false,
+         maxLength: 10,
+         debug: false,
+         audioEngine: "recorder.js"
+       }
+     }
+   });
+   // error handling
+   player.on('deviceError', function()
+   {
+     // console.log('device error:', player.deviceErrorCode);
+   });
+   player.on('error', function(error)
+   {
+     // console.log('error:', error);
+   });
+   // user clicked the record button and started recording
+   player.on('startRecord', function()
+   {
+     // console.log('started recording!');
+   });
+   // user completed recording and stream is available
+   player.on('finishRecord', function()
+   {
+     // the blob object contains the recorded data that
+     // can be downloaded by the user, stored on server etc.
+     // console.log('finished recording: ', player.recordedData);
+     var blob = player.recordedData;
+     var name = new Date().toISOString() + '.wav';
+     var recordingUrl = '<%= raw @s3_base_url %>' + name;
+
+     $.ajax({
+       url: "/api/v1/aws_presigned_url?",
+       type: "GET",
+       crossDomain: true,
+       async: true,
+       dataType: "json",
+       data: { "url" : recordingUrl },
+       success: function(data) {
+         $.ajax({
+           type: 'PUT',
+           url: data['url'],
+           crossDomain: true,
+           async: true,
+           data: blob,
+           contentType: blob.type,
+           processData: false,
+           success: function(data) {
+             var params = {
+               url: recordingUrl,
+               recording_list_id: '<%= recording_list.id %>'
+             };
+             window.location.href = '/api/v1/recordings/new?' + $.param(params);
+           }
+         });
+       }
+     });
+   });
+  }
+
+  $('.form-check-input').click(function(event) {
+    console.log(this.id);
+    currentRecording = this.id;
+  });
+
+  $('#submitButton').click(function(event) {
+    if (currentRecording == null) {
+      alert('Please choose a recording to be submitted!');
+    } else {
+      var params = { id: currentRecording };
+      window.location.href = '/api/v1/recordings/submit?' + $.param(params);
+    }
+  });
+</script>

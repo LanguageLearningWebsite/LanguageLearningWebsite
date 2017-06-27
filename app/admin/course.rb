@@ -1,6 +1,15 @@
 ActiveAdmin.register Course do
   permit_params :name, :content, :image
 
+  index do
+    selectable_column
+    column :id
+    column :name
+    column :content
+
+    actions
+  end
+
   show do |t|
     attributes_table do
       row :name

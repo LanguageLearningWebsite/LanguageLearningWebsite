@@ -30,7 +30,8 @@ gem 'active_skin'
 
 gem 'paperclip', '~> 4.3', '>= 4.3.6'
 gem 'friendly_id', '~> 5.1'
-gem 'active_admin-sortable_tree', '~> 0.2.1'
+gem 'activeadmin_reorderable'
+gem 'acts_as_list'
 
 gem 'rails-assets-tether', '>= 1.1.0'
 
