@@ -1,16 +1,17 @@
-class Quiz::Quiz < ActiveRecord::Base
+class Quiz < ActiveRecord::Base
 
-  self.table_name = "quiz_quizzes"
+  self.table_name = "quizzes"
 
   # acceptable_attributes :name, :description,
   #   :finished,
   #   :active,
   #   :attempts_number,
-  #   :questions_attributes => Quiz::Question::AccessibleAttributes
+  #   :questions_attributes => Question::AccessibleAttributes
 
   # relations
   has_many :attempts,  :dependent => :destroy
   has_many :questions, :dependent => :destroy
+  has_one :component, as: :componentable, :dependent => :destroy
   accepts_nested_attributes_for :questions,
     :reject_if => ->(q) { q[:text].blank? },
     :allow_destroy => true
@@ -21,8 +22,8 @@ class Quiz::Quiz < ActiveRecord::Base
 
   # validations
   validates :attempts_number, :numericality => { :only_integer => true, :greater_than => -1 }
-  validates :description, :name, :presence => true, :allow_blank => false
-  validate  :check_active_requirements
+  validates :description, :presence => true, :allow_blank => false
+  validate :check_active_requirements
 
   # returns all the correct options for current quiz
   def correct_options
@@ -46,7 +47,6 @@ class Quiz::Quiz < ActiveRecord::Base
   end
 
   private
-
   # a quiz only can be activated if has one or more questions
   def check_active_requirements
     errors.add(:active, "Quiz without questions cannot be activated") if self.active && self.questions.empty?

@@ -1,11 +1,11 @@
-class Quiz::Attempt < ActiveRecord::Base
+class Attempt < ActiveRecord::Base
 
-  self.table_name = "quiz_attempts"
+  self.table_name = "attempts"
 
   # acceptable_attributes :winner, :quiz, :quiz_id,
   #   :participant,
   #   :participant_id,
-  #   :answers_attributes => ::Quiz::Answer::AccessibleAttributes
+  #   :answers_attributes => ::Answer::AccessibleAttributes
 
   # relations
   belongs_to :quiz

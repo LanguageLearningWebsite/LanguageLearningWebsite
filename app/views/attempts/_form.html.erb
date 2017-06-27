@@ -10,7 +10,7 @@
         <% question = answer_fields.object.question %>
         <p class="question"><%= question.text %></p>
         <ul class="options">
-          <%= collection_radio_buttons('quiz_attempt[answers_attributes]', question.id, question.options, :id, :text) do |b| %>
+          <%= collection_radio_buttons('attempt[answers_attributes]', question.id, question.options, :id, :text) do |b| %>
             <li class="radio">
               <%= b.label { b.radio_button + b.text } %>
             </li>

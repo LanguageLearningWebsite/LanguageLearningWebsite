@@ -5,6 +5,6 @@ module ApplicationHelper
   end
 
 	def number_of_people_who_also_answered_count option_id
-		Quiz::Answer.where(option_id: option_id).count
+		Answer.where(option_id: option_id).count
 	end
 end

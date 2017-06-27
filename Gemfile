@@ -11,6 +11,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
+gem 'bootstrap', '~> 4.0.0.alpha6'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -21,7 +22,6 @@ gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
 gem 'sdoc', '~> 0.4.0', group: :doc
 
-gem 'bootstrap', '~> 4.0.0.alpha6'
 gem 'devise'
 gem 'toastr_rails'
 
@@ -35,11 +35,11 @@ gem 'acts_as_list'
 gem 'rails-assets-tether', '>= 1.1.0'
 
 gem 'yaml_db'
+gem 'seed_dump'
 
 gem 'google-api-client', '~> 0.10'
 gem 'aws-sdk', '~> 2'
 gem 'dotenv-rails', groups: [:development, :test]
-gem 'client_side_validations'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

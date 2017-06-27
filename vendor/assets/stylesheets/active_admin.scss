@@ -1,2 +1,27 @@
 @import "active_admin/mixins";
 @import "active_admin/base";
+
+form.formtastic fieldset ol {
+  width  : 100%;
+  padding: 0px;
+  margin : 0px;
+  list-style-type: none;
+}
+
+form.formtastic fieldset ol li.multiCol {
+  float: left;
+  margin-right: 1em;
+  width : 250px;
+}
+
+form.formtastic fieldset ol li.multiCol.boolean {
+  width : 100px;
+}
+
+form.formtastic fieldset ol li.multiCol.boolean label {
+  padding-left: 0px;
+}
+
+#component_componentable_type option:first-child {
+  display: none;
+}

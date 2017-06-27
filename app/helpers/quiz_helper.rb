@@ -5,18 +5,18 @@ module QuizHelper
   end
 
   def new_quiz
-    new_admin_quiz_quiz_path
+    new_admin_quiz_path
   end
 
   def edit_quiz(resource)
-    edit_admin_quiz_quiz_path(resource)
+    edit_admin_quiz_path(resource)
   end
 
   def quiz_scope(resource)
     if action_name =~ /new|create/
-      admin_quiz_quizzes_path(resource)
+      admin_quizzes_path(resource)
     elsif action_name =~ /edit|update/
-      admin_quiz_quiz_path(resource)
+      admin_quiz_path(resource)
     end
   end
 
@@ -39,7 +39,7 @@ module QuizHelper
   end
 
   def get_answer_fields attempt
-    attempt.quiz.questions.map { |q| Quiz::Answer.new(question_id: q.id) }
+    attempt.quiz.questions.map { |q| Answer.new(question_id: q.id) }
   end
 
   def the_chosen_one? answer, option

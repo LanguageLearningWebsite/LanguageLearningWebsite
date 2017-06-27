@@ -10,10 +10,12 @@ class Component < ActiveRecord::Base
   belongs_to :componentable, polymorphic: true, :dependent => :destroy
   accepts_nested_attributes_for :componentable, :allow_destroy => true
 
-  COMPONENTABLE_TYPES = %w(RecordingList Video Quiz)
+  validates :name, presence: true, length: { maximum: 50 }
+  validates :componentable, presence: true
+  validates :componentable_type, presence: true
+  validates :lesson, presence: true
 
-  def course
-  end
+  COMPONENTABLE_TYPES = %w(RecordingList Video Quiz)
 
   def build_componentable(params)
     raise "Unknown componentable_type: #{componentable_type}" unless COMPONENTABLE_TYPES.include?(componentable_type)

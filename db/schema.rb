@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170407075512) do
+ActiveRecord::Schema.define(version: 20170627045837) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string   "namespace"
@@ -46,10 +46,26 @@ ActiveRecord::Schema.define(version: 20170407075512) do
   add_index "admin_users", ["email"], name: "index_admin_users_on_email", unique: true
   add_index "admin_users", ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
 
+  create_table "answers", force: :cascade do |t|
+    t.integer  "attempt_id"
+    t.integer  "question_id"
+    t.integer  "option_id"
+    t.boolean  "correct"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.text     "option_text"
+  end
+
+  create_table "attempts", force: :cascade do |t|
+    t.integer "participant_id"
+    t.string  "participant_type"
+    t.integer "quiz_id"
+    t.boolean "winner"
+    t.integer "score"
+  end
+
   create_table "captions", force: :cascade do |t|
-    t.string   "label"
-    t.string   "language"
-    t.integer  "lesson_id"
+    t.integer  "video_id"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
     t.string   "file_file_name"
@@ -58,7 +74,23 @@ ActiveRecord::Schema.define(version: 20170407075512) do
     t.datetime "file_updated_at"
   end
 
-  add_index "captions", ["lesson_id"], name: "index_captions_on_lesson_id"
+  add_index "captions", ["video_id"], name: "index_captions_on_video_id"
+
+  create_table "components", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "position"
+    t.string   "course"
+    t.integer  "lesson_id"
+    t.integer  "componentable_id"
+    t.string   "componentable_type"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.string   "slug"
+  end
+
+  add_index "components", ["componentable_type", "componentable_id"], name: "index_components_on_componentable_type_and_componentable_id"
+  add_index "components", ["lesson_id"], name: "index_components_on_lesson_id"
+  add_index "components", ["slug"], name: "index_components_on_slug", unique: true
 
   create_table "courses", force: :cascade do |t|
     t.string   "name"
@@ -101,9 +133,8 @@ ActiveRecord::Schema.define(version: 20170407075512) do
   create_table "lessons", force: :cascade do |t|
     t.string   "title"
     t.text     "note"
-    t.string   "video"
     t.boolean  "header",     default: false, null: false
-    t.integer  "tag"
+    t.integer  "position"
     t.integer  "course_id"
     t.datetime "created_at",                 null: false
     t.datetime "updated_at",                 null: false
@@ -113,25 +144,7 @@ ActiveRecord::Schema.define(version: 20170407075512) do
   add_index "lessons", ["course_id"], name: "index_lessons_on_course_id"
   add_index "lessons", ["slug"], name: "index_lessons_on_slug", unique: true
 
-  create_table "quiz_answers", force: :cascade do |t|
-    t.integer  "attempt_id"
-    t.integer  "question_id"
-    t.integer  "option_id"
-    t.boolean  "correct"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.text     "option_text"
-  end
-
-  create_table "quiz_attempts", force: :cascade do |t|
-    t.integer "participant_id"
-    t.string  "participant_type"
-    t.integer "quiz_id"
-    t.boolean "winner"
-    t.integer "score"
-  end
-
-  create_table "quiz_options", force: :cascade do |t|
+  create_table "options", force: :cascade do |t|
     t.integer  "question_id"
     t.integer  "weight",      default: 0
     t.string   "text"
@@ -140,16 +153,15 @@ ActiveRecord::Schema.define(version: 20170407075512) do
     t.datetime "updated_at"
   end
 
-  create_table "quiz_questions", force: :cascade do |t|
+  create_table "questions", force: :cascade do |t|
     t.integer  "quiz_id"
-    t.string   "text"
+    t.text     "text"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "questions_type_id"
   end
 
-  create_table "quiz_quizzes", force: :cascade do |t|
-    t.string   "name"
+  create_table "quizzes", force: :cascade do |t|
     t.text     "description"
     t.integer  "attempts_number", default: 0
     t.boolean  "finished",        default: false
@@ -157,6 +169,24 @@ ActiveRecord::Schema.define(version: 20170407075512) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "recording_lists", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer  "limit"
+  end
+
+  create_table "recordings", force: :cascade do |t|
+    t.string   "url"
+    t.integer  "user_id"
+    t.integer  "recording_list_id"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.boolean  "submitted"
+  end
+
+  add_index "recordings", ["recording_list_id"], name: "index_recordings_on_recording_list_id"
+  add_index "recordings", ["user_id"], name: "index_recordings_on_user_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -178,5 +208,11 @@ ActiveRecord::Schema.define(version: 20170407075512) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+
+  create_table "videos", force: :cascade do |t|
+    t.string   "url"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
 end

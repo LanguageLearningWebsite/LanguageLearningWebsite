@@ -1,8 +1,8 @@
-class Quiz::Question < ActiveRecord::Base
+class Question < ActiveRecord::Base
 
-  self.table_name = "quiz_questions"
+  self.table_name = "questions"
 
-  # acceptable_attributes :text, :quiz, :questions_type_id, :options_attributes => Quiz::Option::AccessibleAttributes
+  # acceptable_attributes :text, :quiz, :questions_type_id, :options_attributes => Option::AccessibleAttributes
 
   # relations
   belongs_to :quiz
@@ -13,8 +13,8 @@ class Quiz::Question < ActiveRecord::Base
 
   # validations
   validates :text, :presence => true, :allow_blank => false
-  validates :questions_type_id, :presence => true
-  validates_inclusion_of :questions_type_id, :in => Quiz::QuestionsType.questions_type_ids, :unless => Proc.new{|q| q.questions_type_id.blank?}
+  # validates :questions_type_id, :presence => true
+  # validates_inclusion_of :questions_type_id, :in => QuestionsType.questions_type_ids, :unless => Proc.new{|q| q.questions_type_id.blank?}
 
   def correct_options
     return options.correct

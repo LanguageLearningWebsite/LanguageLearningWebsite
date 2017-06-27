@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
   has_many :courses, through: :enrollments
   has_many :recordings, :dependent => :destroy
   has_many :recording_lists, through: :recordings
-  has_many :quiz_tentatives, as: :participant, :class_name => ::Quiz::Attempt
+  has_many :quiz_tentatives, as: :participant, :class_name => ::Attempt
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable

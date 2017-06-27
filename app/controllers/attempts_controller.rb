@@ -6,11 +6,11 @@ class AttemptsController < ApplicationController
   before_filter :load_quiz, only: [:new, :create]
 
   def index
-    @quizzes = Quiz::Quiz.active
+    @quizzes = Quiz.active
   end
 
   def show
-    @attempt = Quiz::Attempt.find_by(id: params[:id])
+    @attempt = Attempt.find_by(id: params[:id])
     render :access_error if current_user.id != @attempt.participant_id
   end
 
@@ -37,20 +37,20 @@ class AttemptsController < ApplicationController
   end
 
   def delete_user_attempts
-    Quiz::Attempt.where(participant_id: params[:user_id], quiz_id: params[:quiz_id]).destroy_all
+    Attempt.where(participant_id: params[:user_id], quiz_id: params[:quiz_id]).destroy_all
     redirect_to new_attempt_path(quiz_id: params[:quiz_id])
   end
 
   private
 
   def load_quiz
-    @quiz = Quiz::Quiz.find_by(id: params[:quiz_id])
+    @quiz = Quiz.find_by(id: params[:quiz_id])
   end
 
   def params_whitelist
-    if params[:quiz_attempt]
-      params[:quiz_attempt][:answers_attributes] = params[:quiz_attempt][:answers_attributes].map { |attrs| { question_id: attrs.first, option_id: attrs.last } }
-      params.require(:quiz_attempt).permit!
+    if params[:attempt]
+      params[:attempt][:answers_attributes] = params[:attempt][:answers_attributes].map { |attrs| { question_id: attrs.first, option_id: attrs.last } }
+      params.require(:attempt).permit!
     end
   end
 

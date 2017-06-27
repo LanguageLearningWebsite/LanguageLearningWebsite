@@ -3,6 +3,7 @@ class CreateComponents < ActiveRecord::Migration
     create_table :components do |t|
       t.string :name
       t.integer :position
+      t.string :course
       t.references :lesson, index: true, foreign_key: true
       t.references :componentable, polymorphic: true, index: true
 
