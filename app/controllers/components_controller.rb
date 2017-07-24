@@ -1,7 +1,10 @@
-class LessonController < ApplicationController
+class ComponentsController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_s3_base_url
 
   def show
+    @component = Component.find(params[:id])
+
     @course = Course.find(params[:course_id])
     @lessons = @course.lessons.order(:position)
 
@@ -12,14 +15,18 @@ class LessonController < ApplicationController
     end
 
     if joined
-      @lesson = @lessons.find(params[:id])
+      @lesson = @lessons.find(params[:lesson_id])
       @components = @lesson.components.order(:position)
       @next_lesson = @lesson.next
       @prev_lesson = @lesson.previous
     else
-      flash[:notice] = "You haven't enroll in the course!"
+      flash[:error] = "You haven't enroll in the course!"
       redirect_to course
     end
   end
 
+  private
+  def set_s3_base_url
+    @s3_base_url = "#{SecureRandom.uuid}/"
+  end
 end

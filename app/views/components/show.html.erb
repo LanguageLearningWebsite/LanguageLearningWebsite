@@ -37,11 +37,7 @@
           <span class="hamb-bottom"></span>
         </button>
       </div>
-    <% if @component.componentable_type == 'Video' %>
       <div class="col-md-8 mt-3 mb-3">
-    <% else %>
-      <div class="col-md-11 mt-3 mb-3">
-    <% end %>
         <div class="card">
           <div class="card-header">
             <div class="row">
@@ -77,28 +73,28 @@
               <ul class="nav nav-tabs nav-fill" role="tablist" style="margin-bottom: 10px;">
                 <% @components.each do |component| %>
                   <% name = component.name.split(" ").join("-").downcase %>
-                  <% if component.id == @component.id %>
-                    <li class="nav-item"><a class="nav-link active" href="#<%= name %>"><%= component.name %></a></li>
-                  <% else %>
-                    <li class="nav-item"><a class="nav-link" href="<%= course_lesson_component_path(@course, @lesson, component) %>"><%= component.name %></a></li>
-                  <% end %>
+                  <li class="nav-item">
+                    <% if component.id == @component.id %>
+                      <% class_name = "nav-link active" %>
+                    <% else %>
+                      <% class_name = "nav-link" %>
+                    <% end %>
+                    <% if component.componentable_type == 'Quiz' %>
+                      <% url = new_course_lesson_component_attempt_path(@course, @lesson, component) %>
+                    <% else %>
+                      <% url = course_lesson_component_path(@course, @lesson, component) %>
+                    <% end %>
+                    <a class="<%= class_name %>" href="<%= url %>"><%= component.name %></a>
+                  </li>
                 <% end %>
               </ul>
               <div class="tab-content">
                 <div role="tabpanel" class="tab-pane active show" id="<%= @component.name.split(" ").join("-").downcase %>">
-                  <% if @component.componentable_type == 'Video' %>
-                    <%= render 'video', :video => @component.componentable %>
-                  <% elsif @component.componentable_type == 'RecordingList' %>
-                    <%= render 'recording', :recording_list => @component.componentable %>
-                  <% end %>
+                  <%= render 'components/select' %>
                 </div>
               </div>
             <% else %>
-              <% if @component.componentable_type == 'Video' %>
-                <%= render 'video', :video => @component.componentable %>
-              <% elsif @component.componentable_type == 'RecordingList' %>
-                <%= render 'recording', :recording_list => @component.componentable %>
-              <% end %>
+              <%= render 'components/select' %>
             <% end %>
           </div>
         </div>

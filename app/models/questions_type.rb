@@ -21,7 +21,7 @@ class QuestionsType
 
   @@questions_types.each do |key, val|
     define_singleton_method "#{key}" do
-        val
+      val
     end
   end
 end

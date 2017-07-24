@@ -1,5 +1,5 @@
 <h2 class="quiz-title">
-  <%= @quiz.name %>
+  <%= @quiz.component.name %>
   <p><small><%= @attempt.quiz.description %></small></p>
 </h2>
 <%= form_for(@attempt, url: attempt_scope(@attempt)) do |f| %>

@@ -2,7 +2,6 @@
 #= require activeadmin_reorderable
 
 jQuery ->
-  $('.polyform').hide();
   $(".has_many_delete").addClass("multiCol");
   $(document).on 'has_many_add:after', '.has_many_container.questions', (e, fieldset, container)->
     $('.has_many_container.options').next().children(".has_many_remove").text("Remove question");

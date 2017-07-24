@@ -41,11 +41,6 @@ class Quiz < ActiveRecord::Base
     return !((current_number_of_attempts >= upper_bound) && (upper_bound != 0))
   end
 
-  def avaliable_for_participant?(participant)
-    warn "[DEPRECATION] avaliable_for_participant? is deprecated. Please use available_for_participant? instead"
-    available_for_participant?(participant)
-  end
-
   private
   # a quiz only can be activated if has one or more questions
   def check_active_requirements

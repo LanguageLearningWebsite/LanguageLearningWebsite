@@ -10,19 +10,19 @@ Rails.application.routes.draw do
     get 'users', :to => 'devise/registrations#new'
   end
 
-  root 'course#index'
+  root 'courses#index'
 
   get 'pages/about'
   get 'pages/record'
+  get '/mycourses' => 'courses#list'
+  post '/enroll' => 'enrolls#enroll'
+  delete 'attempts/:survey_id/:user_id' => 'attempts#delete_user_attempts', as: :delete_user_attempts
 
-  get '/mycourses' => 'course#list'
-  post '/enroll' => 'enroll#enroll'
-
-  resources :attempts
-
-  resources :course do
-    resources :lesson, only: [:show] do
-      resources :component, only: [:show]
+  resources :courses do
+    resources :lessons, only: [:show] do
+      resources :components, only: [:show] do
+        resources :attempts
+      end
     end
   end
 
@@ -30,8 +30,8 @@ Rails.application.routes.draw do
     namespace :v1, constraints: ApiConstraints.new(version: 1, default: true) do
       get '/translate' => 'translate#show'
       get '/aws_presigned_url' => 'aws#presigned_url'
-      get '/recordings/new' => 'recording#new'
-      get '/recordings/submit' => 'recording#submit'
+      get '/recordings/new' => 'recordings#new'
+      get '/recordings/submit' => 'recordings#submit'
     end
   end
 end

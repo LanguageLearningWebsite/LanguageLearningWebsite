@@ -6,7 +6,7 @@ class Lesson < ActiveRecord::Base
 
   has_many :components, :dependent => :destroy
   belongs_to :course
-  acts_as_list scope: :course
+  acts_as_list
 
   validates :title, presence: true, length: { maximum: 50 }
   validates :course, presence: true
@@ -52,7 +52,6 @@ class Lesson < ActiveRecord::Base
         lessons = Lesson
       end
       max_position = lessons.maximum("position") || 0
-      Lesson.where("position > ?", max_position).update_all("position = position + 1")
       self.position = max_position + 1
     end
   end

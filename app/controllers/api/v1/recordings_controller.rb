@@ -1,4 +1,4 @@
-class Api::V1::RecordingController < ApplicationController
+class Api::V1::RecordingsController < ApplicationController
   before_action :authenticate_user!
   respond_to :json
 

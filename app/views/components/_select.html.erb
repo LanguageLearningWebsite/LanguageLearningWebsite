@@ -1,0 +1,11 @@
+<% if @component.componentable_type == 'Video' %>
+  <%= render 'video', :video => @component.componentable %>
+<% elsif @component.componentable_type == 'RecordingList' %>
+  <%= render 'recording', :recording_list => @component.componentable %>
+<% elsif @component.componentable_type == 'Quiz' && controller.controller_name == 'attempts' %>
+  <% if controller.action_name == 'new' %>
+    <%= render template: 'attempts/new' %>
+  <% elsif controller.action_name == 'show' %>
+    <%= render template: 'attempts/show' %>
+  <% end %>
+<% end %>

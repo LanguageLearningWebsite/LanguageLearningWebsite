@@ -12,7 +12,8 @@ ActiveAdmin.register Component do
   config.paginate   = false
   reorderable
 
-  index as: :reorderable_table do
+  # index as: :reorderable_table do
+  index do
     selectable_column
     column :name
     column :lesson

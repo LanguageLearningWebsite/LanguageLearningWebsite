@@ -4,7 +4,6 @@ ActiveAdmin.register Lesson do
 
   preserve_default_filters!
   remove_filter :components
-  before_action :set_position, only: [:reorder]
 
   config.sort_order = 'position_asc' # assuming Widget.insert_at modifies the `position` attribute
   config.paginate   = false

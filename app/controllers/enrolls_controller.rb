@@ -1,4 +1,4 @@
-class EnrollController < ApplicationController
+class EnrollsController < ApplicationController
   before_action :authenticate_user!
 
   def enroll

@@ -1,4 +1,4 @@
-class CourseController < ApplicationController
+class CoursesController < ApplicationController
   before_action :authenticate_user!, only: [:list]
 
   def index

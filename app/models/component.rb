@@ -5,7 +5,7 @@ class Component < ActiveRecord::Base
   before_create :set_position
 
   belongs_to :lesson
-  acts_as_list scope: :lesson
+  acts_as_list
 
   belongs_to :componentable, polymorphic: true, :dependent => :destroy
   accepts_nested_attributes_for :componentable, :allow_destroy => true
@@ -33,7 +33,7 @@ class Component < ActiveRecord::Base
         components = Component
       end
       max_position = components.maximum("position") || 0
-      Component.where("position > ?", max_position).update_all("position = position + 1")
+      # Component.where("position > ?", max_position).update_all("position = position + 1")
       self.position = max_position + 1
     end
   end

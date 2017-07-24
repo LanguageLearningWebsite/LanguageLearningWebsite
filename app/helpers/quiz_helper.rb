@@ -14,7 +14,7 @@ module QuizHelper
 
   def quiz_scope(resource)
     if action_name =~ /new|create/
-      admin_quizzes_path(resource)
+      admin_quizzes_path
     elsif action_name =~ /edit|update/
       admin_quiz_path(resource)
     end
@@ -22,9 +22,9 @@ module QuizHelper
 
   def attempt_scope(resource)
     if action_name =~ /new|create/
-      attempts_path(resource)
+      course_lesson_component_attempts_path(params[:course_id], params[:lesson_id], params[:component_id])
     elsif action_name =~ /edit|update/
-      attempt_path(resource)
+      course_lesson_component_attempt_path(params[:course_id], params[:lesson_id], params[:component_id], resource)
     end
   end
 
