@@ -16,6 +16,7 @@ ActiveAdmin.register Component do
   index do
     selectable_column
     column :name
+    column :course_name
     column :lesson
     column "Type", :componentable_type
     column :position

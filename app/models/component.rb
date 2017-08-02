@@ -26,6 +26,10 @@ class Component < ActiveRecord::Base
     self.lesson.full_title + ' - ' + self.name
   end
 
+  def course_name
+    self.lesson.course
+  end
+
   def set_position
     if position.nil?
       components = Component.where("lesson_id = ?", lesson_id)
