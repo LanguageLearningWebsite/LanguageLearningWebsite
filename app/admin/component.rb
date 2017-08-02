@@ -61,7 +61,7 @@ ActiveAdmin.register Component do
         fc.input :attempts_number, label: "Maximum attempts", hint: "0 is infinite"
         fc.input :description, :input_html => { :rows => 8 }
         fc.input :active
-        fc.has_many :questions, allow_destroy: true, new_record: "Add question" do |q|
+        fc.has_many :questions, heading: false, allow_destroy: true, new_record: "Add question" do |q|
           q.input :text, label: false, placeholder: 'question', :input_html => { :rows => 5 }
           q.has_many :options, allow_destroy: true, heading: false, new_record: "Add option" do |o|
             o.input :text, label: false,  placeholder: 'answer', :wrapper_html => { :class => 'multiCol' }
