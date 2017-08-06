@@ -2,7 +2,7 @@
 
 <div class="card card-container" style="text-align:center;">
   <%= render partial: "shared/devisemes" %>
-  <img id="profile-img" class="profile-img-card" src="/assets/images/hat.svg" />
+  <%= image_tag("hat.svg", id: "profile-img", class: "profile-img-card") %>
   <p id="profile-name" class="profile-name-card"></p>
 
   <%= form_for(resource, as: resource_name, url: session_path(resource_name), html: {class: 'form-signin'}) do |f| %>

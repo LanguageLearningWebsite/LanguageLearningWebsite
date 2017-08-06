@@ -18,7 +18,7 @@ class LessonsController < ApplicationController
       @prev_lesson = @lesson.previous
     else
       flash[:notice] = "You haven't enroll in the course!"
-      redirect_to course
+      redirect_to @course
     end
   end
 

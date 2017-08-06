@@ -21,7 +21,7 @@ class ComponentsController < ApplicationController
       @prev_lesson = @lesson.previous
     else
       flash[:error] = "You haven't enroll in the course!"
-      redirect_to course
+      redirect_to @course
     end
   end
 

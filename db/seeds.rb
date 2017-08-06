@@ -1,3 +1,10 @@
-AdminUser.create!([
-  {email: "admin@example.com", password: "password", reset_password_token: nil, reset_password_sent_at: nil, remember_created_at: nil, sign_in_count: 5, current_sign_in_at: "2017-06-26 16:28:13", last_sign_in_at: "2017-06-13 23:02:45", current_sign_in_ip: "127.0.0.1", last_sign_in_ip: "127.0.0.1"}
-])
+# This file should contain all the record creation needed to seed the database with its default values.
+# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
+#
+# Examples:
+#
+#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
+#   Mayor.create(name: 'Emanuel', city: cities.first)
+AdminUser.create!(email: 'cultureintegratedchinese@gmail.com', password: 'tcucultureintegratedchinese', password_confirmation: 'tcucultureintegratedchinese')
+@course = Course.create!(name: 'test course', content: 'test content')
+Lesson.create!(course: @course, title: 'test lesson', note: 'test note')
