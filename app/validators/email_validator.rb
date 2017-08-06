@@ -5,7 +5,7 @@ class EmailValidator < ActiveModel::EachValidator
       m = Mail::Address.new(value)
       # We must check that value contains a domain, the domain has at least
       # one '.' and that value is an email address
-      r = m.domain.present? && m.domain.match('tcu.edu') && m.address == value
+      r = m.domain.present? && m.domain.match('gmail.com') && m.address == value
 
       # Update 2015-Mar-24
       # the :tree method was private and is no longer available.
