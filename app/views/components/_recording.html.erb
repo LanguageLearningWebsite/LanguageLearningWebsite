@@ -97,11 +97,39 @@
      // the blob object contains the recorded data that
      // can be downloaded by the user, stored on server etc.
      // console.log('finished recording: ', player.recordedData);
+     // the blob object contains the recorded data that
+     // can be downloaded by the user, stored on server etc.
+     // console.log('finished recording: ', player.recordedData);
      var blob = player.recordedData;
      var name = new Date().toISOString() + '.wav';
      var recordingUrl = '<%= raw @s3_base_url %>' + name;
 
-
+     $.ajax({
+       url: "/api/v1/aws_presigned_url?",
+       type: "GET",
+       crossDomain: true,
+       async: true,
+       dataType: "json",
+       data: { "url" : recordingUrl },
+       success: function(data) {
+         $.ajax({
+           type: 'PUT',
+           url: data['url'],
+           crossDomain: true,
+           async: true,
+           data: blob,
+           contentType: blob.type,
+           processData: false,
+           success: function(data) {
+             var params = {
+               url: recordingUrl,
+               recording_list_id: '<%= recording_list.id %>'
+             };
+             window.location.href = '/api/v1/recordings/new?' + $.param(params);
+           }
+         });
+       }
+     });
    });
   }
 
