@@ -24,6 +24,7 @@
 //= require wavesurfer.microphone
 //= require videojs.wavesurfer.min
 //= require turbolinks
+//= require s3_direct_upload
 //= require_tree .
 
 toastr.options = {

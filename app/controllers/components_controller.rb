@@ -27,6 +27,6 @@ class ComponentsController < ApplicationController
 
   private
   def set_s3_base_url
-    @s3_base_url = "#{SecureRandom.uuid}/"
+    @s3_base_url = "recordings/#{SecureRandom.uuid}/"
   end
 end
