@@ -6,5 +6,5 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 AdminUser.create!(email: 'cultureintegratedchinese@gmail.com', password: 'tcucultureintegratedchinese', password_confirmation: 'tcucultureintegratedchinese')
-@course = Course.create!(name: 'test course', content: 'test content')
-Lesson.create!(course: @course, title: 'test lesson', note: 'test note')
+# @course = Course.create!(name: 'test course', content: 'test content')
+# Lesson.create!(course: @course, title: 'test lesson', note: 'test note')
