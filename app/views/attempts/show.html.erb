@@ -1,6 +1,7 @@
 <h2 class="quiz-title">
-  <%= @attempt.quiz.component.name %>
-  <p><small><%= @attempt.quiz.description %></small></p>
+  <small>
+    <%= @attempt.quiz.description %>
+  </small>
 </h2>
 <ol class="questions">
   <% @attempt.answers.each do |answer| %>

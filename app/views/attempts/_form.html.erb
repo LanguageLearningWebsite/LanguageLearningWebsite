@@ -1,6 +1,7 @@
 <h2 class="quiz-title">
-  <%= @quiz.component.name %>
-  <p><small><%= @attempt.quiz.description %></small></p>
+  <small>
+    <%= @attempt.quiz.description %>
+  </small>
 </h2>
 <%= form_for(@attempt, url: attempt_scope(@attempt)) do |f| %>
   <%= hidden_field_tag :quiz_id, @quiz.id %>

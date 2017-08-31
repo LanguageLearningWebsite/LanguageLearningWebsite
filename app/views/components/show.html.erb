@@ -43,7 +43,7 @@
             <div class="row">
               <div class="col-md-3">
                 <% if @prev_lesson %>
-                  <%= link_to [@prev_lesson.course, @prev_lesson, @prev_lesson.last_component], class: "btn btn-outline-info btn-md btn-block pull-left btn-previous", 'data-toggle': 'tooltip', 'data-placement':'top', title: @prev_lesson.title do %>
+                  <%= link_to get_previous_lesson_url, class: "btn btn-outline-info btn-md btn-block pull-left btn-previous", 'data-toggle': 'tooltip', 'data-placement':'top', title: @prev_lesson.title do %>
                     <i class="fa fa-chevron-left" style="margin-right: 15px;" aria-hidden="true"></i>Previous
                   <% end %>
                 <% else %>
@@ -57,7 +57,7 @@
               </div>
               <div class="col-md-3">
                 <% if @next_lesson %>
-                  <%= link_to [@next_lesson.course, @next_lesson, @next_lesson.first_component], class: "btn btn-outline-info btn-md btn-block pull-left btn-next", 'data-toggle': 'tooltip', 'data-placement':'top', title: @next_lesson.title do %>
+                  <%= link_to get_next_lesson_url, class: "btn btn-outline-info btn-md btn-block pull-left btn-next", 'data-toggle': 'tooltip', 'data-placement':'top', title: @next_lesson.title do %>
                     Next<i class="fa fa-chevron-right" style="margin-left: 15px;" aria-hidden="true"></i>
                   <% end %>
                 <% else %>
@@ -74,16 +74,8 @@
                 <% @components.each do |component| %>
                   <% name = component.name.split(" ").join("-").downcase %>
                   <li class="nav-item">
-                    <% if component.id == @component.id %>
-                      <% class_name = "nav-link active" %>
-                    <% else %>
-                      <% class_name = "nav-link" %>
-                    <% end %>
-                    <% if component.componentable_type == 'Quiz' %>
-                      <% url = new_course_lesson_component_attempt_path(@course, @lesson, component) %>
-                    <% else %>
-                      <% url = course_lesson_component_path(@course, @lesson, component) %>
-                    <% end %>
+                    <% class_name = get_component_class(component) %>
+                    <% url = get_component_url(component) %>
                     <a class="<%= class_name %>" href="<%= url %>"><%= component.name %></a>
                   </li>
                 <% end %>
