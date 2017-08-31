@@ -4,7 +4,7 @@ class Lesson < ActiveRecord::Base
 
   before_create :set_position
 
-  has_many :components, :dependent => :destroy
+  has_many :components, dependent: :destroy
   belongs_to :course
   acts_as_list
 

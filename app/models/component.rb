@@ -7,8 +7,8 @@ class Component < ActiveRecord::Base
   belongs_to :lesson
   acts_as_list
 
-  belongs_to :componentable, polymorphic: true, :dependent => :destroy
-  accepts_nested_attributes_for :componentable, :allow_destroy => true
+  belongs_to :componentable, polymorphic: true, dependent: :destroy
+  accepts_nested_attributes_for :componentable, allow_destroy: true
 
   validates :name, presence: true, length: { maximum: 50 }
   validates :componentable, presence: true

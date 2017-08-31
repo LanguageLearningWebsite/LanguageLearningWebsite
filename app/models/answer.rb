@@ -10,9 +10,9 @@ class Answer < ActiveRecord::Base
   belongs_to :question
 
   # validations
-  validates :option_id, :question_id, :presence => true
-  validates :option_id, :uniqueness => { :scope => [:attempt_id, :question_id] }
-  validates :option_text, :presence => true , :if => Proc.new{|a| a.option && ( a.question && [QuestionsType.fill_in_blank].include?(a.question.questions_type_id)) }
+  validates :option_id, :question_id, presence: true
+  validates :option_id, uniqueness: { scope: [:attempt_id, :question_id] }
+  validates :option_text, presence: true , if: Proc.new{|a| a.option && ( a.question && [QuestionsType.fill_in_blank].include?(a.question.questions_type_id)) }
 
   # callbacks
   after_create :characterize_answer

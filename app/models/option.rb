@@ -8,7 +8,7 @@ class Option < ActiveRecord::Base
   belongs_to :question
 
   # validations
-  validates :text, :presence => true, :allow_blank => false
+  validates :text, presence: true, allow_blank: false
 
   # scopes
   scope :correct,   -> { where(:correct => true)  }

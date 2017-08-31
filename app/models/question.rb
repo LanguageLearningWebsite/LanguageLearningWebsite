@@ -6,7 +6,7 @@ class Question < ActiveRecord::Base
 
   # relations
   belongs_to :quiz
-  has_many   :options, :dependent => :destroy
+  has_many   :options, dependent: :destroy
   accepts_nested_attributes_for :options,
     :reject_if => ->(a) { a[:text].blank? },
     :allow_destroy => true

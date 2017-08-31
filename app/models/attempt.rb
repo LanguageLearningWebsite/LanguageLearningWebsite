@@ -9,8 +9,8 @@ class Attempt < ActiveRecord::Base
 
   # relations
   belongs_to :quiz
-  belongs_to :participant, :polymorphic => true
-  has_many :answers, :dependent => :destroy
+  belongs_to :participant, polymorphic: true
+  has_many :answers, dependent: :destroy
   accepts_nested_attributes_for :answers,
     :reject_if => ->(q) { q[:question_id].blank? || q[:option_id].blank? }
 

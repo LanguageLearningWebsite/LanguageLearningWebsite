@@ -2,8 +2,8 @@ class Course < ActiveRecord::Base
   extend FriendlyId
   friendly_id :name, use: [:slugged, :finders]
 
-  has_many :lessons, :dependent => :destroy
-  has_many :enrollments, :dependent => :destroy
+  has_many :lessons, -> { order(:position) }, dependent: :destroy
+  has_many :enrollments, dependent: :destroy
   has_many :users, through: :enrollments
 
   validates :name, presence: true, length: { maximum: 50 }
