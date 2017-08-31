@@ -26,11 +26,11 @@ class Lesson < ActiveRecord::Base
   end
 
   def next
-    self.class.where("position > ? AND (header = ? OR header IS NULL) AND course_id = ?", position, false, course_id).first
+    self.class.where("position > ? AND (header = ? OR header IS NULL) AND course_id = ?", position, false, course_id).order(:position).first
   end
 
   def previous
-    self.class.where("position < ? AND (header = ? OR header IS NULL) AND course_id = ?", position, false, course_id).last
+    self.class.where("position < ? AND (header = ? OR header IS NULL) AND course_id = ?", position, false, course_id).order(:position).last
   end
 
   def first_component
