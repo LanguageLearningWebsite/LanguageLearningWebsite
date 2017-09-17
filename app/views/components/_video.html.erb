@@ -4,7 +4,7 @@
 
 <div class="main-player">
   <div class="video-container width-100">
-    <video crossdomain id="video1" class="video-js vjs-default-skin" controls preload="auto" data-setup='{"playbackRates": [0.5, 1, 1.5, 2], "fluid": true}'>
+    <video crossorigin="anonymous" id="video1" class="video-js vjs-default-skin" controls preload="auto" data-setup='{"playbackRates": [0.5, 1, 1.5, 2], "fluid": true}'>
       <source src="<%= video.url %>" type="video/mp4" />
       <% if !video.captions.empty? %>
         <% video.captions.each do |c| %>
