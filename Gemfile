@@ -27,7 +27,7 @@ gem 'toastr_rails'
 
 gem 'activeadmin', github: 'activeadmin'
 
-gem 'paperclip', '~> 4.3', '>= 4.3.6'
+gem 'paperclip', '~> 6.1'
 gem 'friendly_id', '~> 5.1'
 gem 'activeadmin_reorderable'
 gem 'acts_as_list'
